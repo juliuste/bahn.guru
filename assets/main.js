@@ -5,9 +5,11 @@ function guessStation(input){
         dataType: 'json',
         success: function(res){
             console.log(res[0].id);
-            if(res.length>0&&!input.next('input').attr('value')){
-                input.attr('value', res[0].id);
-                input.val(res[0].name);
+            if(res.length>0){
+                if(!input.next('input').attr('value')){
+                	input.attr('value', res[0].id);
+                	input.val(res[0].name);
+                }
             }
             else{
                 input.val(null);
