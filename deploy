@@ -1,0 +1,14 @@
+#!/bin/sh
+
+rsync -rav --delete \
+	--exclude '.*' \
+	--exclude node_modules \
+	. 'bahn.guru:~/bahn.guru/'
+
+ssh bahn.guru "\
+cd ~/bahn.guru
+npm i
+npm update
+export NODE_ENV=production
+forever stop bahn.guru
+forever start -a --uid bahn.guru index.js"

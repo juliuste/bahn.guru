@@ -1,0 +1,106 @@
+body{
+	display: flex;
+	padding: 7.5vh;
+	align-items: center;
+	background: #fff;
+	color: #db0000;
+	font-size: 100%;
+	font-family: Helvetica;
+	min-height: 85vh;
+}
+a,p{
+	color: #db0000;
+}
+a:hover{
+	color: #bd0000;
+}
+
+#page{
+	text-align: center;
+	margin: -17.5vh auto 0 auto;
+}
+
+#title{
+	display: inline-block;
+	font-size: 500%;
+	font-weight: lighter;
+	letter-spacing: -0.04em;
+}
+
+#error{
+	margin: -.3em auto .2em auto;
+	padding: .4em;
+	color: #f90;
+	font-size: 150%;
+	font-weight: lighter;
+}
+
+#form{
+	border: 2px solid #db0000;
+	display: inline-block;
+	text-align: center;
+	padding: 1.25em;
+}
+#form input{
+	color: #db0000;
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+.station{
+	margin: .5em;
+	width: 15em;
+	height: 3ex;
+	background: rgba(0,0,0,0.075);
+	border: 1px solid #db0000;
+	font-size: 140%;
+	padding: 0 .25em;
+}
+#arrow{
+	font-size: 220%;
+}
+#submit{
+	margin: .5em;
+	width: 3ex;
+	height: 3ex;
+	background: rgba(0,0,0,0.075);
+	border: 1px solid #db0000;
+	font-size: 140%;
+	cursor: pointer;
+}
+#submit:hover{
+	background: rgba(0,0,0,0.125);
+}
+#options{
+	margin-bottom: -1ex;
+	line-height: 3ex;
+	width: 100%;
+	font-size: 125%;
+}
+#options input{
+	margin-right: -.1em;
+	margin-left: 1em;
+}
+#class{
+	width: 40%;
+}
+#bc{
+	width: 60%;
+}
+
+@media screen and (min-width: 436px) and (max-width: 625px){
+	body{font-size: 10px;}
+}
+
+@media screen and (min-width: 351px) and (max-width: 435px){
+	body{font-size: 7.5px;}
+}
+
+@media screen and (max-width: 350px) {
+	body {font-size: 14px;}
+	#title{font-size: 250%;}
+	#error{font-size: 125%;}
+	#form, .station, #submit{width: 90%; margin: 0; margin-top: .75ex;}
+	#form{padding: 0; width: 100%; margin-bottom: -2ex;}
+	#submit{width: 95%; margin-bottom: .75ex;}
+	#options, #arrow{display: none}
+}
