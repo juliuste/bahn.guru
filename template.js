@@ -60,7 +60,7 @@ const moreLink = (data) => {
 	const i = data.input
 	const bc = i.bc + (i.bc%2)
 	const weeks = (i.weeks+2<=12)? i.weeks+2 : 12
-	return [html.a({id: 'later', href: `./?fromID=${i.from.id}&toID=${i.to.id}&class=${i.class}&bc=${bc}&weeks=${weeks}&submit=Y#later`}, 'weitere Termine anzeigen...')]
+	return [html.a({id: 'later', href: `./?fromID=${i.from.id}&toID=${i.to.id}&class=${i.class}&bc=${bc}&weeks=${weeks}&duration=${i.duration}&price=${i.price}&submit=Y#later`}, 'weitere Termine anzeigen...')]
 }
 
 const generate = (data, error) => {
@@ -94,23 +94,6 @@ const generate = (data, error) => {
 							html.span('#price', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: (data && data.input.price) ? +data.input.price : null, name: 'price'}), '€'])])
 						])
 					]),
-					/*html.table('#options', [
-						html.tr(null, [
-							html.td('#class', [
-								html.label(null, [radio('class', 1, (data && data.input.class==1)), ' 1. Klasse']),
-								html.label(null, [radio('class', 2, (!data || (data && data.input.class==2))), ' 2. Klasse'])
-							]),
-							html.td('#bc', [
-								html.label(null, [radio('bc', 0, (!data || (data && data.input.bc==0))), ' keine BahnCard']),
-								html.label(null, [radio('bc', 2, (data && (data.input.bc==1 || data.input.bc==2))), ' BC 25']),
-								html.label(null, [radio('bc', 4, (data && (data.input.bc==3 || data.input.bc==4))), ' BC 50'])
-							])
-						]),
-						html.tr(null, [
-							html.td('#iDuration', [html.label(null, ['max. Reisedauer:', html.input({type: 'number', min: 1, max: 24, value: 24}), 'h']),]),
-							html.td('#iPrice', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: 250}), '€']),])
-						])
-					])*/
 				]),
 				calendar(data),
 				html.span(null, moreLink(data))
