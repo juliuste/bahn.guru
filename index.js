@@ -33,6 +33,8 @@ httpApi.set('forceSSLOptions', {
   httpsPort: config.port
 })
 
+api.use(compression())
+
 api.use('/assets', express.static('assets'));
 
 api.get('/', route)
