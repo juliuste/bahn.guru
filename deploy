@@ -9,6 +9,6 @@ ssh bahn.guru "\
 cd ~/bahn.guru
 npm i
 npm update
-export NODE_ENV=production
 forever stop bahn.guru
+export NODE_ENV=production
 forever start -a --uid bahn.guru index.js"

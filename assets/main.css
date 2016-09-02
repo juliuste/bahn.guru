@@ -71,20 +71,42 @@ a:hover{
 	background: rgba(0,0,0,0.125);
 }
 #options{
-	margin-bottom: -1ex;
+	margin: 0 auto;
+	margin-top: 1ex;
 	line-height: 3ex;
-	width: 100%;
 	font-size: 125%;
+	display: table;
+	width: 100%;
+}
+#options>div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	min-width: 25%;
 }
 #options input{
-	margin-right: -.1em;
-	margin-left: 1em;
+	margin-right: -.05em;
 }
-#class{
-	width: 40%;
+#bc select{
+	width: 3.9em;
+	border: 1px solid #db0000;
+	background: rgba(0,0,0,0.05);
+	font-size: 100%;
+	color: #db0000;
+	text-align: center;
 }
-#bc{
-	width: 60%;
+#duration input, #price input{
+	width: 1.75em;
+	border: 1px solid #db0000;
+	background: rgba(0,0,0,0.05);
+	line-height: 2ex;
+	font-size: 100%;
+	text-align: center;
+	margin-left: .3em;
+	margin-right: .15em;
+}
+#price input{
+	width: 2.5em;
 }
 
 @media screen and (min-width: 436px) and (max-width: 625px){

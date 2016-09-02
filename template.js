@@ -37,6 +37,12 @@ const radio = (name, value, checked) => {
 	return html.input(opt)
 }
 
+const option = (value, text, checked) => {
+	const opt = {value: value}
+	if(checked) opt.selected = true
+	return html.option(opt, text)
+}
+
 const moreLink = (data) => {
 	if(!data) return null
 	const i = data.input
@@ -67,17 +73,40 @@ const generate = (data, error) => {
 					html.input({id: 'to', class: 'station', name: 'to', type: 'text', value: (data)?data.input.to.name:'', placeholder: 'Zielbahnhof'}),
 					html.input({id: 'to-id', name: 'toID', type: 'hidden', value: (data)?data.input.to.id:''}),
 					html.input({id: 'submit', name: 'submit', type: 'submit', value: '↳'}),
-					html.table('#options', [html.tr(null, [
-						html.td('#class', [
-							html.label(null, [radio('class', 1, (data && data.input.class==1)), ' 1. Klasse']),
-							html.label(null, [radio('class', 2, (!data || (data && data.input.class==2))), ' 2. Klasse'])
+					html.div('#options', [
+						html.div('#class', [html.span(null, ['Klasse:',
+							html.label(null, [radio('class', 1, (data && data.input.class==1)), ' 1']),
+							html.label(null, [radio('class', 2, (!data || (data && data.input.class==2))), ' 2'])
+						])]),
+						html.div('#bc', [html.span(null, ['Bahncard: ', html.select({name: 'bc'}, [
+							option(0, 'keine', (!data || (data && data.input.bc==0))),
+							option(2, 'BC 25', (data && (data.input.bc==1 || data.input.bc==2))),
+							option(4, 'BC 50', (data && (data.input.bc==3 || data.input.bc==4)))
+						])])]),
+						html.div('.filter', [
+							html.span('#duration', [html.label(null, ['max. Dauer:', html.input({type: 'number', min: 1, max: 24, value: (data && data.input.duration) ? +data.input.duration : null, name: 'duration'}), 'h'])])
 						]),
-						html.td('#bc', [
-							html.label(null, [radio('bc', 0, (!data || (data && data.input.bc==0))), ' keine BahnCard']),
-							html.label(null, [radio('bc', 2, (data && (data.input.bc==1 || data.input.bc==2))), ' BC 25']),
-							html.label(null, [radio('bc', 4, (data && (data.input.bc==3 || data.input.bc==4))), ' BC 50'])
+						html.div('.filter', [
+							html.span('#price', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: (data && data.input.price) ? +data.input.price : null, name: 'price'}), '€'])])
 						])
-					])])
+					]),
+					/*html.table('#options', [
+						html.tr(null, [
+							html.td('#class', [
+								html.label(null, [radio('class', 1, (data && data.input.class==1)), ' 1. Klasse']),
+								html.label(null, [radio('class', 2, (!data || (data && data.input.class==2))), ' 2. Klasse'])
+							]),
+							html.td('#bc', [
+								html.label(null, [radio('bc', 0, (!data || (data && data.input.bc==0))), ' keine BahnCard']),
+								html.label(null, [radio('bc', 2, (data && (data.input.bc==1 || data.input.bc==2))), ' BC 25']),
+								html.label(null, [radio('bc', 4, (data && (data.input.bc==3 || data.input.bc==4))), ' BC 50'])
+							])
+						]),
+						html.tr(null, [
+							html.td('#iDuration', [html.label(null, ['max. Reisedauer:', html.input({type: 'number', min: 1, max: 24, value: 24}), 'h']),]),
+							html.td('#iPrice', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: 250}), '€']),])
+						])
+					])*/
 				]),
 				calendar(data),
 				html.span(null, moreLink(data))

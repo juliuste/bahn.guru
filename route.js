@@ -21,7 +21,9 @@ const parseParams = (params) => {
 	const settings = {
 		weeks: 4,
 		class: 2,
-		bc: 0
+		bc: 0,
+		duration: null,
+		price: null
 	}
 	// Locations
 	settings.from = getStation(params.fromID, params.from)
@@ -32,6 +34,8 @@ const parseParams = (params) => {
 	if(+params.class==1 || +params.class==2) settings.class = +params.class
 	if([0,2,4].indexOf(+params.bc)!=-1) settings.bc = +params.bc+(settings.class-2)
 	if(+params.weeks && +params.weeks<=12 && +params.weeks>0) settings.weeks = +params.weeks
+	if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
+	if(+params.price && +params.price>0 && +params.price<999) settings.price = +params.price
 
 	return {status: 'success', data: settings}
 }
@@ -64,7 +68,7 @@ const formatDates = (dates) => {
 	return formattedDates
 }
 
-const parsePriceResult = (priceResult) => {
+const parsePriceResult = (data) => (priceResult) => {
 	priceResult = priceResult.body
 	let cheapest = 0
 	let ms, tMS, start, end, prx
@@ -72,13 +76,15 @@ const parsePriceResult = (priceResult) => {
 		start = moment(priceResult[r].trips[0].start*1000)
 		end = moment(priceResult[r].trips[priceResult[r].trips.length-1].end*1000)
 		prx = +priceResult[r].offer.price
-		if(cheapest==0 || prx<cheapest){
-			cheapest = prx
-			ms = end.diff(start)
-		}
-		if(prx==cheapest){
-			tMS = end.diff(start)
-			if(tMS<ms) ms = tMS
+		if((!data.price || prx<=data.price) && (!data.duration || data.duration*60*60*1000>=end.diff(start))){
+			if(cheapest==0 || prx<cheapest){
+				cheapest = prx
+				ms = end.diff(start)
+			}
+			if(prx==cheapest){
+				tMS = end.diff(start)
+				if(tMS<ms) ms = tMS
+			}
 		}
 	}
 
@@ -135,7 +141,8 @@ const calendar = (data) => {
 
 	return Promise.all(requests).then(
 		(results) => {
-			results = results.map(parsePriceResult)
+			results = results.map(parsePriceResult(data))
+			if(results.every((element) => element===false)) return null
 			return {input: data, output: format(results, formattedDates)}
 		},
 		(error) => {
@@ -151,7 +158,10 @@ const route = (req, res, next) => {
 		if(params.status=='error') res.end(template(null, params.msg))
 		else
 			calendar(params.data).then(
-				(data) => {res.end(template(data, null))},
+				(data) => {
+					if(data) return res.end(template(data, null))
+					return res.end(template(null, 'Leider wurden keine Angebote gefunden, die den Suchkriterien entsprechen.'))
+				},
 				(error) => {console.error(error); res.end(template(null, 'Es ist ein Fehler bei der Abfrage der Daten aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.'))}
 			)
 	}
