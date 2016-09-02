@@ -2,6 +2,18 @@
 
 const html = require('pithy')
 
+const head = (data) => {
+	const elements = [
+		html.meta({charset: 'utf-8'}),
+		html.meta({name: 'viewport', content: "width=device-width, initial-scale=1.0, user-scalable=no"}),
+		html.title(null, 'DB Preiskalender'),
+		html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/main.css'}),
+		html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/autocomplete.css'})
+	]
+	if(data) elements.push(html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/cal.css'}))
+	return html.head(null, elements)
+}
+
 const calendar = (data) => {
 	if(!data) return html.span()
 	data = data.output
@@ -53,14 +65,7 @@ const moreLink = (data) => {
 
 const generate = (data, error) => {
 	let document = '<!doctype html>' + html.html(null, [
-		html.head(null, [
-			html.meta({charset: 'utf-8'}),
-			html.meta({name: 'viewport', content: "width=device-width, initial-scale=1.0, user-scalable=no"}),
-			html.title(null, 'DB Preiskalender'),
-			html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/main.css'}),
-			html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/autocomplete.css'}),
-			html.link({rel: 'stylesheet', type: 'text/css', href: (data) ? 'assets/cal.css' : 'assets/noCal.css'})
-		]),
+		head(data),
 		html.body(null, [
 			html.div('#page', [
 				html.h1('#title', 'Preiskalender'),
