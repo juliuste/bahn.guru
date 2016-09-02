@@ -1,3 +1,19 @@
+/* former RESET.css */
+
+h1, div, nav, body{
+	margin: 0;
+	padding: 0;
+}
+p:active,a:active,div:active,p:focus,a:focus,div:focus{
+	outline-style: none;
+	outline: none;
+}
+a{
+	text-decoration: none;
+}
+
+/* former MAIN.css */
+
 body{
 	display: flex;
 	padding: 7.5vh;

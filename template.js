@@ -57,7 +57,6 @@ const generate = (data, error) => {
 			html.meta({charset: 'utf-8'}),
 			html.meta({name: 'viewport', content: "width=device-width, initial-scale=1.0, user-scalable=no"}),
 			html.title(null, 'DB Preiskalender'),
-			html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/reset.css'}),
 			html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/main.css'}),
 			html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/autocomplete.css'}),
 			html.link({rel: 'stylesheet', type: 'text/css', href: (data) ? 'assets/cal.css' : 'assets/noCal.css'})
