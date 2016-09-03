@@ -26,6 +26,9 @@
 	padding-top: 3.5ex;
 	text-align: center;
 }
+#calendar td.cheapest{
+	background: rgba(0,219,0,0.15);
+}
 .date{
 	position: absolute;
 	top: 0;

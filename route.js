@@ -28,6 +28,7 @@ const parseParams = (params) => {
 	// Locations
 	settings.from = getStation(params.fromID, params.from)
 	settings.to = getStation(params.toID, params.to)
+
 	if(!settings.from || !settings.to) return {status: 'error', msg: 'Bitte geben Sie einen gültigen Start- und Zielbahnhof an.'}
 
 	// other Settings
@@ -122,6 +123,18 @@ const format = (prices, dates) => {
 	return chunk(results, 7)
 }
 
+const markCheapest = (data) => {
+	if(!data) return null
+	let cheapest = false
+	for(let dat of data){
+		if(!cheapest || +dat.price.euros<cheapest) cheapest = dat.price.euros
+	}
+	for(let dat of data){
+		if(+dat.price.euros==cheapest) dat.cheapest = true
+		else dat.cheapest = false
+	}
+	return data
+}
 
 const calendar = (data) => {
 	const rawDates = getDates(data.weeks)
@@ -143,6 +156,7 @@ const calendar = (data) => {
 		(results) => {
 			results = results.map(parsePriceResult(data))
 			if(results.every((element) => element===false)) return null
+			results = markCheapest(results)
 			return {input: data, output: format(results, formattedDates)}
 		},
 		(error) => {

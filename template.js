@@ -21,7 +21,7 @@ const calendar = (data) => {
 	for(let week of data){
 		let days = []
 		for(let day of week){
-			days.push(html.td({class: (day.empty)? 'empty' : ''}, [
+			days.push(html.td({class: (day.empty)? 'empty' : ((day.cheapest)? 'cheapest' : '')}, [
 				html.span('.date', day.date),
 				html.span('.price', (!day.empty) ? ((day.price) ? [day.price.euros, html.sup(null, day.price.cents), html.br(null)] : ['–', html.br(null)]) : ''),
 				html.span('.duration', (!day.empty) ? ('🕒 '+(day.duration || '–')) : '')
