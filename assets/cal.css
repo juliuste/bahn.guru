@@ -58,11 +58,11 @@
 	word-wrap: break-word;
 }
 
-@media screen and (min-width: 100px) and (max-width: 350px){
+@media screen and (min-width: 100px) and (max-width: 401px){
 	#calendar td{padding: 2ex 0 .75ex 0;}
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
 	body{padding-top: 5vh; padding-bottom: 5vh;}
 	#calendar {border: none; margin-right: -2px;}
 	#calendar thead{display: none;}
