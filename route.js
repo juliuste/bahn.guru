@@ -127,11 +127,11 @@ const markCheapest = (data) => {
 	if(!data) return null
 	let cheapest = false
 	for(let dat of data){
-		if(!cheapest || +dat.price.euros<cheapest) cheapest = dat.price.euros
+		if(dat.price && (!cheapest || +dat.price.euros<cheapest)) cheapest = dat.price.euros
 	}
 	for(let dat of data){
-		if(+dat.price.euros==cheapest) dat.cheapest = true
-		else dat.cheapest = false
+		if(dat.price && +dat.price.euros==cheapest) dat.cheapest = true
+		else if(dat.price) dat.cheapest = false
 	}
 	return data
 }
