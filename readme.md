@@ -1,6 +1,6 @@
 # bahn.guru
 
-DB-Preiskalender website.
+[DB-Preiskalender](https://bahn.guru) website.
 
 [![dependency status](https://img.shields.io/david/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru#info=devDependencies)
