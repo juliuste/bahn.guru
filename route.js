@@ -1,20 +1,21 @@
 'use strict'
 
-const request = require('sync-request')
-const template = require('./template')
 const moment = require('moment-timezone')
-const got = require('got')
 const mdf = require('moment-duration-format')
+const stations = require('db-hafas').locations
+const prices = require('db-prices')
+const template = require('./template')
 
-const stationURL = 'https://db-hafas.juliuste.de/locations?query='
-const priceURL = 'https://db-prices.juliuste.de/'
+
+const errorMsg = 'Es ist ein Fehler bei der Abfrage der Daten aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.'
 
 const getStation = (id, name) => {
 	if(!name && !+id) return false
-	const query = (+id)? +id : name
-	const req = JSON.parse(request('GET', stationURL+query).getBody())
-	if(req.length>0) return {id: req[0].id, name: req[0].name}
-	return false
+	const query = ((+id) ? +id : name) + ''
+	return stations(query).then((data) => {
+		if(data.length>0) return {id: data[0].id, name: data[0].name}
+		return false
+	}, (error) => false)
 }
 
 const parseParams = (params) => {
@@ -26,19 +27,25 @@ const parseParams = (params) => {
 		price: null
 	}
 	// Locations
-	settings.from = getStation(params.fromID, params.from)
-	settings.to = getStation(params.toID, params.to)
 
-	if(!settings.from || !settings.to) return {status: 'error', msg: 'Bitte geben Sie einen gültigen Start- und Zielbahnhof an.'}
+	return Promise.all([getStation(params.fromID, params.from), getStation(params.toID, params.to)]).then(
+		(data) => {
+			if(!data || data.length!=2 || !data[0] || !data[1]) return {status: 'error', msg: 'Bitte geben Sie einen gültigen Start- und Zielbahnhof an.'}
+			settings.from = data[0]
+			settings.to = data[1]
 
-	// other Settings
-	if(+params.class==1 || +params.class==2) settings.class = +params.class
-	if([0,2,4].indexOf(+params.bc)!=-1) settings.bc = +params.bc+(settings.class-2)
-	if(+params.weeks && +params.weeks<=12 && +params.weeks>0) settings.weeks = +params.weeks
-	if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
-	if(+params.price && +params.price>0 && +params.price<999) settings.price = +params.price
-
-	return {status: 'success', data: settings}
+			// other Settings
+			if(+params.class==1 || +params.class==2) settings.class = +params.class
+			if([0,2,4].indexOf(+params.bc)!=-1) settings.bc = +params.bc+(settings.class-2)
+			if(+params.weeks && +params.weeks<=12 && +params.weeks>0) settings.weeks = +params.weeks
+			if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
+			if(+params.price && +params.price>0 && +params.price<999) settings.price = +params.price
+			return {status: 'success', data: settings}
+		},
+		(error) => {
+			return {status: 'error', msg: errorMsg}
+		}
+	)
 }
 
 const getDates = (weeks) => {
@@ -70,12 +77,11 @@ const formatDates = (dates) => {
 }
 
 const parsePriceResult = (data) => (priceResult) => {
-	priceResult = priceResult.body
 	let cheapest = 0
 	let ms, tMS, start, end, prx
 	for(let r=0; r<priceResult.length; r++){
-		start = moment(priceResult[r].trips[0].start*1000)
-		end = moment(priceResult[r].trips[priceResult[r].trips.length-1].end*1000)
+		start = moment(priceResult[r].trips[0].start)
+		end = moment(priceResult[r].trips[priceResult[r].trips.length-1].end)
 		prx = +priceResult[r].offer.price
 		if((!data.price || prx<=data.price) && (!data.duration || data.duration*60*60*1000>=end.diff(start))){
 			if(cheapest==0 || prx<cheapest){
@@ -107,15 +113,15 @@ const chunk = (array, chunkSize) => {
 }
 
 
-const format = (prices, dates) => {
+const format = (tPrices, dates) => {
 	const results = []
 	let result
-	let emptyDates = dates.length-prices.length
+	let emptyDates = dates.length-tPrices.length
 	for(let i=0; i<dates.length; i++){
 		if(i<emptyDates)
 			results.push({date: dates[i].date, empty: true})
 		else {
-			result = prices[i-emptyDates]
+			result = tPrices[i-emptyDates]
 			if(result) result.date = dates[i].date
 			results.push(result)
 		}
@@ -143,13 +149,12 @@ const calendar = (data) => {
 	const requests = []
 	for(let date of rawDates){
 		if(!date.past)
-			requests.push(got(priceURL, {json: true, query: {
-				from: data.from.id,
-				to: data.to.id,
-				class: data.class,
-				date: date.date.toString(),
-				travellers: JSON.stringify([{typ: 'E', bc: data.bc}])
-			}}))
+			requests.push(
+				prices(data.from.id, data.to.id, date.date, {
+					class: data.class,
+					travellers: [{typ: 'E', bc: data.bc}]
+				})
+			)
 	}
 
 	return Promise.all(requests).then(
@@ -168,16 +173,22 @@ const calendar = (data) => {
 const route = (req, res, next) => {
 	if(!req.query.submit) res.end(template(null, null))
 	else{
-		const params = parseParams(req.query)
-		if(params.status=='error') res.end(template(null, params.msg))
-		else
-			calendar(params.data).then(
-				(data) => {
-					if(data) return res.end(template(data, null))
-					return res.end(template(null, 'Leider wurden keine Angebote gefunden, die den Suchkriterien entsprechen.'))
-				},
-				(error) => {console.error(error); res.end(template(null, 'Es ist ein Fehler bei der Abfrage der Daten aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.'))}
-			)
+		parseParams(req.query).then(
+			(params) => {
+				if(!params || params.status=='error') res.end(template(null, (params)? params.msg : errorMsg))
+				else
+					calendar(params.data).then(
+						(data) => {
+							if(data) return res.end(template(data, null))
+							return res.end(template(null, 'Leider wurden keine Angebote gefunden, die den Suchkriterien entsprechen.'))
+						},
+						(error) => {console.error(error); return res.end(template(null, errorMsg))}
+					)
+			},
+			(error) => {
+				res.end(template(null, errorMsg))
+			}
+		)
 	}
 }
 

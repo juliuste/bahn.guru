@@ -2,8 +2,8 @@
 	"hostname":      "localhost",
 	"port":          3000,
 	"httpPort":		 5000,
-	"key":           "device.key",
-	"cert":          "device.crt",
-	"ca":            "root-ca.crt",
+	"key":           "ssl/device.key",
+	"cert":          "ssl/device.crt",
+	"ca":            "ssl/root-ca.crt",
 	"timezone":      "Europe/Berlin"
 }

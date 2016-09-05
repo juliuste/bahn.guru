@@ -1,54 +1,58 @@
 {
-	"name": "bahn.guru",
-	"description": "DB Preiskalender",
-	"version": "0.2.0",
-	"keywords": [
-		"train",
-		"railway",
-		"hafas",
-		"fare",
-		"sparpreis",
-		"preis",
-		"DB",
-		"prices",
-		"preise",
-		"deutsch",
-		"allemand",
-		"german",
-		"bahn",
-		"calendar",
-		"kalender",
-		"preiskalender"
-	],
-	"main":         "index.js",
-	"files":        ["index.js"],
-	"author":       "Julius Tens <mail@juliuste.de>",
-	"homepage":     "https://bahn.guru",
-	"repository":   "juliuste/bahn.guru",
-	"bugs":         "https://github.com/juliuste/bahn.guru/issues",
-	"engines" :     {"node": ">=6"},
-	"dependencies": {
-		"pithy": "^0.0.4",
-		"sync-request": "^3.0.1",
-		"moment-timezone": "^0.5.5",
-		"moment-duration-format": "^1.3.0",
-		"got": "^6.3.0",
-		"config": "^1.20.1",
-		"express": "^4.14.0",
-		"spdy": "^3.3.3",
-		"corser": "^2",
-		"compression": "^1.6.2",
-		"nocache": "^1",
-		"express-force-ssl": "^0.3.2"
-	},
-	"peerDependencies": {
-		"forever": "^0.15"
-	},
-	"scripts": {
-		"start":    "forever start --uid bahn.guru -a index.js",
-		"stop":     "forever stop bahn.guru",
-		"ssh":      "ssh bahn.guru",
-		"deploy":   "./deploy"
-	},
-	"license": "MIT"
+  "name": "bahn.guru",
+  "description": "DB Preiskalender",
+  "version": "0.2.0",
+  "keywords": [
+    "train",
+    "railway",
+    "hafas",
+    "fare",
+    "sparpreis",
+    "preis",
+    "DB",
+    "prices",
+    "preise",
+    "deutsch",
+    "allemand",
+    "german",
+    "bahn",
+    "calendar",
+    "kalender",
+    "preiskalender"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "author": "Julius Tens <mail@juliuste.de>",
+  "homepage": "https://bahn.guru",
+  "repository": "juliuste/bahn.guru",
+  "bugs": "https://github.com/juliuste/bahn.guru/issues",
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "compression": "^1.6.2",
+    "config": "^1.20.1",
+    "corser": "^2",
+    "db-hafas": "^0.1.0",
+    "db-prices": "^0.1.1",
+    "express": "^4.14.0",
+    "express-force-ssl": "^0.3.2",
+    "moment-duration-format": "^1.3.0",
+    "moment-timezone": "^0.5.5",
+    "nocache": "^1",
+    "pithy": "^0.0.4",
+    "spdy": "^3.3.3"
+  },
+  "peerDependencies": {
+    "forever": "^0.15"
+  },
+  "scripts": {
+    "start": "forever start --uid bahn.guru -a index.js",
+    "stop": "forever stop bahn.guru",
+    "ssh": "ssh bahn.guru",
+    "deploy": "./deploy"
+  },
+  "license": "MIT"
 }
