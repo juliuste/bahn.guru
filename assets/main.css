@@ -98,7 +98,6 @@ a:hover{
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	min-width: 25%;
 }
 #options input{
 	margin-right: -.05em;
@@ -112,17 +111,23 @@ a:hover{
 	text-align: center;
 }
 #duration input, #price input{
-	width: 1.75em;
+	width: 2.5em; /*1.75em*/
 	border: 1px solid #db0000;
 	background: rgba(0,0,0,0.05);
-	line-height: 2ex;
+	line-height: 2.1ex;
 	font-size: 100%;
 	text-align: center;
 	margin-left: .3em;
 	margin-right: .15em;
 }
-#price input{
-	width: 2.5em;
+#start input, #end input{
+	font-size: 100%;
+	line-height: 2.1ex;
+	border: 1px solid #db0000;
+	padding-left: .2em;
+	color: #db0000;
+	background: rgba(0,0,0,0.05);
+	width: 2.8em;
 }
 
 @media screen and (min-width: 401px) and (max-width: 625px){

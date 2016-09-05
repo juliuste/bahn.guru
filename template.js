@@ -61,7 +61,9 @@ const moreLink = (data) => {
 	const i = data.input
 	const bc = i.bc + (i.bc%2)
 	const weeks = (i.weeks+2<=12)? i.weeks+2 : 12
-	return [html.a({id: 'later', href: `./?fromID=${i.from.id}&toID=${i.to.id}&class=${i.class}&bc=${bc}&weeks=${weeks}&duration=${i.duration}&price=${i.price}&submit=Y#later`}, 'weitere Termine anzeigen...')]
+	const start = (i.start)? i.start.format('hh:mm') : null
+	const end = (i.end)? i.end.format('hh:mm') : null
+	return [html.a({id: 'later', href: `./?fromID=${i.from.id}&toID=${i.to.id}&class=${i.class}&bc=${bc}&weeks=${weeks}&duration=${i.duration}&price=${i.price}&start=${start}&end=${end}&submit=Y#later`}, 'weitere Termine anzeigen...')]
 }
 
 const generate = (data, error) => {
@@ -89,10 +91,14 @@ const generate = (data, error) => {
 							option(4, 'BC 50', (data && (data.input.bc==3 || data.input.bc==4)))
 						])])]),
 						html.div('.filter', [
+							html.span('#price', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: (data && data.input.price) ? +data.input.price : null, name: 'price'}), '€'])]),
+							html.br(),
 							html.span('#duration', [html.label(null, ['max. Dauer:', html.input({type: 'number', min: 1, max: 24, value: (data && data.input.duration) ? +data.input.duration : null, name: 'duration'}), 'h'])])
 						]),
 						html.div('.filter', [
-							html.span('#price', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: (data && data.input.price) ? +data.input.price : null, name: 'price'}), '€'])])
+							html.span('#start', [html.label(null, ['Abfahrt ab: ', html.input({type: 'time', min: '00:00', max: '23:59', value: (data && data.input.start)? data.input.start.format('hh:mm') : (data && data.input.start===null)? '' : '06:00', name: 'start'}), ' Uhr'])]),
+							html.br(),
+							html.span('#end', [html.label(null, ['Ankunft bis: ', html.input({type: 'time', min: '00:00', max: '23:59', value: (data && data.input.end)? data.input.end.format('hh:mm') : '', name: 'end'}), ' Uhr'])])
 						])
 					]),
 				]),

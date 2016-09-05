@@ -18,13 +18,30 @@ const getStation = (id, name) => {
 	}, (error) => false)
 }
 
+const parseTime = (time) => {
+	if(!time) return null
+	time = time.split(':')
+	if(time.length==1){
+		let hours = +time[0]
+		if(hours!=NaN && hours>=0 && hours<24) return moment.duration(hours, 'hours')
+	}
+	if(time.length==2){
+		let hours = +time[0]
+		let minutes = +time[1]
+		if(hours!=NaN && minutes!=NaN && hours>=0 && hours<24 && minutes>=0 && minutes<60) return moment.duration(60*hours+minutes, 'minutes')
+	}
+	return null
+}
+
 const parseParams = (params) => {
 	const settings = {
 		weeks: 4,
 		class: 2,
 		bc: 0,
+		price: null,
 		duration: null,
-		price: null
+		start: null,
+		end: null
 	}
 	// Locations
 
@@ -38,8 +55,12 @@ const parseParams = (params) => {
 			if(+params.class==1 || +params.class==2) settings.class = +params.class
 			if([0,2,4].indexOf(+params.bc)!=-1) settings.bc = +params.bc+(settings.class-2)
 			if(+params.weeks && +params.weeks<=12 && +params.weeks>0) settings.weeks = +params.weeks
-			if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
 			if(+params.price && +params.price>0 && +params.price<999) settings.price = +params.price
+			if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
+			settings.start = parseTime(params.start)
+			settings.end = parseTime(params.end)
+			if((settings.start && settings.end) && +settings.end.format('m')<+settings.start.format('m')) settings.end = null
+
 			return {status: 'success', data: settings}
 		},
 		(error) => {
@@ -78,19 +99,23 @@ const formatDates = (dates) => {
 
 const parsePriceResult = (data) => (priceResult) => {
 	let cheapest = 0
-	let ms, tMS, start, end, prx
+	let ms, tMS, start, startTime, end, endTime, prx
 	for(let r=0; r<priceResult.length; r++){
 		start = moment(priceResult[r].trips[0].start)
+		startTime = start.diff(moment(start).startOf('day'))
 		end = moment(priceResult[r].trips[priceResult[r].trips.length-1].end)
+		endTime = end.diff(moment(end).startOf('day'))
 		prx = +priceResult[r].offer.price
 		if((!data.price || prx<=data.price) && (!data.duration || data.duration*60*60*1000>=end.diff(start))){
-			if(cheapest==0 || prx<cheapest){
-				cheapest = prx
-				ms = end.diff(start)
-			}
-			if(prx==cheapest){
-				tMS = end.diff(start)
-				if(tMS<ms) ms = tMS
+			if((!data.start || startTime>=data.start.format('S')) && (!data.end || (start.format('D') == end.format('D') && endTime<=data.end.format('S')))){
+				if(cheapest==0 || prx<cheapest){
+					cheapest = prx
+					ms = end.diff(start)
+				}
+				if(prx==cheapest){
+					tMS = end.diff(start)
+					if(tMS<ms) ms = tMS
+				}
 			}
 		}
 	}
