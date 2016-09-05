@@ -148,6 +148,7 @@ const format = (tPrices, dates) => {
 		else {
 			result = tPrices[i-emptyDates]
 			if(result) result.date = dates[i].date
+			else result = {date: dates[i].date, price: false, duration: false}
 			results.push(result)
 		}
 	}
