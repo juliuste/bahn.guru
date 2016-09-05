@@ -1,6 +1,7 @@
 'use strict'
 
 const html = require('pithy')
+const beautify = require('js-beautify').html
 
 const head = (data) => {
 	const elements = [
@@ -103,7 +104,7 @@ const generate = (data, error) => {
 			html.script({src: 'assets/main.js'})
 		])
 	])
-	return document
+	return beautify(document)
 }
 
 module.exports = generate
