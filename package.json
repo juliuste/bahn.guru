@@ -1,7 +1,7 @@
 {
   "name": "bahn.guru",
   "description": "DB Preiskalender",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "keywords": [
     "train",
     "railway",
@@ -22,7 +22,11 @@
   ],
   "main": "index.js",
   "files": [
-    "index.js", "route.js", "template.js", "assets/*"
+    "index.js",
+    "params.js",
+    "route.js",
+    "template.js",
+    "assets/*"
   ],
   "author": "Julius Tens <mail@juliuste.de>",
   "homepage": "https://bahn.guru",
@@ -32,6 +36,7 @@
     "node": ">=6"
   },
   "dependencies": {
+    "chunk-array": "^1.0.2",
     "compression": "^1.6.2",
     "config": "^1.20.1",
     "corser": "^2",
