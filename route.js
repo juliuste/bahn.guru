@@ -10,19 +10,19 @@ const route = (req, res, next) => {
 	else{
 		params(req.query).then(
 			(params) => {
-				if(!params) return res.end(template(null, msg))
-				if(params.status=='error') return res.end(template(null, params.msg || msg))
+				if(!params) return res.status(400).end(template(null, msg))
+				if(params.status=='error') return res.status(400).end(template(null, params.msg || msg))
 				else
 					return calendar(params.data).then(
 						(cal) => {
 							if(cal) return res.end(template({input: params.data, output: cal}, null))
-							return res.end(template(null, 'Leider wurden keine Angebote gefunden, die den Suchkriterien entsprechen.'))
+							return res.status(400).end(template(null, 'Leider wurden keine Angebote gefunden, die den Suchkriterien entsprechen.'))
 						},
-						(error) => {console.error(error); return res.end(template(null, msg))}
+						(error) => {console.error(error); return res.status(400).end(template(null, msg))}
 					)
 			},
 			(error) => {
-				return res.end(template(null, msg))
+				return res.status(400).end(template(null, msg))
 			}
 		)
 	}
