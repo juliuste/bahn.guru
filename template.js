@@ -86,13 +86,11 @@ const generate = (data, error) => {
 							html.label(null, [radio('class', 2, (!data || (data && data.input.class==2))), ' 2'])
 						])]),
 						html.div('#bc', [html.span(null, ['Bahncard: ', html.select({name: 'bc'}, [
-							option(0, 'keine', (!data || (data && data.input.bc==0))),
-							option(2, 'BC 25', (data && (data.input.bc==1 || data.input.bc==2))),
-							option(4, 'BC 50', (data && (data.input.bc==3 || data.input.bc==4)))
+							option(0, '-', (!data || (data && data.input.bc==0))),
+							option(2, '25', (data && (data.input.bc==1 || data.input.bc==2))),
+							option(4, '50', (data && (data.input.bc==3 || data.input.bc==4)))
 						])])]),
 						html.div('.filter', [
-							html.span('#price', [html.label(null, ['max. Preis:', html.input({type: 'number', min: 1, max: 999, value: (data && data.input.price) ? +data.input.price : null, name: 'price'}), '€'])]),
-							html.br(),
 							html.span('#duration', [html.label(null, ['max. Dauer:', html.input({type: 'number', min: 1, max: 24, value: (data && data.input.duration) ? +data.input.duration : null, name: 'duration'}), 'h'])])
 						]),
 						html.div('.filter', [

@@ -67,7 +67,7 @@ const parseParams = (params) => {
 			return {status: 'success', data: settings}
 		},
 		(error) => {
-			return {status: 'error'}
+			return {status: 'error', msg: 'Bitte geben sie einen gültigen Start- und Zielbahnhof an.'}
 		}
 	)
 }
