@@ -23,6 +23,7 @@ body{
 	font-size: 100%;
 	font-family: Helvetica;
 	min-height: 85vh;
+	position: relative;
 }
 a,p{
 	color: #db0000;
@@ -128,6 +129,24 @@ a:hover{
 	color: #db0000;
 	background: rgba(0,0,0,0.05);
 	width: 2.8em;
+}
+
+#impressum{
+	width: 100%;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 1ex 0;
+	font-size: 125%;
+	background: #f1f1f1;
+	text-align: center;
+}
+#impressum a{
+	color: #888;
+}
+#impressum a:hover{
+	color: #555;
 }
 
 @media screen and (min-width: 401px) and (max-width: 625px){

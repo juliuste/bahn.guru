@@ -1,0 +1,99 @@
+/* former RESET.css */
+
+h1, div, nav, body{
+	margin: 0;
+	padding: 0;
+}
+p:active,a:active,div:active,p:focus,a:focus,div:focus{
+	outline-style: none;
+	outline: none;
+}
+a{
+	text-decoration: none;
+}
+
+/* former MAIN.css */
+
+body{
+	display: flex;
+	padding: 7.5vh;
+	align-items: center;
+	background: #fff;
+	color: #db0000;
+	font-size: 100%;
+	font-family: Helvetica;
+	min-height: 85vh;
+	position: relative;
+}
+a,p{
+	color: #db0000;
+}
+a:hover{
+	color: #bd0000;
+}
+
+#page{
+	text-align: center;
+	margin: -17.5vh auto 0 auto;
+}
+
+#title{
+	display: inline-block;
+	font-size: 300%;
+	font-weight: lighter;
+	letter-spacing: -0.04em;
+}
+
+p{
+	font-size: 125%;
+	color: #888;
+}
+p a{
+	color: #666;
+}
+p a:hover{
+	color: #444;
+}
+
+#preiskalender{
+	width: 100%;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 1ex 0;
+	font-size: 125%;
+	background: #f1f1f1;
+	text-align: center;
+}
+#preiskalender a{
+	color: #888;
+}
+#preiskalender a:hover{
+	color: #555;
+}
+
+@media screen and (min-width: 401px) and (max-width: 625px){
+	body{font-size: 10px;}
+}
+
+@media screen and (max-width: 400px) {
+	body {font-size: 14px;}
+	#title{font-size: 250%;}
+	#error{font-size: 125%;}
+	#form, .station, #submit{width: 90%; margin: 0; margin-top: .75ex;}
+	#form{padding: 0; width: 100%; margin-bottom: -2ex;}
+	#submit{width: 95%; margin-bottom: .75ex;}
+	#arrow{display: none}
+	#options{display: block; margin: 0;}
+	#options>div{
+		border-top: 1px solid #db0000;
+		padding: .5ex 0 .2ex 0;
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+	#options>div:first-of-type{
+		border-top: 2px solid #db0000;
+	}
+}

@@ -10,6 +10,7 @@ const forceSSL 	   = require('express-force-ssl')
 const compression  = require('compression')
 const nocache      = require('nocache')
 const path         = require('path')
+const impressum = require('./impressum')
 
 const route       = require('./route')
 
@@ -36,7 +37,13 @@ api.use(compression())
 
 api.use('/assets', express.static('assets'));
 
+
+
 api.get('/', route)
+
+api.get('/impressum', (req, res, next) => {
+	res.end(impressum())
+})
 
 server.listen(config.port, (e) => {
 	if (e) return console.error(e)
