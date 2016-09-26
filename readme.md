@@ -4,7 +4,7 @@
 
 [![dependency status](https://img.shields.io/david/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru#info=devDependencies)
-[![MIT License](https://img.shields.io/badge/license-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![license](https://img.shields.io/github/license/juliuste/bahn.guru.svg?style=flat)](LICENSE)
 
 ## Similar Projects
 
