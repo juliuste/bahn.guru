@@ -1,7 +1,7 @@
 {
   "name": "bahn.guru",
   "description": "DB Preiskalender",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "keywords": [
     "train",
     "railway",
@@ -24,6 +24,7 @@
   "files": [
     "index.js",
     "params.js",
+    "calendar.js",
     "route.js",
     "template.js",
     "assets/*"

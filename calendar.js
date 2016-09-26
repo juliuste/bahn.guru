@@ -12,7 +12,6 @@ const formatPrice = (price) => {
 
 const parsePriceResult = (params) => (priceResult) => {
 	let duration, tMS, start, startTime, end, endTime, price, cheapest = null
-
 	for(let offer of priceResult){
 		// Extract Start & End
 		start = moment(offer.trips[0].start)
@@ -87,7 +86,7 @@ const calendar = (params) => {
 
 	return Promise.all(requests).then(
 		(results) => {
-			results = results.map(parsePriceResult(results))
+			results = results.map(parsePriceResult(params))
 			if(results.every((element) => !element)) return null
 			results = markCheapest(results)
 			return fillCalendar(cal, results)
