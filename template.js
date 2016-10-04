@@ -103,7 +103,7 @@ const generate = (data, error) => {
 				calendar(data),
 				html.span(null, moreLink(data))
 			]),
-			html.span('#impressum', [html.a({href: '/impressum'}, 'Kontakt & Impressum')]),
+			html.span('#impressum', [html.a({href: '/impressum'}, 'Impressum & Rechtliches')]),
 			html.script({src: 'assets/jquery.js'}),
 			html.script({src: 'assets/jquery.autocomplete.js'}),
 			html.script({src: 'assets/main.js'})
