@@ -20,7 +20,7 @@ const generate = () => {
 		html.body(null, [
 			html.div('#page', [
 				html.h1('#title', 'Impressum & Rechtliches'),
-				html.p(null, [html.a({href: 'mailto:bahnguru@juliuste.de'}, 'Julius Tens'), ', Schlickweg 10, 14129 Berlin.']),
+				html.p(null, [html.a({href: 'http://juliuste.de'}, 'Julius Tens'), ', ', html.a({href: 'mailto:bahnguru@juliuste.de'}, 'bahnguru@juliuste.de'), ', Schlickweg 10, 14129 Berlin.']),
 				html.p(null, ['Dieses Projekt ist ', html.a({href: 'https://github.com/juliuste/bahn.guru/blob/master/LICENSE'}, 'MIT-Lizensiert'), '. Der Quellcode ist auf ', html.a({href: 'https://github.com/juliuste/bahn.guru'}, 'GitHub'), ' verfügbar.']),
 				html.p(null, 'Alle Preisangaben unverbindlich und ohne Gewähr.')
 			]),

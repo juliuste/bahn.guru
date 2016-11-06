@@ -4,11 +4,11 @@
 }
 p{
 	font-size: 125%;
-	color: #888;
+	color: #008383;
 }
 p a{
-	color: #666;
+	color: #044;
 }
 p a:hover{
-	color: #444;
+	opacity: 0.8;
 }
