@@ -8,6 +8,7 @@ const head = () => {
 		html.meta({charset: 'utf-8'}),
 		html.meta({name: 'viewport', content: "width=device-width, initial-scale=1.0, user-scalable=no"}),
 		html.title(null, 'Impressum & Rechtliches | DB Preiskalender'),
+		html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/general.css'}),
 		html.link({rel: 'stylesheet', type: 'text/css', href: 'assets/impressum.css'}),
 	]
 	return html.head(null, elements)
@@ -23,10 +24,14 @@ const generate = () => {
 				html.p(null, ['Dieses Projekt ist ', html.a({href: 'https://github.com/juliuste/bahn.guru/blob/master/LICENSE'}, 'MIT-Lizensiert'), '. Der Quellcode ist auf ', html.a({href: 'https://github.com/juliuste/bahn.guru'}, 'GitHub'), ' verfügbar.']),
 				html.p(null, 'Alle Preisangaben unverbindlich und ohne Gewähr.')
 			]),
-			html.span('#preiskalender', [html.a({href: '/'}, 'Zurück zum Preiskalender')])
+			html.span('#footer', [html.a({href: '/'}, 'Zurück zum Preiskalender')])
 		])
 	])
 	return beautify(document)
 }
 
-module.exports = generate
+const main = (req, res, next) => {
+	res.end(generate())
+}
+
+module.exports = main

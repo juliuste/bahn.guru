@@ -68,7 +68,9 @@ const generateCalendar = (weeks) => {
 
 const fillCalendar = (cal, offers) => {
 	let counter = 0
-	for(let day of cal){if(!day.past) Object.assign(day, offers[counter++] || {price: false, duration: false})}
+	for(let day of cal){
+		if(!day.past) Object.assign(day, offers[counter++] || {price: false, duration: false})
+	}
 	return chunk(cal, 7)
 }
 

@@ -1,0 +1,82 @@
+.subtitle{
+	margin: .1em auto -.2em auto;
+	padding: .4em;
+	color: #008383;
+	font-size: 150%;
+	font-weight: lighter;
+}
+
+#changeLink{
+	font-style: italic;
+	color: #004040;
+}
+
+#moreLink{
+	margin: 0 auto;
+	padding: .1em;
+	font-size: 130%;
+	font-weight: lighter;
+}
+#moreLink a{
+	color: #666;
+}
+
+#calendar{
+	margin: 2ex auto 1ex auto;
+	border-collapse: collapse;
+	font-size: 120%;
+	color: #555;
+}
+
+#calendar th{
+	border-bottom: 2px solid #777;
+	line-height: 150%;
+	font-weight: bold;
+	padding: 2ex;
+}
+.price{
+	font-weight: lighter;
+	font-size: 275%;
+	color: #008383;
+}
+.price a{
+	color: #008383;
+}
+td.cheapest .price a{
+	color: #0a8;
+	font-weight: normal;
+}
+.price sup{
+	font-size: 50%;
+}
+.duration{
+	color: rgba(0,70,70,0.6);
+}
+#calendar td{
+	position: relative;
+	line-height: 150%;
+	min-height: 5ex;
+	padding: 2ex;
+
+	text-align: center;
+}
+#calendar tbody tr{
+	border-bottom: 1px solid #777;
+}
+#calendar tr.even{
+	background: #eee;
+}
+.cell{
+	padding-top: .9em;
+	padding-left: .2em;
+	padding-right: .2em;
+	margin-bottom: -.5em;
+}
+.date{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: .75ex .4em;
+	font-weight: bold;
+	display: inline-block;
+}

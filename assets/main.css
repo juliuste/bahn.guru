@@ -1,175 +1,95 @@
-/* former RESET.css */
-
-h1, div, nav, body{
-	margin: 0;
-	padding: 0;
+select{
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance:none;
 }
-p:active,a:active,div:active,p:focus,a:focus,div:focus{
-	outline-style: none;
-	outline: none;
-}
-a{
-	text-decoration: none;
-}
-
-/* former MAIN.css */
-
-body{
-	display: flex;
-	padding: 7.5vh;
-	align-items: center;
-	background: #fff;
-	color: #db0000;
-	font-size: 100%;
-	font-family: Helvetica;
-	min-height: 85vh;
-	position: relative;
-}
-a,p{
-	color: #db0000;
-}
-a:hover{
-	color: #bd0000;
-}
-
-#page{
-	text-align: center;
-	margin: -17.5vh auto 0 auto;
+select::-ms-expand {
+    display: none;
 }
 
 #title{
-	display: inline-block;
 	font-size: 500%;
-	font-weight: lighter;
-	letter-spacing: -0.04em;
-}
-
-#error{
-	margin: -.3em auto .2em auto;
-	padding: .4em;
-	color: #f90;
-	font-size: 150%;
-	font-weight: lighter;
 }
 
 #form{
-	border: 2px solid #db0000;
-	display: inline-block;
+	display: block;
 	text-align: center;
-	padding: 1.25em;
+	margin: 1em auto;
 }
 #form input{
-	color: #db0000;
+	color: #077;
 	border-radius: 0;
 	-webkit-appearance: none;
 }
+
 .station{
+	color: #077;
 	margin: .5em;
-	width: 15em;
+	width: 18em;
 	height: 3ex;
-	background: rgba(0,0,0,0.075);
-	border: 1px solid #db0000;
-	font-size: 140%;
+	background: #e3e3e3;
+	border: none;
+	outline: 2px dotted #008383;
+	font-size: 150%;
 	padding: 0 .25em;
+}
+#to{
+	width: 17em;
 }
 #arrow{
 	font-size: 220%;
+	color: #007070;
 }
+
 #submit{
-	margin: .5em;
+	margin: .5em 0;
 	width: 3ex;
 	height: 3ex;
-	background: rgba(0,0,0,0.075);
-	border: 1px solid #db0000;
-	font-size: 140%;
+	background: #e3e3e3;
+	border: none;
+	outline: 2px dotted #008383;
+	font-size: 150%;
 	cursor: pointer;
 }
 #submit:hover{
-	background: rgba(0,0,0,0.125);
+	background: rgba(0,0,0,0.15);
 }
 #options{
+	font-style: italic;
 	margin: 0 auto;
 	margin-top: 1ex;
 	line-height: 3ex;
-	font-size: 125%;
-	display: table;
-	width: 100%;
+	font-size: 130%;
+	color: #008383;
 }
-#options>div{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
-#options input{
-	margin-right: -.05em;
-}
-#bc select{
-	width: 2.6em;
-	border: 1px solid #db0000;
-	background: rgba(0,0,0,0.05);
+
+#options input, #options select{
+	font-style: italic;
 	font-size: 100%;
-	color: #db0000;
+	border: none;
+	cursor: pointer;
 	text-align: center;
-}
-#duration input, #price input{
-	width: 2.5em; /*1.75em*/
-	border: 1px solid #db0000;
-	background: rgba(0,0,0,0.05);
+	color: #033;
 	line-height: 2.1ex;
-	font-size: 100%;
-	text-align: center;
-	margin-left: .3em;
-	margin-right: .15em;
+}
+
+#options input:hover, #options input:focus, #options select:hover, #options select:focus{
+	border-bottom: 2px dashed #033;
+}
+
+#class{
+	width: 1.5em;
+	padding-right: .1em;
+}
+
+#bc{
+	width: 2em;
+	padding-right: .1em;
+}
+
+#duration input{
+	width: 1.5em;
 }
 #start input, #end input{
-	font-size: 100%;
-	line-height: 2.1ex;
-	border: 1px solid #db0000;
-	padding-left: .2em;
-	color: #db0000;
-	background: rgba(0,0,0,0.05);
 	width: 2.8em;
-}
-
-#impressum{
-	width: 100%;
-	display: block;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	padding: 1ex 0;
-	font-size: 125%;
-	background: #f1f1f1;
-	text-align: center;
-}
-#impressum a{
-	color: #888;
-}
-#impressum a:hover{
-	color: #555;
-}
-
-@media screen and (min-width: 401px) and (max-width: 625px){
-	body{font-size: 10px;}
-}
-
-@media screen and (max-width: 400px) {
-	body {font-size: 14px;}
-	#title{font-size: 250%;}
-	#error{font-size: 125%;}
-	#form, .station, #submit{width: 90%; margin: 0; margin-top: .75ex;}
-	#form{padding: 0; width: 100%; margin-bottom: -2ex;}
-	#submit{width: 95%; margin-bottom: .75ex;}
-	#arrow{display: none}
-	#options{display: block; margin: 0;}
-	#options>div{
-		border-top: 1px solid #db0000;
-		padding: .5ex 0 .2ex 0;
-		display: block;
-		text-align: center;
-		width: 100%;
-	}
-	#options>div:first-of-type{
-		border-top: 2px solid #db0000;
-	}
 }
