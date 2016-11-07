@@ -34,9 +34,11 @@ const parsePriceResult = (params) => (priceResult) => {
 	}
 
 	if(!cheapest) return false
+	let formattedDuration = moment.duration(duration).format('h:mm')
+	if(formattedDuration.split(':').length<=1) formattedDuration = '0:'+formattedDuration
 	return {
 		price: formatPrice(cheapest),
-		duration: moment.duration(duration).format('h:mm')
+		duration: formattedDuration
 	}
 }
 

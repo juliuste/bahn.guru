@@ -41,6 +41,8 @@ const collectVias = (offer) => {
 
 const parseOffer = (params) => (offer) => {
 	if(offer.price.euros==25) console.log(offer.offer.raw.sids)
+	let formattedDuration = moment.duration(offer.duration).format('h:mm')
+	if(formattedDuration.split(':').length<=1) formattedDuration = '0:'+formattedDuration
 	return {
 		start: moment(offer.trips[0].start).format('HH:mm'),
 		end: moment(offer.trips[offer.trips.length-1].end).format('HH:mm'),
@@ -52,7 +54,7 @@ const parseOffer = (params) => (offer) => {
 		token: offer.token,
 		rawPrice: +offer.price.euros+(offer.price.cents/100),
 		rawDuration: moment.duration(offer.duration).format('m'),
-		duration: moment.duration(offer.duration).format('HH:mm'),
+		duration: formattedDuration,
 		cheapest: offer.cheapest,
 		via: collectVias(offer)
 	}
