@@ -96,3 +96,34 @@ select::-ms-expand {
 #start input, #end input{
 	width: 2.8em;
 }
+
+
+@media screen and (max-width: 500px){
+	#form{
+		width: initial;
+	}
+	#arrow{
+		display: none;
+	}
+	.station, #submit{
+		display: block;
+		width: 100% !important;
+		margin: .2em 0;
+		box-sizing: border-box;
+		font-size: 250%;
+	}
+	#submit{
+		outline: none;
+		border: 2px solid #008383;
+	}
+	#options input, #options select{
+		font-size: 100%;
+	}
+	#options{
+		font-size: 200%;
+	}
+	.optRow{
+		display: inline-block;
+		white-space: pre;
+	}
+}

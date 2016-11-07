@@ -80,3 +80,15 @@ td.cheapest .price a{
 	font-weight: bold;
 	display: inline-block;
 }
+
+@media screen and (max-width: 600px){
+	#calendar{
+		font-size: 70%;
+	}
+	.duration{
+		display: none;
+	}
+	#calendar thead{
+		display: none;
+	}
+}

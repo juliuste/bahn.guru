@@ -69,8 +69,8 @@ a:hover{
 	color: #033;
 }
 
-@media screen and (min-width: 401px) and (max-width: 625px){
-	body{font-size: 10px;}
+@media screen and (max-width: 625px){
+	#page{font-size: 2.5vw;}
 }
 /*
 @media screen and (max-width: 400px) {

@@ -55,23 +55,32 @@ const generate = (params) => {
 						html.input({id: 'submit', name: 'submit', type: 'submit', value: '↳'})
 					]),
 					html.div('#options', [
-						html.select({name: 'class', id: 'class'}, [
-							option(1, '1.', params.class==1),
-							option(2, '2.', params.class!==1),
+						html.span('.optRow', [
+							html.select({name: 'class', id: 'class'}, [
+								option(1, '1.', params.class==1),
+								option(2, '2.', params.class!==1),
+							]),
+							' Klasse, Bahncard: ',
+							html.select({name: 'bc', id: 'bc'}, [
+								option(0, '--', params.bc==0),
+								option(2, '25', (params.bc==1 || params.bc==2)),
+								option(4, '50', (params.bc==3 || params.bc==4))
+							]),
+							', '
 						]),
-						' Klasse, Bahncard: ',
-						html.select({name: 'bc', id: 'bc'}, [
-							option(0, '--', params.bc==0),
-							option(2, '25', (params.bc==1 || params.bc==2)),
-							option(4, '50', (params.bc==3 || params.bc==4))
+						html.span('.optRow', [
+							html.label('#start', ['ab: ', html.input({type: 'text', placeholder: '--:--', value: (params.start) ? params.start.format('hh:mm') : (params.set)? '' : '06:00', name: 'start'}), ' Uhr']),
+							', '
 						]),
-						', ',
-						html.label('#start', ['ab: ', html.input({type: 'text', placeholder: '--:--', value: (params.start) ? params.start.format('hh:mm') : (params.set)? '' : '06:00', name: 'start'}), ' Uhr']),
-						', ',
-						html.label('#end', ['bis: ', html.input({type: 'text', placeholder: '--:--', value: (params.end)? params.end.format('hh:mm') : '', name: 'end'}), ' Uhr']),
-						', bis zu ',
-						html.label('#duration', [html.input({type: 'text', placeholder: 24, value: params.duration || '', name: 'duration'}), ' h Fahrzeit']),
-						'.'
+						html.span('.optRow', [
+							html.label('#end', ['bis: ', html.input({type: 'text', placeholder: '--:--', value: (params.end)? params.end.format('hh:mm') : '', name: 'end'}), ' Uhr']),
+							', '
+						]),
+						html.span('.optRow', [
+							'bis zu ',
+							html.label('#duration', [html.input({type: 'text', placeholder: 24, value: params.duration || '', name: 'duration'}), ' h Fahrzeit']),
+							'.'
+						])
 					]),
 				])
 			]),
