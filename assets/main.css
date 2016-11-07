@@ -71,6 +71,9 @@ select::-ms-expand {
 	text-align: center;
 	color: #033;
 	line-height: 2.1ex;
+	background: none;
+	text-align-last:center;
+	text-align: -webkit-center;
 }
 
 #options input:hover, #options input:focus, #options select:hover, #options select:focus{
