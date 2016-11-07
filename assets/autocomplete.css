@@ -5,7 +5,8 @@
     overflow: auto;
     cursor: default;
     font-size: 140%;
-    outline: 2px solid rgba(0,70,70,0.8);
+    border: 2px solid rgba(0,70,70,0.8);
+    margin-top: -2px;
 }
 .autocomplete-suggestion {
     padding: 5px 5px;

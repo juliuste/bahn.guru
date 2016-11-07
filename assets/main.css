@@ -29,7 +29,7 @@ select::-ms-expand {
 	height: 3ex;
 	background: #e3e3e3;
 	border: none;
-	outline: 2px dotted #008383;
+	border: 2px solid #008383;
 	font-size: 150%;
 	padding: 0 .25em;
 }
@@ -47,7 +47,7 @@ select::-ms-expand {
 	height: 3ex;
 	background: #e3e3e3;
 	border: none;
-	outline: 2px dotted #008383;
+	outline: 2px solid #008383;
 	font-size: 150%;
 	cursor: pointer;
 }

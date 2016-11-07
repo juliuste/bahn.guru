@@ -16,7 +16,7 @@ function guessStation(input){
             }
         },
         error: function(data){
-            input.val(null);
+            input.val(query);
         }
     });
 }
