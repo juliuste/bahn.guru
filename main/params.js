@@ -2,17 +2,7 @@
 
 const moment = require('moment-timezone')
 const mdf = require('moment-duration-format')
-const stations = require('db-hafas').locations
-
-const parseStation = (station) => {
-	if(!station || (!station.name && !+station.id)) return Promise.resolve(false)
-	return stations(station.id+'' || station.name).then(
-		(data) => {
-			if(data.length>0) return {id: data[0].id, name: data[0].name}
-			return false
-		},
-		(error) => false)
-}
+const parseStation = require('../api').station
 
 const parseTime = (time) => {
 	if(!time) return null

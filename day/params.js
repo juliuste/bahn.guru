@@ -2,36 +2,12 @@
 
 const moment = require('moment-timezone')
 const mdf = require('moment-duration-format')
-const stations = require('db-hafas').locations
-
-const parseStation = (station) => {
-	if(!station) return Promise.reject(false)
-	return stations(station).then(
-		(data) => {
-			if(data.length>0) return {id: data[0].id, name: data[0].name}
-			return false
-		},
-		(error) => false)
-}
+const parseStation = require('../api').station
+const l = require('../lib')
 
 const parseDate = (date) => {
 	if(!date) return moment().tz('Europe/Berlin').startOf('day')
-	return moment(date, "DD.MM.YYYY").tz('Europe/Berlin').startOf('day') || moment().startOf('day')
-}
-
-const parseTime = (time) => {
-	if(!time) return null
-	time = time.split(':')
-	if(time.length==1){
-		let hours = +time[0]
-		if(hours!=NaN && hours>=0 && hours<24) return moment.duration(hours, 'hours')
-	}
-	if(time.length==2){
-		let hours = +time[0]
-		let minutes = +time[1]
-		if(hours!=NaN && minutes!=NaN && hours>=0 && hours<24 && minutes>=0 && minutes<60) return moment.duration(60*hours+minutes, 'minutes')
-	}
-	return null
+	return moment(date, "DD.MM.YYYY").tz('Europe/Berlin').startOf('day')
 }
 
 const parseParams = (params) => {
@@ -44,7 +20,10 @@ const parseParams = (params) => {
 		end: null
 	}
 
-	return Promise.all([parseStation(params.fromID), parseStation(params.toID)]).then(
+	const from = {id: params.fromID, name: params.from}
+	const to = {id: params.toID, name: params.to}
+
+	return Promise.all([parseStation(from), parseStation(to)]).then(
 		(data) => {
 			if(!data || data.length!=2 || !data[0] || !data[1]) return {status: 'error', msg: 'Bitte geben Sie einen gültigen Start- und Zielbahnhof an.'}
 			// Stations
@@ -61,8 +40,8 @@ const parseParams = (params) => {
 			// Duration
 			if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
 			// Start & End
-			settings.start = parseTime(params.start)
-			settings.end = parseTime(params.end)
+			settings.start = l.parseTime(params.start)
+			settings.end = l.parseTime(params.end)
 			if((settings.start && settings.end) && +settings.end.format('m')<+settings.start.format('m')) settings.end = null
 			return {status: 'success', data: settings}
 		},

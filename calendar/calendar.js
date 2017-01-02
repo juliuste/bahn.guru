@@ -1,54 +1,26 @@
 'use strict'
 
-const moment = require('moment-timezone')
-const mdf = require('moment-duration-format')
-const prices = require('db-prices')
+const api = require('../api').request
 const chunk = require('chunk-array').chunks
+const formatDuration = require('ms')
+const moment = require('moment')
+const l = require('../lib')
 
-const formatPrice = (price) => {
-	price = price.toFixed(2).toString().split('.') 
-	return {euros: price[0], cents: price[1]}
+const formatDayResult = (params) => (result) => {
+	if(result.length) return {
+		price: l.formatPrice(result[0].price),
+		duration: formatDuration(result[0].duration)
+	}
+	return null
 }
 
-const parsePriceResult = (params) => (priceResult) => {
-	let duration, tMS, start, startTime, end, endTime, price, cheapest = null
-	for(let offer of priceResult){
-		// Extract Start & End
-		start = moment(offer.trips[0].start)
-		startTime = start.diff(moment(start).startOf('day'))
-		end = moment(offer.trips[offer.trips.length-1].end)
-		endTime = end.diff(moment(end).startOf('day'))
-		// Extract Price
-		price = +offer.offer.price
-
-		if(	(!params.price || price<=params.price) &&
-			(!params.duration || params.duration*60*60*1000>=end.diff(start)) &&
-			(!params.start || startTime>=params.start.format('S')) &&
-			(!params.end || (start.format('D') == end.format('D') && endTime<=params.end.format('S')))){
-				if(!cheapest || price<cheapest){
-					cheapest = price
-					duration = end.diff(start)
-				}
-				if(price==cheapest && end.diff(start)<duration) duration = end.diff(start)
-		}
-	}
-
-	if(!cheapest) return false
-	let formattedDuration = moment.duration(duration).format('h:mm')
-	if(formattedDuration.split(':').length<=1) formattedDuration = '0:'+formattedDuration
-	return {
-		price: formatPrice(cheapest),
-		duration: formattedDuration
-	}
-}
-
-const markCheapest = (results) => {
+const markCheapest = (dayResults) => {
 	// Find cheapest offer(s)
 	let cheapest = null
-	for(let offer of results){if(offer.price && (!cheapest || +offer.price.euros<cheapest)) cheapest = +offer.price.euros}
+	for(let day of dayResults){if(day.price && (!cheapest || +day.price.euros<cheapest)) cheapest = +day.price.euros}
 	// Mark cheapest offer(s)
-	for(let offer of results){if(offer.price) offer.cheapest = (+offer.price.euros===cheapest)}
-	return results
+	for(let day of dayResults){if(day.price) day.cheapest = (+day.price.euros===cheapest)}
+	return dayResults
 }
 
 const generateCalendar = (weeks) => {
@@ -68,10 +40,10 @@ const generateCalendar = (weeks) => {
 	return dates
 }
 
-const fillCalendar = (cal, offers) => {
+const fillCalendar = (cal, dayResults) => {
 	let counter = 0
 	for(let day of cal){
-		if(!day.past) Object.assign(day, offers[counter++] || {price: false, duration: false})
+		if(!day.past) Object.assign(day, dayResults[counter++] || {price: false, duration: false})
 	}
 	return chunk(cal, 7)
 }
@@ -81,19 +53,15 @@ const calendar = (params) => {
 	const cal = generateCalendar(params.weeks)
 	const requests = []
 	for(let day of cal){
-		if(!day.past)
-			requests.push(prices(params.from.id, params.to.id, day.date.raw, {
-				class: params.class,
-				travellers: [{typ: 'E', bc: params.bc}]
-			}))
+		if(!day.past) requests.push(api(params, day.date.raw))
 	}
 
 	return Promise.all(requests).then(
-		(results) => {
-			results = results.map(parsePriceResult(params))
-			if(results.every((element) => !element)) return null
-			results = markCheapest(results)
-			return fillCalendar(cal, results)
+		(dayResults) => {
+			dayResults = dayResults.map(formatDayResult(params))
+			if(dayResults.every((element) => !element)) return null
+			dayResults = markCheapest(dayResults)
+			return fillCalendar(cal, dayResults)
 		},
 		(error) => {
 			return null

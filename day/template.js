@@ -29,44 +29,33 @@ const generateTypes = (trips) => {
 }
 
 
-const collectVias = (offer) => {
-	if(offer.trips.length<=1) return ['-']
+const collectVias = (connection) => {
+	if(connection.trips.length<=1) return ['-']
 	const vias = []
-	for(let trip of offer.trips){
-		if(trip!==offer.trips[offer.trips.length-1]) vias.push(trip.to.name, html.br())
+	for(let trip of connection.trips){
+		if(trip!==connection.trips[connection.trips.length-1]) vias.push(trip.to.name, html.br())
 	}
 	vias.pop()
 	return vias
 }
 
-const parseOffer = (params) => (offer) => {
-	if(offer.price.euros==25) console.log(offer.offer.raw.sids)
-	let formattedDuration = moment.duration(offer.duration).format('h:mm')
+const parseOffer = (params) => (connection) => {
+	let formattedDuration = moment.duration(connection.duration).format('h:mm')
 	if(formattedDuration.split(':').length<=1) formattedDuration = '0:'+formattedDuration
 	return {
-		start: moment(offer.trips[0].start).format('HH:mm'),
-		end: moment(offer.trips[offer.trips.length-1].end).format('HH:mm'),
+		start: moment(connection.start).tz('Europe/Berlin').format('HH:mm'),
+		end: moment(connection.end).tz('Europe/Berlin').format('HH:mm'),
 		from: params.from.name,
 		to: params.to.name,
-		types: generateTypes(offer.trips),
-		transfers: offer.transfers,
-		price: offer.price,
-		token: offer.token,
-		rawPrice: +offer.price.euros+(offer.price.cents/100),
-		rawDuration: moment.duration(offer.duration).format('m'),
+		types: generateTypes(connection.trips),
+		transfers: connection.transfers,
+		price: connection.price,
+		rawPrice: +connection.price.euros+(connection.price.cents/100),
+		rawDuration: moment.duration(connection.duration).format('m'),
 		duration: formattedDuration,
-		cheapest: offer.cheapest,
-		via: collectVias(offer)
+		cheapest: connection.cheapest,
+		via: collectVias(connection)
 	}
-}
-
-const journey = (offer) => {
-	let result = [
-		offer.start, ' ', offer.from,
-		html.br(),
-		' → ', offer.end, ' ', offer.to
-	]
-	return result
 }
 
 const types = (offer) => offer.types.join(', ')
@@ -74,16 +63,6 @@ const price = (offer) => offer.price.euros+","+offer.price.cents+"€"
 const cheapestClass = (offer) => {
 	return (offer.cheapest) ? {class: 'cheapest'} : null
 }
-
-/*const checkout = (token, price) => {
-	/*return html.form({class: 'buy', method: 'post', enctype: 'application/x-www-form-urlencoded', 'action': 'https://ps.bahn.de/preissuche/preissuche/psc_angebote.post?device=HANDY'}, [
-		html.input({type: 'hidden', name: 'auslandLocId', value: ' '}),
-		html.input({type: 'hidden', name: 'angebotsdetailsanfrage-json', value: token}),
-		html.input({type: 'hidden', name: 'button.buchen.unten_p_js', value: ' '}),
-		html.input({type: 'submit', value: price, class: 'buyButton'})
-	])
-	return html.a({class: '.price', href: 'dbnavigator://angebotsdetails&v=15100000&angebotsdetailsanfrage-json='+enc(token)}, price)
-}*/
 
 
 const offerTable = (data) => {
