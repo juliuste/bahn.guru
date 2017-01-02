@@ -17,9 +17,9 @@ const formatDayResult = (params) => (result) => {
 const markCheapest = (dayResults) => {
 	// Find cheapest offer(s)
 	let cheapest = null
-	for(let day of dayResults){if(day.price && (!cheapest || +day.price.euros<cheapest)) cheapest = +day.price.euros}
+	for(let day of dayResults){if(day && day.price && (!cheapest || +day.price.euros<cheapest)) cheapest = +day.price.euros}
 	// Mark cheapest offer(s)
-	for(let day of dayResults){if(day.price) day.cheapest = (+day.price.euros===cheapest)}
+	for(let day of dayResults){if(day && day.price) day.cheapest = (+day.price.euros===cheapest)}
 	return dayResults
 }
 

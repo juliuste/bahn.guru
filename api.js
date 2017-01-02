@@ -58,7 +58,7 @@ const request = (params, day) => {
 // station lookup
 const station = (s) => {
 	if(!s || (!s.name && !+s.id)) return Promise.reject(false)
-	return stations(s.id+'' || station.name).then(
+	return stations(s.id+'' || s.name).then(
 		(data) => {
 			if(data.length>0) return {id: data[0].id, name: data[0].name}
 			return false

@@ -58,6 +58,8 @@ const parseParams = (params) => {
 	const from = {id: params.fromID, name: params.from}
 	const to = {id: params.toID, name: params.to}
 
+	console.log(from, to)
+
 	return Promise.all([parseStation(from), parseStation(to)]).then(
 		(data) => {
 			if(data){
