@@ -8,3 +8,5 @@ npm-debug.log
 .scaleway
 config/*
 !config/default.json
+
+meinfernbus.js
