@@ -23,12 +23,10 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "main/*",
-    "calendar/*",
-    "day/*",
-    "impressum/*",
-    "assets/*",
-    "api.js"
+    "lib/*",
+    "bahn/*",
+    "config/default.json",
+    "assets/*"
   ],
   "author": "Julius Tens <mail@juliuste.de>",
   "homepage": "https://bahn.guru",
