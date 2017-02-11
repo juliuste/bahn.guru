@@ -1,63 +1,38 @@
-function guessStation(input){
-    query = input.val();
-    $.ajax({
-        url: 'https://db-hafas.juliuste.de/locations?query='+query,
-        dataType: 'json',
-        success: function(res){
-            console.log(res[0].id);
-            if(res.length>0){
-                if(!input.next('input').attr('value')){
-                	input.attr('value', res[0].id);
-                	input.val(res[0].name);
-                }
-            }
-            else{
-                input.val(null);
-            }
-        },
-        error: function(data){
-            input.val(query);
-        }
-    });
+'use strict'
+
+const api = {
+	url: 'https://db-hafas.juliuste.de/locations',
+	adapter: (res) => res.map((e) => e.name)
 }
-// AUTO COMPLETION
+const autocomplete = require('horsey')
+const fetch = require('fetch-ponyfill')().fetch
+const querystring = require('querystring').stringify
 
-$('#from').autocomplete({
-	serviceUrl: 'https://db-hafas.juliuste.de/locations',
-	paramName: 'query',
-	transformResult: function(response) {
-		return {
-			suggestions: $.map($.parseJSON(response).slice(0,5), function(dataItem) {
-				return { value: dataItem.name, data: dataItem.id};
-			})
-		}
+autocomplete(document.querySelector('#from'), {
+	suggestions: (value, done) => {
+		fetch(api.url+'?'+querystring({query: value}), {
+			method: "get",
+			mode: "cors"
+		}).then((r) => r.json()).then(api.adapter).then((res) => done(res))
 	},
-	onSelect: function(suggestion) {
-		$('#from').attr('value', suggestion.value);
-        $('#from-id').attr('value', suggestion.data);
-		$('#to').focus();
-	}
+	limit: 5,
+	appendTo: document.querySelector('#fromContainer'),
+	autoHideOnClick: true,
+	autoHideOnBlur: true
 })
 
-$('#to').autocomplete({
-	serviceUrl: 'https://db-hafas.juliuste.de/locations',
-	paramName: 'query',
-	transformResult: function(response) {
-		return {
-			suggestions: $.map($.parseJSON(response).slice(0,5), function(dataItem) {
-				return { value: dataItem.name, data: dataItem.id};
-			})
-		}
+autocomplete(document.querySelector('#to'), {
+	suggestions: (value, done) => {
+		fetch(api.url+'?'+querystring({query: value}), {
+			method: "get",
+			mode: "cors"
+		}).then((r) => r.json()).then(api.adapter).then((res) => done(res))
 	},
-	onSelect: function(suggestion) {
-		$('#to').attr('value', suggestion.value);
-        $('#to-id').attr('value', suggestion.data);
-		$('#submit').focus();
-	}
+	limit: 5,
+	appendTo: document.querySelector('#toContainer'),
+	autoHideOnClick: true,
+	autoHideOnBlur: true
 })
 
-$('.station').focusout(function(){
-    if(!$(this).attr('value')){
-        guessStation($(this));
-    }
-});
+document.querySelector('#from').addEventListener('horsey-selected', () => document.querySelector('#to').focus())
+document.querySelector('#to').addEventListener('horsey-selected', () => document.querySelector('#submit').focus())

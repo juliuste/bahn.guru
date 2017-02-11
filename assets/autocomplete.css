@@ -1,33 +1,36 @@
-.autocomplete-suggestions {
+.sey-list{
+    visibility: hidden;
+}
+.sey-show{
+    visibility: visible;
+}
+
+.sey-hide{
+    display: none;
+}
+
+.sey-list{
+    width: inherit;
+    position: absolute;
     box-sizing: border-box;
     background: rgba(0,70,70,0.8);
+    list-style: none;
+    text-align: left;
     color: #fff;
     overflow: auto;
+    padding: 0;
     cursor: default;
-    font-size: 140%;
+    font-size: 90%;
     border: 2px solid rgba(0,70,70,0.8);
     margin-top: -2px;
 }
-.autocomplete-suggestion {
-    padding: 5px 5px;
+
+.sey-item{
+    padding: 7.5px;
     white-space: nowrap;
     overflow: hidden;
 }
-.autocomplete-no-suggestion {
-    padding: 5px 5px;
-}
-.autocomplete-selected {
+
+.sey-selected{
     background: rgba(0,0,0,0.4);
-}
-.autocomplete-suggestions strong {
-    font-weight: normal;
-}
-.autocomplete-group {
-    padding: 5px 5px;
-}
-.autocomplete-group strong {
-    font-weight: bold;
-    font-size: 140%;
-    display: block;
-    border-bottom: 1px solid #000;
 }

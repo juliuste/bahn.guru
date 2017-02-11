@@ -46,6 +46,8 @@
     "db-prices": "^0.1.3",
     "express": "^4.14.0",
     "express-force-ssl": "^0.3.2",
+    "fetch-ponyfill": "^3.0.2",
+    "horsey": "^3.0.0",
     "js-beautify": "^1.6.4",
     "lodash": "^4.16.4",
     "lodash.filter": "^4.6.0",
@@ -58,13 +60,17 @@
     "spdy": "^3.3.3",
     "urlencode": "^1.1.0"
   },
+  "devDependencies": {
+    "browserify": "^14.0.0"
+  },
   "peerDependencies": {
     "forever": "^0.15"
   },
   "scripts": {
-    "start": "forever start --uid bahn.guru -a index.js",
+    "start": "npm run build && forever start --uid bahn.guru -a index.js",
     "stop": "forever stop bahn.guru",
     "ssh": "ssh bahn.guru",
+    "build": "browserify assets/main.js > assets/bundle.js",
     "deploy": "./deploy"
   },
   "license": "MIT"

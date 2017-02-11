@@ -11,4 +11,5 @@ npm i
 npm update
 forever stop bahn.guru
 export NODE_ENV=production
+npm run build
 forever start -a --uid bahn.guru index.js"
