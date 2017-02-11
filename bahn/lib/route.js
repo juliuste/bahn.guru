@@ -3,9 +3,10 @@
 const source = require('db-prices')
 const sortby = require('lodash.sortby')
 const filter = require('lodash.filter')
-const stations = require('db-hafas').locations
+const moment = require('moment-timezone')
+const timezone = require('config').timezone
 
-// format request results
+// format results
 const adapter = (result) => {
 	const connections = []
 	for(let connection of result){
@@ -30,11 +31,12 @@ const adapter = (result) => {
 
 		connections.push({start, end, duration, price, trips, transfers})
 	}
-	return sortby(connections, ['price', 'duration'])
+	return sortby(filter(connections, (o) => o.price), ['price', 'duration'])
 }
 
 // send request
-const request = (params, day) => {
+const route = (params, day) => {
+	const dayTimestamp = +(moment.tz(day, timezone).startOf('day'))
 	return source(
 		params.from.id,
 		params.to.id,
@@ -47,24 +49,11 @@ const request = (params, day) => {
 	.then(adapter)
 	.then((result) => 
 		filter(result, (c) => (
-			(!params.price || c.price<=params.price) &&
 			(!params.duration || c.duration<=params.duration*60*60*1000) &&
-			(!params.start || +c.start>=+params.start) &&
-			(!params.end || +c.end <= +params.end)
+			(!params.start || +c.start>=+params.start+dayTimestamp) &&
+			(!params.end || +c.end <= +params.end+dayTimestamp)
 		))
 	)
 }
 
-// station lookup
-const station = (s) => {
-	if(!s || (!s.name && !+s.id)) return Promise.reject(false)
-	return stations(s.id+'' || s.name).then(
-		(data) => {
-			if(data.length>0) return {id: data[0].id, name: data[0].name}
-			return false
-		},
-		(error) => false
-	)
-}
-
-module.exports = {request, station}
+module.exports = route

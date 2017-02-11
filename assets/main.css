@@ -80,23 +80,6 @@ select::-ms-expand {
 	border-bottom: 2px dashed #033;
 }
 
-#class{
-	width: 1.5em;
-	padding-right: .1em;
-}
-
-#bc{
-	width: 2em;
-	padding-right: .1em;
-}
-
-#duration input{
-	width: 1.5em;
-}
-#start input, #end input{
-	width: 2.8em;
-}
-
 
 @media screen and (max-width: 500px){
 	#form{

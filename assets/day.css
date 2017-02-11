@@ -10,6 +10,11 @@
 	color: #044;
 }
 
+#changeLink{
+	font-style: italic;
+	color: #004040;
+}
+
 #offers{
 	margin: 2ex auto 1ex auto;
 	border-collapse: collapse;

@@ -9,4 +9,5 @@ npm-debug.log
 config/*
 !config/default.json
 
-meinfernbus.js
+meinfernbus
+assets/meinfernbus.css
