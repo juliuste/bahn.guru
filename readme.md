@@ -12,4 +12,6 @@
 
 ## Contributing
 
+<mark>Since there is no mobile layout at the moment and even the desktop layout could see some improvements, you're strongly invited to contribute! Feel free to PR!</mark>
+
 If you found a bug, want to propose a feature or feel the urge to complain about your life, feel free to visit [the issues page](https://github.com/juliuste/bahn.guru/issues).
