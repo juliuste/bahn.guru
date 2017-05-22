@@ -45,6 +45,7 @@ select::-ms-expand {
 	border: none;
 	border: 2px solid #008383;
 	padding: 0 .25em;
+	border-radius: .15em !important;
 }
 #arrow{
 	font-size: 220%;
@@ -61,6 +62,7 @@ select::-ms-expand {
 	font-size: 150%;
 	cursor: pointer;
 	box-sizing: border-box;
+	border-radius: .15em !important;
 }
 #submit:hover{
 	background: rgba(0,0,0,0.15);
