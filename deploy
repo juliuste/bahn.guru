@@ -2,6 +2,7 @@
 
 rsync -rav --delete \
 	--exclude '.*' \
+	--exclude '*.log' \
 	--exclude node_modules \
 	. 'bahn.guru:~/bahn.guru/'
 

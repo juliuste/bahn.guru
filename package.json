@@ -52,8 +52,10 @@
     "lodash.sortby": "^4.7.0",
     "moment-duration-format": "^1.3.0",
     "moment-timezone": "^0.5.5",
+    "morgan": "^1.8.2",
     "ms": "^0.7.2",
     "nocache": "^2",
+    "path": "^0.12.7",
     "pithy": "^0.0.4",
     "spdy": "^3.3.3",
     "urlencode": "^1.1.0"

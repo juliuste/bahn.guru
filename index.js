@@ -10,6 +10,8 @@ const forceSSL 	   = require('express-force-ssl')
 const compression  = require('compression')
 const nocache      = require('nocache')
 const path         = require('path')
+const morgan 	   = require('morgan')
+const p 		   = require('path')
 
 const main = require('./lib/main/')
 const day = require('./lib/day/')
@@ -37,6 +39,12 @@ httpApi.set('forceSSLOptions', {
 
 // enable gzip compression
 api.use(compression())
+
+// create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(p.join(__dirname, 'access.log'), {flags: 'a'})
+
+// setup the logger
+api.use(morgan('combined', {stream: accessLogStream}))
 
 // enable static assets directory
 api.use('/assets', express.static('assets'));
