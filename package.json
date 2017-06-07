@@ -57,6 +57,7 @@
     "nocache": "^2",
     "path": "^0.12.7",
     "pithy": "^0.0.4",
+    "shorthash": "0.0.2",
     "spdy": "^3.3.3",
     "urlencode": "^1.1.0"
   },
