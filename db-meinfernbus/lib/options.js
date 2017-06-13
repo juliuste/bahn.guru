@@ -54,7 +54,7 @@ const text = (params) => {
 const url = (params) => {
 	const result = []
 	if(params.class) result.push('class='+params.class)
-	if(params.bc) result.push('bc='+params.bc)
+	if(params.bc) result.push('bc='+params.bc_original)
 	if(params.start) result.push('start='+params.start.format('HH:mm'))
 	if(params.end) result.push('end='+params.end.format('HH:mm'))
 	if(params.duration) result.push('duration='+params.duration)
