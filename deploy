@@ -4,13 +4,12 @@ rsync -rav --delete \
 	--exclude '.*' \
 	--exclude '*.log' \
 	--exclude node_modules \
-	. 'bahn.guru:~/bahn.guru/'
+	. 'enceladus:~/bahn.guru/'
 
-ssh bahn.guru "\
+ssh enceladus "\
 cd ~/bahn.guru
 npm i
 npm update
 forever stop bahn.guru
 npm run build
-export NODE_ENV=production
 forever start -a --uid bahn.guru index.js"

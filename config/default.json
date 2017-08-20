@@ -1,10 +1,5 @@
 {
-	"hostname":      "localhost",
-	"port":          3000,
-	"httpPort":		 5000,
-	"key":           ".ssl/device.key",
-	"cert":          ".ssl/device.crt",
-	"ca":            ".ssl/root-ca.crt",
+	"port":          3009,
 	"api":			 "bahn",
 	"timezone":      "Europe/Berlin"
 }
