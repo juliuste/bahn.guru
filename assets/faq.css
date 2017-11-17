@@ -7,31 +7,37 @@
     line-height: 120%;
     font-size: 140%;
     margin-top: .2rem;
-    margin-bottom: .6rem;
 }
 
-.section{
+.question{
     width: 100%;
-    text-align: center;
-    margin: .5em 0;
+    text-align: left;
+    margin: .8em 0;
     max-width: 900px;
 }
 
-.section p{
+.question h3{
+    font-size: 110%;
+    line-height: 120%;
+    margin-bottom: .2em;
+    color: #077;
+}
+
+.question p{
     line-height: 120%;
     font-size: 90%;
 }
 
-.section a{
+.question a{
     text-decoration: none;
     color: #077;
 }
 
-.section a:hover{
+.question a:hover{
     text-decoration: underline;
 }
 
-.section:last-of-type{
+.question:last-of-type{
     margin-bottom: 4rem;
 }
 
@@ -43,9 +49,11 @@
     #page h2{
         font-size: 170%;
         padding: .2em 0 .5em 0;
-        margin-bottom: 0;
     }
-    .section p{
+    .question h3{
+        font-size: 120%;
+    }
+    .question p{
         font-size: 100%;
     }
 }

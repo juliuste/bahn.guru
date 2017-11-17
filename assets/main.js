@@ -16,7 +16,7 @@ autocomplete(document.querySelector('#from'), {
 		}).then((r) => r.json()).then(api.adapter).then((res) => done(res))
 	},
 	limit: 5,
-	appendTo: document.querySelector('#fromContainer'),
+	appendTo: document.querySelector('#origin'),
 	autoHideOnClick: true,
 	autoHideOnBlur: true
 })
@@ -29,7 +29,7 @@ autocomplete(document.querySelector('#to'), {
 		}).then((r) => r.json()).then(api.adapter).then((res) => done(res))
 	},
 	limit: 5,
-	appendTo: document.querySelector('#toContainer'),
+	appendTo: document.querySelector('#destination'),
 	autoHideOnClick: true,
 	autoHideOnBlur: true
 })

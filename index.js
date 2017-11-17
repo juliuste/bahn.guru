@@ -16,6 +16,7 @@ const main = require('./lib/main/')
 const day = require('./lib/day/')
 const calendar = require('./lib/calendar/')
 const impressum = require('./lib/impressum/')
+const faq = require('./lib/faq/')
 
 // setup HTTP and HTTPS servers
 const api = express()
@@ -39,6 +40,7 @@ api.get('/', main)
 api.get('/day', day)
 api.get('/calendar', calendar, main)
 api.get('/impressum', impressum)
+api.get('/faq', faq)
 
 // start HTTP server
 server.listen(config.port, (e) => {

@@ -1,3 +1,94 @@
+input{
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance:none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+#page{
+    min-width: 60%;
+	max-width: 90%;
+}
+
+#error{
+	color: #f60;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: .5rem;
+	margin-top: .3rem;
+}
+
+.station{
+	position: relative;
+    width: 100%;
+    border: .15rem solid #077;
+    border-radius: .2rem;
+    font-size: 1.5rem;
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background: #077;
+}
+
+.station span{
+    color: #fff;
+    /*width: 15%;*/
+    background: #077;
+    font-size: 105%;
+    padding: .25rem .4rem .05rem .3rem;
+    line-height: 120%;
+    max-width: 1.7em;
+}
+
+.station input{
+    /*width: 85%;*/
+    width: 100%;
+    color: #077;
+    font-family: Helvetica;
+    padding: .25rem 0rem .05rem .4rem;
+    line-height: 120%;
+    font-size: 105%;
+    border: 0;
+}
+
+#go{
+    width: 100%;
+    border: .15rem solid #077;
+    border-radius: .2rem;
+    font-size: 1.5rem;
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+    background: #077;
+}
+
+#go input{
+    background: #088;
+    cursor: pointer;
+    width: 100%;
+    color: #fff;
+    font-family: Helvetica;
+    padding: .25rem .4rem .05rem .4rem;
+    line-height: 120%;
+    font-size: 105%;
+    border: 0;
+}
+
+#go input:hover{
+    opacity: 0.9;
+}
+
 select{
 	appearance: none;
 	-moz-appearance: none;
@@ -7,119 +98,70 @@ select::-ms-expand {
     display: none;
 }
 
-#title{
-	font-size: 500%;
-}
-
-#form{
-	display: block;
-	text-align: center;
-	margin: 1em auto;
-}
-#form input{
-	color: #077;
-	border-radius: 0;
-	-webkit-appearance: none;
-}
-
-#fromContainer{
-    width: 18em;
-}
-#toContainer{
-	width: 17em;
-}
-
-.stationContainer{
-	display: inline-block;
-    font-size: 150%;
-	margin: .5em;
-}
-
-.station{
-	color: #077;
-	box-sizing: border-box;
-	font-size: 100%;
-	width: 100%;
-	height: 3.3ex;
-	background: #e3e3e3;
-	border: none;
-	border: 2px solid #008383;
-	padding: 0 .25em;
-	border-radius: .15em !important;
-}
-#arrow{
-	font-size: 220%;
-	color: #007070;
-	margin-right: -0.2ex;
-}
-
-#submit{
-	margin: .5em 0;
-	width: 3.3ex;
-	height: 3.3ex;
-	background: #e3e3e3;
-	border: 2px solid #008383;
-	font-size: 150%;
-	cursor: pointer;
-	box-sizing: border-box;
-	border-radius: .15em !important;
-}
-#submit:hover{
-	background: rgba(0,0,0,0.15);
-}
 #options{
+	margin-top: .3em;
+	margin-bottom: 1.5em;
+	color: #044;
+	font-size: 92.5%;
+	/*margin-top: .5em;*/
+	line-height: 125%;
+	text-align: center;
 	font-style: italic;
-	margin: 0 auto;
-	margin-top: 1ex;
-	line-height: 3ex;
-	font-size: 130%;
-	color: #008383;
+	width: 95%;
 }
 
 #options input, #options select{
+	border-radius: 0;
+	-webkit-appearance: none;
 	font-style: italic;
 	font-size: 100%;
 	border: none;
 	cursor: pointer;
 	text-align: center;
-	color: #033;
-	line-height: 2.1ex;
+	color: #077;
+	line-height: 125%;
 	background: none;
 	text-align-last:center;
 	text-align: -webkit-center;
 }
 
 #options input:hover, #options input:focus, #options select:hover, #options select:focus{
-	border-bottom: 2px dashed #033;
+	border-bottom: .1em dashed #033;
 }
 
+@media (min-width: 550px) {
+    #header h1{
+        font-size: 4rem;
+		margin-top: 1rem;
+    }
+    #options{
+        margin-bottom: 3.5rem;
+    }
+}
 
-@media screen and (max-width: 500px){
-	#form{
-		width: initial;
-	}
-	#arrow{
-		display: none;
-	}
-	.station, #submit{
-		display: block;
-		width: 100% !important;
-		margin: .2em 0;
-		box-sizing: border-box;
-		font-size: 250%;
-	}
-	#submit{
-		outline: none;
-		border: 2px solid #008383;
-	}
-	#options input, #options select{
-		font-size: 100%;
-	}
+@media (min-width: 950px){
+    #header h1{
+        font-size: 4.5rem;
+    }
+    #form{
+        flex-direction: row;
+		margin-top: .8rem;
+    }
 	#options{
-		font-size: 200%;
+		font-size: 95%;
+		margin-bottom: 4.5rem;
 	}
-	.optRow{
-		display: inline-block;
-		white-space: pre;
+    .station{
+        width: 47.5%;
+        margin-left: .1rem;
+        margin-right: .1rem;
+    }
+    #go{
+        width: auto;
+        margin-left: .1rem;
+        margin-right: .1rem;
+    }
+	.subtitle{
+		font-size: 110%;
 	}
 }

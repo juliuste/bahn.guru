@@ -1,94 +1,210 @@
-.subtitle{
-	margin: .1em auto -.2em auto;
-	padding: .4em;
-	color: #008383;
-	font-size: 150%;
-	font-weight: lighter;
+#page{
+    min-width: 90%;
+    max-width: 95%;
 }
 
-#changeLink{
-	font-style: italic;
-	color: #004040;
-}
-
-#moreLink{
-	margin: 0 auto;
-	padding: .1em;
-	font-size: 130%;
-	font-weight: lighter;
-}
-#moreLink a{
-	color: #666;
+#route{
+    font-weight: bold;
 }
 
 #calendar{
-	margin: 2ex auto 1ex auto;
-	border-collapse: collapse;
-	font-size: 120%;
-	color: #555;
+    width: 100%;
+    max-width: 900px;
+    font-size: 100%;
+    margin-bottom: .5rem;
 }
 
-#calendar th{
-	border-bottom: 2px solid #777;
-	line-height: 150%;
-	font-weight: bold;
-	padding: 2ex;
+#calendar th .dayLong{
+    display: none;
 }
-.price{
-	font-weight: lighter;
-	font-size: 275%;
-	color: #008383;
-}
-.price a{
-	color: #008383;
-}
-td.cheapest .price a{
-	color: #0a8;
-	font-weight: normal;
-}
-.price sup{
-	font-size: 50%;
-}
-.duration{
-	color: rgba(0,70,70,0.6);
-}
-#calendar td{
-	position: relative;
-	line-height: 150%;
-	min-height: 5ex;
-	padding: 2ex;
 
-	text-align: center;
+#calendar thead{
+    border-bottom: .15rem solid #777;
+    font-weight: bold;
+    color: #777;
 }
-#calendar tbody tr{
-	border-bottom: 1px solid #777;
+
+#calendar tr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
 #calendar tr.even{
 	background: #eee;
 }
-.cell{
-	padding-top: .9em;
-	padding-left: .2em;
-	padding-right: .2em;
-	margin-bottom: -.5em;
-}
-.date{
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: .75ex .4em;
-	font-weight: bold;
-	display: inline-block;
+
+#calendar tbody tr{
+    border-bottom: .1rem solid #777;
 }
 
-@media screen and (max-width: 600px){
-	#calendar{
-		font-size: 70%;
-	}
-	.duration{
-		display: none;
-	}
-	#calendar thead{
-		display: none;
-	}
+#calendar .today{
+    font-weight: bold;
+}
+
+#calendar td, th{
+    flex: 1;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+}
+
+#calendar td .price{
+    padding-top: .4rem;
+    font-size: 75%;
+    font-weight: lighter;
+	color: #008383;
+}
+
+#calendar .cell{
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#calendar a.cell:hover{
+    opacity: .7;
+}
+
+#calendar td.cheapest .price{
+	color: #0a8;
+	font-weight: bold;
+    letter-spacing: -.08em;
+}
+
+#calendar td.cheapest .price sup{
+    letter-spacing: initial;
+    margin-left: .25em;
+}
+
+#calendar td .price sup{
+    font-size: 35%;
+    vertical-align: top;
+    letter-spacing: initial;
+}
+
+#calendar td .price .priceLong{
+    display: none;
+}
+
+#calendar .priceGroup{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#calendar .inlineDuration{
+    display: none;
+    padding-top: .4rem;
+    font-size: 75%;
+    font-weight: lighter;
+	color: #333;
+    margin-left: .25em;
+}
+
+#calendar td .duration{
+    display: none;
+    text-align: center;
+    color: rgba(0,70,70,0.6);
+    font-size: 70%;
+    margin: .2em 0 -.2em -.75em;
+}
+
+#more{
+    margin-bottom: 3rem;
+}
+
+#more a{
+    text-decoration: none;
+    color: #777;
+    font-size: 85%;
+    font-weight: lighter;
+}
+
+#more a:hover {
+    text-decoration: underline;
+}
+
+
+@media (min-width: 600px) {
+    #header h1{
+        font-size: 4rem;
+    }
+
+    #calendar{
+        margin-top: 1rem;
+    }
+
+    #calendar td{
+        position: relative;
+    }
+
+    #calendar .date{
+        flex: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: .35rem .25rem;
+        font-size: 80%;
+    }
+
+    #calendar .priceShort{
+        display: none;
+    }
+
+    #calendar .priceLong{
+        display: initial !important;
+    }
+
+    #calendar .price{
+        font-size: 175% !important;
+        margin-top: .2em;
+        font-weight: normal !important;
+    }
+
+    #calendar .cheapest .price{
+        font-weight: bold !important;
+    }
+
+    #calendar .duration{
+        display: block !important;
+    }
+
+    #more{
+        margin-bottom: 3.5rem;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 599px) {
+    #calendar .inlineDuration{
+        display: initial !important;
+    }
+}
+
+@media (min-width: 750px) {
+    #calendar .price{
+        font-size: 200% !important;
+    }
+    #calendar .duration{
+        font-size: 75% !important;
+    }
+}
+
+@media (min-width: 900px) {
+    #calendar .price{
+        font-size: 250% !important;
+    }
+    #calendar .duration{
+        font-size: 80% !important;
+    }
+    .subtitle{
+        font-size: 110%;
+    }
+    #more a{
+        font-size: 90% !important;
+    }
 }

@@ -4,29 +4,30 @@
 .sey-show{
     visibility: visible;
 }
-
 .sey-hide{
     display: none;
 }
 
 .sey-list{
-    width: inherit;
     position: absolute;
-    box-sizing: border-box;
-    background: rgba(0,70,70,0.8);
+    top: 1.45em !important;
+    left: -.075em !important;
+    right: -.075em !important;
+    background: rgba(0,90,90,0.9);
     list-style: none;
     text-align: left;
     color: #fff;
     overflow: auto;
     padding: 0;
     cursor: default;
-    font-size: 90%;
-    border: 2px solid rgba(0,70,70,0.8);
-    margin-top: -2px;
+    font-size: 100%;
+    border: .15rem solid #333;
+    border-top: none;
+    z-index: 2;
 }
 
 .sey-item{
-    padding: 7.5px;
+    padding: .3em .2em;
     white-space: nowrap;
     overflow: hidden;
 }
