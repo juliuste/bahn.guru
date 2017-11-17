@@ -14,7 +14,7 @@ const adapter = (result) => {
 		const end = new Date(connection.trips[connection.trips.length-1].end)
 		const duration = +end - (+start)
 		const price = +connection.offer.price
-		
+
 		const trips = []
 		for(let trip of connection.trips){
 			trips.push({
@@ -31,7 +31,7 @@ const adapter = (result) => {
 
 		connections.push({start, end, duration, price, trips, transfers})
 	}
-	return sortby(filter(connections, (o) => o.price), ['price', 'duration'])
+	return sortby(filter(connections, (o) => o.price && o.trips.map((x) => x.type).some((t) => t!=='BUS')), ['price', 'duration'])
 }
 
 // send request
@@ -47,7 +47,7 @@ const route = (params, day) => {
 		}
 	)
 	.then(adapter)
-	.then((result) => 
+	.then((result) =>
 		filter(result, (c) => (
 			(!params.duration || c.duration<=params.duration*60*60*1000) &&
 			(!params.start || +c.start>=+params.start+dayTimestamp) &&
