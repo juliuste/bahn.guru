@@ -14,6 +14,12 @@
 
 - [db-prices](https://github.com/juliuste/db-prices/) – "JavaScript client for the DB Sparpreise API."
 
+## Running
+```
+npm start
+# go to http://localhost:3009/
+```
+
 ## Contributing
 
 If you found a bug, want to propose a feature or feel the urge to complain about your life, feel free to visit [the issues page](https://github.com/juliuste/bahn.guru/issues).
