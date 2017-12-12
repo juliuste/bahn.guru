@@ -65,7 +65,8 @@
     "urlencode": "^1.1.0"
   },
   "devDependencies": {
-    "browserify": "^14.5.0"
+    "browserify": "^14.5.0",
+    "forever": "^0.15.3"
   },
   "peerDependencies": {
     "forever": "^0.15"
