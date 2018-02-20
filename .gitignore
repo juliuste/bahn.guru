@@ -9,4 +9,7 @@ npm-debug.log
 config/*
 !config/default.json
 
+.old
+package-lock.json
+
 *.log

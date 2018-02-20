@@ -1,0 +1,17 @@
+#!/bin/sh
+
+rsync -rav --delete \
+	--exclude '.*' \
+	--exclude '*.log' \
+	--exclude node_modules \
+	. 'enceladus:~/bus.bahn.guru/'
+
+ssh enceladus "\
+cd ~/bus.bahn.guru
+npm i
+npm update
+forever stop bus.bahn.guru
+export NODE_ENV=bus
+npm run build
+export NODE_ENV=bus
+forever start -a --uid bus.bahn.guru index.js"

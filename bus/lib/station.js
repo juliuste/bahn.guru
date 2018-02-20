@@ -1,12 +1,13 @@
 'use strict'
 
-const stations = require('db-hafas').locations
+const stations = require('meinfernbus').regions
 
 const station = (s) => {
 	if(!s) return Promise.reject(false)
-	return stations(s).then(
+	return stations().then(
 		(data) => {
-			if(data.length>0) return data[0]
+			const found = data.find(x => x.name===s)
+			if(found) return found
 			return false
 		},
 		(error) => false

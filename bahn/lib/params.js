@@ -23,24 +23,24 @@ const parseParams = (params) => {
 	const settings = {
 		class: 2,
 		bc: 0,
-		bc_original: 0,
+		bcOriginal: 0,
 		duration: null,
-		start: null,
-		end: null
+		departureAfter: null,
+		arrivalBefore: null
 	}
 	// class
 	if(+params.class==1 || +params.class==2) settings.class = +params.class
 	// BahnCard
 	if([0,2,4].indexOf(+params.bc)!=-1){
 		settings.bc = +params.bc+(settings.class-2)
-		settings.bc_original = +params.bc
+		settings.bcOriginal = +params.bc
 	}
 	// duration
 	if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
-	// start & end
-	settings.start = parseTime(params.start)
-	settings.end = parseTime(params.end)
-	if((settings.start && settings.end) && +settings.end.format('m')<+settings.start.format('m')) settings.end = null
+	// departureAfter & arrivalBefore
+	settings.departureAfter = parseTime(params.departureAfter)
+	settings.arrivalBefore = parseTime(params.arrivalBefore)
+	if((settings.departureAfter && settings.arrivalBefore) && +settings.arrivalBefore.format('m')<+settings.departureAfter.format('m')) settings.arrivalBefore = null
 
 	return settings
 }

@@ -12,20 +12,7 @@ const optionHTML = (value, text, checked) => {
 
 const input = (params) => ([
 	html.span('.optRow', [
-		html.select({name: 'class', id: 'class'}, [
-			optionHTML(1, '1.', params.class==1),
-			optionHTML(2, '2.', params.class!==1),
-		]),
-		' Klasse, Bahncard: ',
-		html.select({name: 'bc', id: 'bc'}, [
-			optionHTML(0, '--', params.bc==0),
-			optionHTML(2, '25', (params.bc==1 || params.bc==2)),
-			optionHTML(4, '50', (params.bc==3 || params.bc==4))
-		]),
-		', '
-	]),
-	html.span('.optRow', [
-		html.label('#departureAfter', ['ab: ', html.input({type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter'}), ' Uhr']),
+		html.label('#departureAfter', ['Ab: ', html.input({type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter'}), ' Uhr']),
 		', '
 	]),
 	html.span('.optRow', [
@@ -41,9 +28,6 @@ const input = (params) => ([
 
 const text = (params) => {
 	const result = []
-	if(params.class&&params.class==1) result.push(params.class+'. Klasse', ', ')
-	if(params.bc&&(params.bc==1||params.bc==2)) result.push('mit BahnCard 25', ', ')
-	if(params.bc&&(params.bc==3||params.bc==4)) result.push('mit BahnCard 50', ', ')
 	if(params.departureAfter&&params.departureAfter.format('m')>0) result.push('ab '+params.departureAfter.format('HH:mm')+' Uhr', ', ')
 	if(params.arrivalBefore&&params.arrivalBefore.format('m')>0) result.push('bis '+params.arrivalBefore.format('HH:mm')+' Uhr', ', ')
 	if(params.duration&&params.duration>0) result.push('Fahrzeit bis '+params.duration+' Stunden', ', ')
@@ -53,8 +37,6 @@ const text = (params) => {
 
 const url = (params) => {
 	const result = []
-	if(params.class) result.push('class='+params.class)
-	if(params.bc) result.push('bc='+params.bcOriginal)
 	if(params.departureAfter) result.push('departureAfter='+params.departureAfter.format('HH:mm'))
 	if(params.arrivalBefore) result.push('arrivalBefore='+params.arrivalBefore.format('HH:mm'))
 	if(params.duration) result.push('duration='+params.duration)

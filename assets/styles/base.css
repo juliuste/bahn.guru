@@ -20,7 +20,6 @@ body{
 #header{
     margin-top: 1rem;
     margin-bottom: .5rem;
-    color: #db0000;
 }
 
 #header h1{
@@ -29,7 +28,6 @@ body{
 }
 
 #header a{
-    color: #db0000;
     text-decoration: none;
 }
 

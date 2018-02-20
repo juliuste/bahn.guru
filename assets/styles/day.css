@@ -16,28 +16,28 @@
     font-weight: bold;
 }
 
-#offers{
+#journeys{
     width: 100%;
     max-width: 900px;
     font-size: 80%;
     margin-bottom: 3rem;
 }
 
-#offers thead{
+#journeys thead{
     border-bottom: .15em solid #777;
     font-weight: bold;
     color: #777;
 }
 
-#offers tr.even{
+#journeys tr.even{
 	background: #eee;
 }
 
-#offers tbody tr{
+#journeys tbody tr{
     border-bottom: .1em solid #777;
 }
 
-#offers td, th{
+#journeys td, th{
     text-align: center;
     padding-top: .5em;
     padding-bottom: .5em;
@@ -47,32 +47,32 @@
     vertical-align: middle;
 }
 
-#offers .columnLong{
+#journeys .columnLong{
     display: none;
 }
 
-#offers .columnMiddle{
+#journeys .columnMiddle{
     display: none;
 }
 
-#offers .price a{
+#journeys .price a{
     color: #077;
     font-weight: bold;
     text-decoration: none;
 }
 
-#offers .price a:hover{
+#journeys .price a:hover{
     text-decoration: underline;
 }
 
 @media (min-width: 450px){
-    #offers .columnMiddle{
+    #journeys .columnMiddle{
         display: table-cell !important;
     }
 }
 
 @media (min-width: 550px){
-    #offers{
+    #journeys{
         font-size: 90%;
         margin-top: 1rem;
         margin-bottom: 3.5rem;
@@ -84,16 +84,16 @@
 }
 
 @media (min-width: 750px){
-    #offers .columnLong{
+    #journeys .columnLong{
         display: initial !important;
     }
-    #offers .columnShort{
+    #journeys .columnShort{
         display: none;
     }
 }
 
 @media (min-width: 900px){
-    #offers{
+    #journeys{
         font-size: 100%;
         margin-bottom: 4rem;
     }

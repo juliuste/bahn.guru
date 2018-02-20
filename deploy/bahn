@@ -11,5 +11,7 @@ cd ~/bahn.guru
 npm i
 npm update
 forever stop bahn.guru
+export NODE_ENV=bahn
 npm run build
+export NODE_ENV=bahn
 forever start -a --uid bahn.guru index.js"

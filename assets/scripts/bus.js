@@ -1,14 +1,14 @@
 'use strict'
 
 const api = {
-	url: 'https://db-hafas.juliuste.de/locations',
+	url: 'https://1.mfb.juliustens.eu/regions',
 	adapter: (res) => res.map((e) => e.name)
 }
 const autocomplete = require('horsey')
 const fetch = require('fetch-ponyfill')().fetch
 const querystring = require('querystring').stringify
 
-autocomplete(document.querySelector('#from'), {
+autocomplete(document.querySelector('#originInput'), {
 	suggestions: (value, done) => {
 		fetch(api.url+'?'+querystring({query: value}), {
 			method: "get",
@@ -21,7 +21,7 @@ autocomplete(document.querySelector('#from'), {
 	autoHideOnBlur: true
 })
 
-autocomplete(document.querySelector('#to'), {
+autocomplete(document.querySelector('#destinationInput'), {
 	suggestions: (value, done) => {
 		fetch(api.url+'?'+querystring({query: value}), {
 			method: "get",
@@ -34,5 +34,5 @@ autocomplete(document.querySelector('#to'), {
 	autoHideOnBlur: true
 })
 
-document.querySelector('#from').addEventListener('horsey-selected', () => document.querySelector('#to').focus())
-document.querySelector('#to').addEventListener('horsey-selected', () => document.querySelector('#submit').focus())
+document.querySelector('#originInput').addEventListener('horsey-selected', () => document.querySelector('#destinationInput').focus())
+document.querySelector('#destinationInput').addEventListener('horsey-selected', () => document.querySelector('#submit').focus())

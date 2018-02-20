@@ -37,7 +37,7 @@ api.use('/assets', express.static('assets'));
 
 // set routes
 api.get('/', main)
-api.get('/day', day)
+api.get('/day', day, main)
 api.get('/calendar', calendar, main)
 api.get('/impressum', impressum)
 api.get('/faq', faq)
