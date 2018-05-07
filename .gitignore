@@ -12,4 +12,6 @@ config/*
 .old
 package-lock.json
 
+assets/scripts/bundle.js
+
 *.log

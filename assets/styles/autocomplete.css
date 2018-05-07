@@ -1,8 +1,8 @@
-.sey-list{
+.sey-container{
     visibility: hidden;
 }
 .sey-show{
-    visibility: visible;
+    visibility: visible !important;
 }
 .sey-hide{
     display: none;
@@ -11,7 +11,7 @@
 .sey-list{
     position: absolute;
     top: 1.45em !important;
-    left: -.075em !important;
+    left: -.08em !important;
     right: -.075em !important;
     background: rgba(0,90,90,0.9);
     list-style: none;
@@ -27,9 +27,15 @@
 }
 
 .sey-item{
-    padding: .3em .2em;
+    padding: .2em .2em;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.sey-item span {
+    padding: 0;
+    margin: 0;
+    background: none;
 }
 
 .sey-selected{
