@@ -1,6 +1,6 @@
 'use strict'
 
-const client = require('meinfernbus').journeys
+const client = require('flix').journeys
 const moment = require('moment-timezone')
 const timezone = require('config').timezone
 
@@ -23,7 +23,8 @@ const journeys = (params, day) => {
 	.then(results => {
 		for(let journey of results){
 			for(let leg of journey.legs){
-				leg.product = 'Bus'
+				if (leg.mode === 'train') leg.product = 'Zug'
+				else leg.product = 'Bus'
 			}
 		}
 		return results

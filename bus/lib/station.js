@@ -1,6 +1,6 @@
 'use strict'
 
-const stations = require('meinfernbus').regions
+const stations = require('flix').regions
 
 const station = (s) => {
 	if(!s) return Promise.reject(false)
