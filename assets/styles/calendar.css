@@ -72,12 +72,10 @@
 #calendar td.cheapest .price{
 	color: #0a8;
 	font-weight: bold;
-    letter-spacing: -.08em;
 }
 
 #calendar td.cheapest .price sup{
     letter-spacing: initial;
-    margin-left: .25em;
 }
 
 #calendar td .price sup{
