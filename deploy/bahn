@@ -3,6 +3,7 @@
 rsync -rav --delete \
 	--exclude '.*' \
 	--exclude '*.log' \
+	--exclude 'bundle-*.js' \
 	--exclude node_modules \
 	. 'europa:~/bahn.guru/'
 
