@@ -12,3 +12,6 @@ package-lock.json
 
 assets/scripts/bundle.js
 *.log
+
+config/*
+!config/default.json
