@@ -38,7 +38,6 @@
     "dependencies": {
         "compression": "^1.7.2",
         "config": "^1.30.0",
-        "corser": "^2.0.1",
         "db-hafas": "^2.1.0",
         "db-prices": "^3.0.0",
         "express": "^4.16.3",
@@ -51,7 +50,6 @@
         "moment-timezone": "^0.5.21",
         "morgan": "^1.9.0",
         "ms": "^2.1.1",
-        "nocache": "^2.0.0",
         "p-queue": "^2.4.2",
         "p-retry": "^2.0.0",
         "p-timeout": "^2.0.1",
