@@ -4,14 +4,13 @@ rsync -rav --delete \
 	--exclude '.*' \
 	--exclude '*.log' \
 	--exclude node_modules \
-	. 'enceladus:~/bus.bahn.guru/'
+	. 'europa:~/bahn.guru/'
 
-ssh enceladus "\
-cd ~/bus.bahn.guru
+ssh europa "\
+cd ~/bahn.guru
 npm i
 npm update
-forever stop bus.bahn.guru
+forever-service delete bus-calendar
 export NODE_ENV=bus
 npm run build
-export NODE_ENV=bus
-forever start -a --uid bus.bahn.guru index.js"
+forever-service install bus-calendar -e 'NODE_ENV=bus ENV=bus' --start -s index.js"
