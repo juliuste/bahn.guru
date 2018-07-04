@@ -66,5 +66,5 @@
         "build": "node build",
         "deploy": "./deploy/_all"
     },
-    "license": "MIT"
+    "license": "ISC"
 }
