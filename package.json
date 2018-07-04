@@ -33,7 +33,7 @@
     "repository": "juliuste/bahn.guru",
     "bugs": "https://github.com/juliuste/bahn.guru/issues",
     "engines": {
-        "node": ">=6"
+        "node": ">=8"
     },
     "dependencies": {
         "compression": "^1.7.2",
