@@ -4,14 +4,11 @@ Thumbs.db
 .nvm-version
 node_modules
 npm-debug.log
+dist
 
-.scaleway
-config/*
-!config/default.json
-
-.old
+yarn.lock
+shrinkwrap.yaml
 package-lock.json
 
 assets/scripts/bundle.js
-
 *.log
