@@ -1,5 +1,6 @@
 {
-	"port":          3009,
-	"api":			 "bahn",
-	"timezone":      "Europe/Berlin"
+	"port": 3009,
+	"api": "bahn",
+	"timezone": "Europe/Berlin",
+	"logging": false
 }
