@@ -164,4 +164,7 @@ select::-ms-expand {
 	.subtitle{
 		font-size: 110%;
 	}
+	.optRow{
+		white-space: nowrap;
+	}
 }

@@ -12,6 +12,3 @@
 #maxChanges input{
 	width: 0.9em;
 }
-.optRow:last-of-type{
-	white-space: nowrap;
-}
