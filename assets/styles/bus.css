@@ -8,3 +8,10 @@
 #departureAfter input, #arrivalBefore input{
 	width: 2.8em;
 }
+
+#maxChanges input{
+	width: 0.9em;
+}
+.optRow:last-of-type{
+	white-space: nowrap;
+}

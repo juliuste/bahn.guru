@@ -26,7 +26,8 @@ const parseParams = (params) => {
 		bcOriginal: 0,
 		duration: null,
 		departureAfter: null,
-		arrivalBefore: null
+		arrivalBefore: null,
+		maxChanges: null
 	}
 	// class
 	if(+params.class==1 || +params.class==2) settings.class = +params.class
@@ -41,6 +42,10 @@ const parseParams = (params) => {
 	settings.departureAfter = parseTime(params.departureAfter)
 	settings.arrivalBefore = parseTime(params.arrivalBefore)
 	if((settings.departureAfter && settings.arrivalBefore) && +settings.arrivalBefore.format('m')<+settings.departureAfter.format('m')) settings.arrivalBefore = null
+
+	// maxChanges
+	const maxChanges = +params.maxChanges
+	if (params.maxChanges !== '' && Number.isInteger(maxChanges) && maxChanges >= 0) settings.maxChanges = maxChanges
 
 	return settings
 }

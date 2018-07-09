@@ -3,6 +3,7 @@
 const client = require('db-prices')
 const moment = require('moment-timezone')
 const timezone = require('config').timezone
+const isNull = require('lodash').isNull
 
 
 const journeys = (params, day) => {
@@ -16,10 +17,12 @@ const journeys = (params, day) => {
 			const departure = new Date(j.legs[0].departure)
 			const arrival = new Date(j.legs[j.legs.length-1].arrival)
 			const duration = +arrival - (+departure)
+			const changes = j.legs.length-1
 			return (
 				(!params.duration || duration<=params.duration*60*60*1000) &&
 				(!params.departureAfter || +departure>=+params.departureAfter+dayTimestamp) &&
 				(!params.arrivalBefore || +arrival <= +params.arrivalBefore+dayTimestamp) &&
+				(isNull(params.maxChanges) || params.maxChanges >= changes) &&
 				(j.legs.some(l => l.line && l.line.product !== 'BUS'))
 			)
 		})
