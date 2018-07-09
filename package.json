@@ -36,6 +36,7 @@
         "node": ">=8"
     },
     "dependencies": {
+        "apicache": "^1.2.3",
         "compression": "^1.7.2",
         "config": "^1.30.0",
         "db-hafas": "^2.1.0",

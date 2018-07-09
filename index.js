@@ -9,6 +9,7 @@ const path = require('path')
 const morgan = require('morgan')
 const shorthash = require('shorthash').unique
 const p = require('path')
+const cache = require('apicache').middleware
 
 const main = require('./lib/main/')
 const day = require('./lib/day/')
@@ -19,6 +20,9 @@ const faq = require('./lib/faq/')
 // setup HTTP and HTTPS servers
 const api = express()
 const server = http.createServer(api)
+
+// enable caching
+api.use(cache('15 minutes'))
 
 // enable gzip compression
 api.use(compression())
