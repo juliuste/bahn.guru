@@ -12,6 +12,6 @@ cd ~/bahn.guru
 npm i
 npm update
 forever-service delete bus-calendar
-export NODE_ENV=bus
+export NODE_ENV=production ENV=production API=bus PORT=3039
 npm run build
-forever-service install bus-calendar -e 'NODE_ENV=bus ENV=bus' --start -s index.js"
+forever-service install bus-calendar -e 'NODE_ENV=production ENV=production API=bus PORT=3039' --start -s index.js"

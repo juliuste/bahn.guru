@@ -1,6 +1,6 @@
 'use strict'
 
-const config = require('config')
+const config = require('./config')
 const fs = require('fs')
 const express = require('express')
 const http = require('http')

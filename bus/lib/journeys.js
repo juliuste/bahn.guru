@@ -2,7 +2,7 @@
 
 const client = require('flix').journeys
 const moment = require('moment-timezone')
-const timezone = require('config').timezone
+const timezone = require('../../config').timezone
 const isNull = require('lodash').isNull
 
 // send request

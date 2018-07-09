@@ -2,7 +2,7 @@
 
 const client = require('db-prices')
 const moment = require('moment-timezone')
-const timezone = require('config').timezone
+const timezone = require('../../config').timezone
 const isNull = require('lodash').isNull
 
 

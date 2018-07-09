@@ -12,6 +12,6 @@ cd ~/bahn.guru
 npm i
 npm update
 forever-service delete bahn-calendar
-export NODE_ENV=bahn
+export NODE_ENV=production ENV=production API=bahn PORT=3009
 npm run build
-forever-service install bahn-calendar -e 'NODE_ENV=bahn ENV=bahn' --start -s index.js"
+forever-service install bahn-calendar -e 'NODE_ENV=production ENV=production API=bahn PORT=3009' --start -s index.js"
