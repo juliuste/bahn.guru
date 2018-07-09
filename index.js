@@ -23,11 +23,11 @@ const server = http.createServer(api)
 // enable gzip compression
 api.use(compression())
 
-// create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(p.join(__dirname, 'access.log'), {flags: 'a'})
-
 // setup the logger
 if (config.logging) {
+	// create a write stream (in append mode)
+	const accessLogStream = fs.createWriteStream(p.join(__dirname, `access-${config.api}.log`), {flags: 'a'})
+
 	morgan.token('id', (req, res) => req.headers['x-forwarded-for'] ? shorthash(req.headers['x-forwarded-for']) : shorthash(req.ip))
 	api.use(morgan(':date[iso] :id :method :url :status :response-time ms', {stream: accessLogStream}))
 }
