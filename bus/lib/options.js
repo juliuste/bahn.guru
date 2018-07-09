@@ -23,7 +23,7 @@ const input = (params) => ([
 	html.span('.optRow', [
 		'max. ',
 		html.label('#duration', [html.input({type: 'text', placeholder: 24, value: params.duration || '', name: 'duration'}), ' h Fahrzeit']),
-		','
+		', '
 	]),
 	html.span('.optRow', [
 		'max. ',
