@@ -8,9 +8,9 @@ const compression = require('compression')
 const path = require('path')
 const morgan = require('morgan')
 const shorthash = require('shorthash').unique
-const p = require('path')
 const cache = require('apicache').middleware
 
+// import routes
 const main = require('./lib/main/')
 const day = require('./lib/day/')
 const calendar = require('./lib/calendar/')
@@ -30,7 +30,7 @@ api.use(compression())
 // setup the logger
 if (config.logging) {
 	// create a write stream (in append mode)
-	const accessLogStream = fs.createWriteStream(p.join(__dirname, `access-${config.api}.log`), {flags: 'a'})
+	const accessLogStream = fs.createWriteStream(path.join(__dirname, `access-${config.api}.log`), {flags: 'a'})
 
 	morgan.token('id', (req, res) => req.headers['x-forwarded-for'] ? shorthash(req.headers['x-forwarded-for']) : shorthash(req.ip))
 	api.use(morgan(':date[iso] :id :method :url :status :response-time ms', {stream: accessLogStream}))

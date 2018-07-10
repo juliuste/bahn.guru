@@ -28,7 +28,7 @@
         "config/default.json",
         "assets/*"
     ],
-    "author": "Julius Tens <mail@juliuste.de>",
+    "author": "Julius Tens <mail@juliustens.eu>",
     "homepage": "https://bahn.guru",
     "repository": "juliuste/bahn.guru",
     "bugs": "https://github.com/juliuste/bahn.guru/issues",
@@ -55,8 +55,7 @@
         "p-retry": "^2.0.0",
         "p-timeout": "^2.0.1",
         "pithy": "0.0.4",
-        "shorthash": "0.0.2",
-        "urlencode": "^1.1.0"
+        "shorthash": "0.0.2"
     },
     "devDependencies": {
         "browserify": "^16.2.2"
