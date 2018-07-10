@@ -12,6 +12,8 @@ body{
 
 #page{
     display: flex;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
