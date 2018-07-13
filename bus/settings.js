@@ -4,8 +4,9 @@ const html = require('pithy')
 
 module.exports = {
     title: 'Bus-Preiskalender',
-    ogTitle: 'bus.bahn.guru - der Bus-Preiskalender',
-    ogDescription: 'Der Bahn-Guru für Busse hilft dir dabei, die günstigsten Sparpreise von Flixbus/Meinfernbus zu finden. 🚌',
+    description: 'Der Preiskalender für Busse hilft dir dabei, die günstigsten Sparpreise von Flixbus/Meinfernbus zu finden. 🚌',
+    ogTitle: 'bus.transit.cheap - der Bus-Preiskalender',
+    ogDescription: 'Der Preiskalender für Busse hilft dir dabei, die günstigsten Sparpreise von Flixbus/Meinfernbus zu finden. 🚌',
     ogImage: 'https://bahn.guru/assets/screenshot.png',
     originPlaceholder: 'Start',
     destinationPlaceholder: 'Ziel',
@@ -25,7 +26,7 @@ module.exports = {
     		title: 'Woher stammen die Daten?',
     		description: [
     			'Diese Website nutzt eine ',
-    			html.a({href: 'https://github.com/juliuste/meinfernbus'}, 'inoffizielle Schnittstelle'),
+    			html.a({href: 'https://github.com/juliuste/flix'}, 'inoffizielle Schnittstelle'),
     			' von Flixbus/Meinfernbus. Kurzgefasst: Wie Scraping, nur mit weniger Aufwand und Traffic für alle Beteiligten.'
     		]
     	},

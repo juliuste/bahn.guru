@@ -4,6 +4,7 @@ const html = require('pithy')
 
 module.exports = {
     title: 'Bahn-Preiskalender',
+    description: 'Der Bahn-Guru hilft dir dabei, die günstigsten Sparpreise der Deutschen Bahn zu finden. 🚅',
     ogTitle: 'bahn.guru - der Bahn-Preiskalender',
     ogDescription: 'Der Bahn-Guru hilft dir dabei, die günstigsten Sparpreise der Deutschen Bahn zu finden. 🚅',
     ogImage: 'https://bahn.guru/assets/screenshot.png',
