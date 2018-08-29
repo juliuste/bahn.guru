@@ -7,7 +7,7 @@ const querystring = require('querystring').stringify
 const addAutocomplete = (api) => {
     autocomplete(document.querySelector('#originInput'), {
     	source: (data, done) => {
-    		fetch(api.url + '?' + querystring({query: data.input}), {method: 'get', mode: 'cors'})
+            fetch(api.url + '?' + querystring(Object.assign(api.query || {}, {query: data.input})), {method: 'get', mode: 'cors'})
     		.then(r => r.json())
     		.then(api.adapter)
     		.then(data => done(null, [{list: data}]))

@@ -3,7 +3,13 @@
 const addAutocomplete = require('./common')
 
 const api = {
-	url: 'https://1.db.transport.rest/stations',
+	url: 'https://1.db.transport.rest/locations',
+	query: {
+		results: 5,
+		stations: true,
+		poi: false,
+		addresses: false
+	},
 	adapter: res => res.map(e => e.name)
 }
 
