@@ -37,28 +37,28 @@
     },
     "dependencies": {
         "apicache": "^1.2.3",
-        "compression": "^1.7.2",
-        "config": "^1.30.0",
-        "db-hafas": "^2.1.0",
-        "db-prices": "^3.0.0",
-        "express": "^4.16.3",
+        "compression": "^1.7.3",
+        "config": "^2.0.1",
+        "db-hafas": "^3.0.1",
+        "db-prices": "^3.0.1",
+        "express": "^4.16.4",
         "fetch-ponyfill": "^6.0.2",
         "flix": "^4.0.1",
         "horsey": "^4.2.2",
-        "js-beautify": "^1.7.5",
-        "lodash": "^4.17.10",
+        "js-beautify": "^1.8.8",
+        "lodash": "^4.17.11",
         "moment-duration-format": "^2.2.2",
         "moment-timezone": "^0.5.21",
-        "morgan": "^1.9.0",
+        "morgan": "^1.9.1",
         "ms": "^2.1.1",
-        "p-queue": "^2.4.2",
+        "p-queue": "^3.0.0",
         "p-retry": "^2.0.0",
         "p-timeout": "^2.0.1",
         "pithy": "0.0.4",
         "shorthash": "0.0.2"
     },
     "devDependencies": {
-        "browserify": "^16.2.2"
+        "browserify": "^16.2.3"
     },
     "scripts": {
         "build": "node build",

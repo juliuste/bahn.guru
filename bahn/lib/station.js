@@ -1,6 +1,6 @@
 'use strict'
 
-const stations = require('db-hafas').locations
+const stations = require('db-hafas')('bahn.guru').locations
 
 const station = (s) => {
 	if(!s) return Promise.reject(false)
