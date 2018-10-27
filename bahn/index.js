@@ -1,34 +1,32 @@
 'use strict'
 
+const pick = require('lodash/pick')
+
 const params = require('./lib/params')
 const options = require('./lib/options')
 const station = require('./lib/station')
 const journeys = require('./lib/journeys')
 const settings = require('./settings')
 
-const shopLink = (origin, destination, date, params) => {
-    const bc = params.bc
-    date = date.format('DD.MM.YY')
+const shopLink = (origin, destination, date, journey, params) => {
+	const shortenedJourney = pick(journey, ['type', 'id', 'price'])
+	const newLegs = []
+	for (let leg of journey.legs) {
+		const newLeg = pick(leg, ['origin', 'destination', 'departure', 'arrival', 'line'])
+		newLeg.line = pick(leg.line, ['type', 'name'])
+		newLegs.push(newLeg)
+	}
+	shortenedJourney.legs = newLegs
 
-    let bahncard = bc
-    if(params.class === 1){
-        if(bc === 2) bahncard = 1
-        if(bc === 4) bahncard = 3
-    }
-    const data = {
-        "startSucheSofort": true,
-        "startBhfName": origin.name,
-        "startBhfId": "00"+origin.id,
-        "zielBhfName": destination.name,
-        "zielBhfId": "00"+destination.id,
-        "schnelleVerbindungen": true,
-        "klasse": params.class,
-        "tripType": "single",
-        "datumHin": date,
-        "travellers": [{"typ":"E","bc":bahncard}]
-    }
+	// process.stdout.write(JSON.stringify(shortenedJourney)+"\n\n")
 
-    return 'https://ps.bahn.de/preissuche/preissuche/psc_start.post?country=DEU&lang=de&dbkanal_007=L01_S01_D001_KIN0001_qf-sparpreis-svb-kl2_lz03&ps=1&psc-anfragedata-json='+JSON.stringify(data)
+	let bahncard = params.bc
+	if(params.class === 1){
+		if(params.bc === 2) bahncard = 1
+		if(params.bc === 4) bahncard = 3
+	}
+
+	return `https://link.bahn.guru/?journey=${JSON.stringify(journey)}&bc=${bahncard}&class=${params.class}`
 }
 
 module.exports = {params, options, station, journeys, shopLink, settings}
