@@ -31,6 +31,16 @@ module.exports = {
     		]
     	},
     	{
+    		title: 'Wo finde ich den Quellcode?',
+    		description: [
+    			'Der ',
+    			html.a({href: 'https://github.com/juliuste/bahn.guru/blob/master/LICENSE'}, 'ISC-lizenzierte'),
+    			' Quellcode kann auf ',
+    			html.a({href: 'https://github.com/juliuste/bahn.guru'}, 'GitHub'),
+    			' abgerufen werden.'
+    		]
+    	},
+    	{
     		title: 'Verdient ihr mit dieser Website Geld?',
     		description: 'Nein. Keine Werbung, keine Affiliate Links. Theoretisch macht diese Website wegen der (niedrigen) Serverkosten sogar ein Bisschen Verlust. Aber wir finden: Das ist es wert!'
     	},
