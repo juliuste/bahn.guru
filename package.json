@@ -1,68 +1,80 @@
 {
-    "name": "bahn.guru",
-    "description": "DB Preiskalender",
-    "version": "0.16.0",
-    "keywords": [
-        "train",
-        "railway",
-        "hafas",
-        "fare",
-        "sparpreis",
-        "preis",
-        "DB",
-        "prices",
-        "preise",
-        "deutsch",
-        "allemand",
-        "german",
-        "bahn",
-        "calendar",
-        "kalender",
-        "preiskalender"
-    ],
-    "main": "index.js",
-    "files": [
-        "index.js",
-        "lib/*",
-        "bahn/*",
-        "config/default.json",
-        "assets/*"
-    ],
-    "author": "Julius Tens <mail@juliustens.eu>",
-    "homepage": "https://bahn.guru",
-    "repository": "juliuste/bahn.guru",
-    "bugs": "https://github.com/juliuste/bahn.guru/issues",
-    "engines": {
-        "node": ">=8"
-    },
-    "dependencies": {
-        "apicache": "^1.2.3",
-        "compression": "^1.7.3",
-        "config": "^2.0.1",
-        "db-hafas": "^3.0.1",
-        "db-prices": "^3.0.1",
-        "express": "^4.16.4",
-        "fetch-ponyfill": "^6.0.2",
-        "flix": "^4.0.1",
-        "horsey": "^4.2.2",
-        "js-beautify": "^1.8.8",
-        "lodash": "^4.17.11",
-        "moment-duration-format": "^2.2.2",
-        "moment-timezone": "^0.5.21",
-        "morgan": "^1.9.1",
-        "ms": "^2.1.1",
-        "p-queue": "^3.0.0",
-        "p-retry": "^2.0.0",
-        "p-timeout": "^2.0.1",
-        "pithy": "0.0.4",
-        "shorthash": "0.0.2"
-    },
-    "devDependencies": {
-        "browserify": "^16.2.3"
-    },
-    "scripts": {
-        "build": "node build",
-        "deploy": "./deploy/_all"
-    },
-    "license": "ISC"
+	"name": "bahn.guru",
+	"version": "0.16.0",
+	"description": "DB Preiskalender",
+	"keywords": [
+		"DB",
+		"allemand",
+		"bahn",
+		"calendar",
+		"deutsch",
+		"fare",
+		"german",
+		"hafas",
+		"kalender",
+		"preis",
+		"preise",
+		"preiskalender",
+		"prices",
+		"railway",
+		"sparpreis",
+		"train"
+	],
+	"homepage": "https://bahn.guru",
+	"bugs": "https://github.com/juliuste/bahn.guru/issues",
+	"repository": "juliuste/bahn.guru",
+	"license": "ISC",
+	"author": "Julius Tens <mail@juliustens.eu>",
+	"files": [
+		"index.js",
+		"lib/*",
+		"bahn/*",
+		"bus/*",
+		"config/default.json",
+		"assets/*"
+	],
+	"main": "index.js",
+	"scripts": {
+		"build": "node build",
+		"check-deps": "depcheck . --ignore-dirs=assets/scripts/bundle --ignores=browserify,config",
+		"deploy": "./deploy/_all",
+		"fix": "eslint --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ --fix .",
+		"lint": "eslint  --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ .",
+		"test": "npm run lint && npm run check-deps"
+	},
+	"dependencies": {
+		"apicache": "^1.2.3",
+		"compression": "^1.7.3",
+		"config": "^2.0.1",
+		"db-hafas": "^3.0.1",
+		"db-prices": "^3.0.1",
+		"express": "^4.16.4",
+		"fetch-ponyfill": "^6.0.2",
+		"flix": "^4.0.1",
+		"horsey": "^4.2.2",
+		"js-beautify": "^1.8.8",
+		"lodash": "^4.17.11",
+		"moment-duration-format": "^2.2.2",
+		"moment-timezone": "^0.5.21",
+		"morgan": "^1.9.1",
+		"ms": "^2.1.1",
+		"p-queue": "^3.0.0",
+		"p-retry": "^2.0.0",
+		"p-timeout": "^2.0.1",
+		"pithy": "0.0.4",
+		"shorthash": "0.0.2"
+	},
+	"devDependencies": {
+		"browserify": "^16.2.3",
+		"depcheck": "^0.6.11",
+		"eslint": "^5.8.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.14.0",
+		"eslint-plugin-node": "^8.0.0",
+		"eslint-plugin-promise": "^4.0.1",
+		"eslint-plugin-standard": "^4.0.0"
+	},
+	"engines": {
+		"node": ">=8"
+	}
 }
