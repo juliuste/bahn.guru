@@ -10,8 +10,7 @@ yarn.lock
 shrinkwrap.yaml
 package-lock.json
 
-assets/scripts/bundle.js
-assets/scripts/bundle-*.js
+assets/scripts/bundle
 *.log
 
 config/*
