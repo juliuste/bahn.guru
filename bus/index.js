@@ -7,8 +7,8 @@ const journeys = require('./lib/journeys')
 const settings = require('./settings')
 
 const shopLink = (origin, destination, date, journey, params) => {
-    date = date.format('DD.MM.YYYY')
-    return `https://shop.flixbus.de/search?departureCity=${origin.id}&arrivalCity=${destination.id}&_locale=de&rideDate=${date}`
+	date = date.format('DD.MM.YYYY')
+	return `https://shop.flixbus.de/search?departureCity=${origin.id}&arrivalCity=${destination.id}&_locale=de&rideDate=${date}`
 }
 
-module.exports = {params, options, station, journeys, shopLink, settings}
+module.exports = { params, options, station, journeys, shopLink, settings }

@@ -30,14 +30,14 @@ api.use(compression())
 // setup the logger
 if (config.logging) {
 	// create a write stream (in append mode)
-	const accessLogStream = fs.createWriteStream(path.join(__dirname, `access-${config.api}.log`), {flags: 'a'})
+	const accessLogStream = fs.createWriteStream(path.join(__dirname, `access-${config.api}.log`), { flags: 'a' })
 
 	morgan.token('id', (req, res) => req.headers['x-forwarded-for'] ? shorthash(req.headers['x-forwarded-for']) : shorthash(req.ip))
-	api.use(morgan(':date[iso] :id :method :url :status :response-time ms', {stream: accessLogStream}))
+	api.use(morgan(':date[iso] :id :method :url :status :response-time ms', { stream: accessLogStream }))
 }
 
 // enable static assets directory
-api.use('/assets', express.static('assets'));
+api.use('/assets', express.static('assets'))
 
 // set routes
 api.get('/', main)

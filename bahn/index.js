@@ -21,12 +21,12 @@ const shopLink = (origin, destination, date, journey, params) => {
 	// process.stdout.write(JSON.stringify(shortenedJourney)+"\n\n")
 
 	let bahncard = params.bc
-	if(params.class === 1){
-		if(params.bc === 2) bahncard = 1
-		if(params.bc === 4) bahncard = 3
+	if (params.class === 1) {
+		if (params.bc === 2) bahncard = 1
+		if (params.bc === 4) bahncard = 3
 	}
 
 	return `https://link.bahn.guru/?journey=${JSON.stringify(journey)}&bc=${bahncard}&class=${params.class}`
 }
 
-module.exports = {params, options, station, journeys, shopLink, settings}
+module.exports = { params, options, station, journeys, shopLink, settings }

@@ -1,19 +1,21 @@
 'use strict'
 
 const moment = require('moment-timezone')
+// eslint-disable-next-line no-unused-vars
 const mdf = require('moment-duration-format')
+const isNaN = require('lodash/isNaN')
 
 const parseTime = (time) => {
-	if(!time) return null
+	if (!time) return null
 	time = time.split(':')
-	if(time.length==1){
+	if (time.length === 1) {
 		let hours = +time[0]
-		if(hours!=NaN && hours>=0 && hours<24) return moment.duration(hours, 'hours')
+		if (!isNaN(hours) && hours >= 0 && hours < 24) return moment.duration(hours, 'hours')
 	}
-	if(time.length==2){
+	if (time.length === 2) {
 		let hours = +time[0]
 		let minutes = +time[1]
-		if(hours!=NaN && minutes!=NaN && hours>=0 && hours<24 && minutes>=0 && minutes<60) return moment.duration(60*hours+minutes, 'minutes')
+		if (!isNaN(hours) && !isNaN(minutes) && hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) return moment.duration(60 * hours + minutes, 'minutes')
 	}
 	return null
 }
@@ -30,18 +32,18 @@ const parseParams = (params) => {
 		maxChanges: null
 	}
 	// class
-	if(+params.class==1 || +params.class==2) settings.class = +params.class
+	if (+params.class === 1 || +params.class === 2) settings.class = +params.class
 	// BahnCard
-	if([0,2,4].indexOf(+params.bc)!=-1){
-		settings.bc = +params.bc+(settings.class-2)
+	if ([0, 2, 4].indexOf(+params.bc) !== -1) {
+		settings.bc = +params.bc + (settings.class - 2)
 		settings.bcOriginal = +params.bc
 	}
 	// duration
-	if(+params.duration && +params.duration>0 && +params.duration<24) settings.duration = +params.duration
+	if (+params.duration && +params.duration > 0 && +params.duration < 24) settings.duration = +params.duration
 	// departureAfter & arrivalBefore
 	settings.departureAfter = parseTime(params.departureAfter)
 	settings.arrivalBefore = parseTime(params.arrivalBefore)
-	if((settings.departureAfter && settings.arrivalBefore) && +settings.arrivalBefore.format('m')<+settings.departureAfter.format('m')) settings.arrivalBefore = null
+	if ((settings.departureAfter && settings.arrivalBefore) && +settings.arrivalBefore.format('m') < +settings.departureAfter.format('m')) settings.arrivalBefore = null
 
 	// maxChanges
 	const maxChanges = +params.maxChanges
