@@ -10,15 +10,10 @@
 
 [![bahn.guru](https://i.imgur.com/bJmvAJp.png)](https://bahn.guru)
 
-## Similar Projects
+## See also
 
-- [db-prices](https://github.com/juliuste/db-prices/) – "JavaScript client for the DB Sparpreise API."
-
-## Running
-```
-npm start
-# go to http://localhost:3009/
-```
+- [travel-price-map](https://github.com/juliuste/travel-price-map/) – Map of low-cost tickets ("Sparpreise") for several european cities
+- [db-prices](https://github.com/juliuste/db-prices/) – JavaScript client for the DB Sparpreise API
 
 ## Contributing
 

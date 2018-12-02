@@ -1,6 +1,6 @@
 {
 	"name": "bahn.guru",
-	"version": "0.16.0",
+	"version": "0.17.0",
 	"description": "DB Preiskalender",
 	"keywords": [
 		"DB",
@@ -25,19 +25,9 @@
 	"repository": "juliuste/bahn.guru",
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
-	"files": [
-		"index.js",
-		"lib/*",
-		"bahn/*",
-		"bus/*",
-		"config/default.json",
-		"assets/*"
-	],
-	"main": "index.js",
 	"scripts": {
-		"build": "node build",
-		"check-deps": "depcheck . --ignore-dirs=assets/scripts/bundle --ignores=browserify,config",
-		"deploy": "./deploy/_all",
+		"build": "./scripts/build",
+		"check-deps": "depcheck . --ignore-dirs=bundle --ignores=browserify",
 		"fix": "eslint --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ --fix .",
 		"lint": "eslint  --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ .",
 		"test": "npm run lint && npm run check-deps"
@@ -45,7 +35,6 @@
 	"dependencies": {
 		"apicache": "^1.2.3",
 		"compression": "^1.7.3",
-		"config": "^3.0.0",
 		"db-hafas": "^3.0.1",
 		"db-prices": "^3.0.1",
 		"express": "^4.16.4",
