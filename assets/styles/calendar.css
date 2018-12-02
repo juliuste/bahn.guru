@@ -69,6 +69,12 @@
     opacity: .7;
 }
 
+#calendar .date .month {
+    display: none;
+    font-weight: bold;
+    color: #444;
+}
+
 #calendar td.cheapest .price{
 	color: #0a8;
 	font-weight: bold;
@@ -148,6 +154,10 @@
         left: 0;
         padding: .35rem .25rem;
         font-size: 80%;
+    }
+
+    #calendar .date .month {
+        display: initial !important;
     }
 
     #calendar .priceShort{
