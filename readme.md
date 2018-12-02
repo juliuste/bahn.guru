@@ -5,7 +5,7 @@
 
 [![dependency status](https://img.shields.io/david/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/bahn.guru.svg)](https://david-dm.org/juliuste/bahn.guru#info=devDependencies)
-[![license](https://img.shields.io/github/license/juliuste/bahn.guru.svg?style=flat)](LICENSE)
+[![license](https://img.shields.io/github/license/juliuste/bahn.guru.svg?style=flat)](license)
 
 
 [![bahn.guru](https://i.imgur.com/bJmvAJp.png)](https://bahn.guru)

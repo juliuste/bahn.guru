@@ -38,7 +38,7 @@ module.exports = {
 			title: 'Wo finde ich den Quellcode?',
 			description: [
 				'Der ',
-				html.a({ href: 'https://github.com/juliuste/bahn.guru/blob/master/LICENSE' }, 'ISC-lizenzierte'),
+				html.a({ href: 'https://github.com/juliuste/bahn.guru/blob/master/license' }, 'ISC-lizenzierte'),
 				' Quellcode kann auf ',
 				html.a({ href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
 				' abgerufen werden.'
