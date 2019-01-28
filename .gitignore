@@ -1,15 +1,15 @@
 .DS_Store
-Thumbs.db
 
-.nvm-version
-node_modules
-npm-debug.log
-dist
+/.nvm-version
+/node_modules
+/npm-debug.log
 
-yarn.lock
-shrinkwrap.yaml
-package-lock.json
+/yarn.lock
+/shrinkwrap.yaml
+/package-lock.json
 
-scripts/deploy
-assets/scripts/bundle
-*.log
+/dist
+
+/scripts/deploy
+/assets/scripts/bundle
+/*.log
