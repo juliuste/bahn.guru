@@ -52,8 +52,8 @@ const text = (params) => {
 	if (params.class && params.class === 1) result.push(params.class + '. Klasse', ', ')
 	if (params.bc && (params.bc === 1 || params.bc === 2)) result.push('mit BahnCard 25', ', ')
 	if (params.bc && (params.bc === 3 || params.bc === 4)) result.push('mit BahnCard 50', ', ')
-	if (params.departureAfter && params.departureAfter.format('m') > 0) result.push('ab ' + params.departureAfter.format('HH:mm') + ' Uhr', ', ')
-	if (params.arrivalBefore && params.arrivalBefore.format('m') > 0) result.push('bis ' + params.arrivalBefore.format('HH:mm') + ' Uhr', ', ')
+	if (params.departureAfter && +params.departureAfter > 0) result.push('ab ' + params.departureAfter.format('HH:mm') + ' Uhr', ', ')
+	if (params.arrivalBefore && +params.arrivalBefore > 0) result.push('bis ' + params.arrivalBefore.format('HH:mm') + ' Uhr', ', ')
 	if (params.duration && params.duration > 0) result.push('Fahrzeit bis ' + params.duration + ' Stunden', ', ')
 	if (!isNull(params.maxChanges)) {
 		if (params.maxChanges === 0) result.push('keine Umstiege', ', ')
