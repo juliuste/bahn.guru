@@ -42,7 +42,7 @@ const input = (params) => ([
 	]),
 	html.span('.optRow', [
 		'max. ',
-		html.label('#maxChanges', [html.input({ type: 'text', placeholder: '∞', value: params.maxChanges || '', name: 'maxChanges' }), ' Umstiege']),
+		html.label('#maxChanges', [html.input({ type: 'text', placeholder: '∞', value: Number.isInteger(params.maxChanges) && params.maxChanges >= 0 ? params.maxChanges : '', name: 'maxChanges' }), ' Umstiege']),
 		'.'
 	])
 ])
