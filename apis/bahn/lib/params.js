@@ -35,7 +35,7 @@ const parseParams = (params) => {
 	if (+params.class === 1 || +params.class === 2) settings.class = +params.class
 	// BahnCard
 	if ([0, 2, 4].indexOf(+params.bc) !== -1) {
-		settings.bc = +params.bc + (settings.class - 2)
+		settings.bc = (settings.class === 2) ? +params.bc : (+params.bc === 0) ? 0 : (+params.bc - 1)
 		settings.bcOriginal = +params.bc
 	}
 	// duration
