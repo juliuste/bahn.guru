@@ -1,0 +1,73 @@
+#page{
+    min-width: 90%;
+    max-width: 90%;
+    color: #333 !important;
+}
+
+#page a, #page a:visited {
+     color: #666 !important;
+}
+
+#page h1 {
+    color: #333 !important;
+}
+
+#page h2{
+    line-height: 120%;
+    font-size: 140%;
+    margin-top: .2rem;
+    color: #333 !important;
+}
+
+.question, .continue {
+    width: 100%;
+    text-align: left;
+    margin: .8em 0;
+    max-width: 900px;
+}
+
+.continue p {
+    text-align: center;
+}
+
+.question h3, .continue h3{
+    font-size: 110%;
+    line-height: 120%;
+    margin-bottom: .2em;
+    color: #333;
+}
+
+.question p, .continue p{
+    line-height: 120%;
+    font-size: 90%;
+}
+
+.question a, .continue a{
+    text-decoration: none;
+    color: #333;
+}
+
+.question a:hover, .continue a:hover{
+    text-decoration: underline;
+}
+
+.question:last-of-type, .continue:last-of-type{
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 550px){
+    #header h1{
+        font-size: 4rem;
+        margin-top: 2rem;
+    }
+    #page h2{
+        font-size: 170%;
+        padding: .2em 0 .5em 0;
+    }
+    .question h3, .continue h3{
+        font-size: 120%;
+    }
+    .question p, .continue p{
+        font-size: 100%;
+    }
+}

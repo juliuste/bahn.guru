@@ -48,5 +48,6 @@ module.exports = {
 			title: 'Verdient ihr mit dieser Website Geld?',
 			description: 'Nein. Keine Werbung, keine Affiliate Links. Theoretisch macht diese Website wegen der (niedrigen) Serverkosten sogar ein Bisschen Verlust. Aber wir finden: Das ist es wert!'
 		}
-	]
+	],
+	greeting: null
 }
