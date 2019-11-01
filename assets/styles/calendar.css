@@ -75,6 +75,10 @@
     color: #444;
 }
 
+#calendar td.new-month {
+    background: #ddd;
+}
+
 #calendar td.cheapest .price{
 	color: #0a8;
 	font-weight: bold;
