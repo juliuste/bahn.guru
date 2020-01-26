@@ -54,11 +54,12 @@ module.exports = {
 		}
 	],
 	greeting: { // can be null
-		dates: ['2019-09-01'],
-		title: '80. Jahrestag des deutschen Überfalls auf Polen',
+		dates: ['2020-01-27'],
+
+		title: '75. Jahrestag der Befreiung des deutschen Vernichtungslagers Auschwitz-Birkenau',
 		message: [
 			html.br(),
-			'Mit dem Angriff auf Polen am 1. September 1939 entfesselte Deutschland den zweiten Weltkrieg in Europa. Der in besonderem Maße gegen die Bevölkerung Osteuropas gerichtete Vernichtungskrieg, der Völkermord an den Sinti und Roma (Porajmos) und der Völkermord an der jüdischen Bevölkerung (Shoah) wären insbesondere ohne die logistische Organisation durch die willfährige deutsche Reichsbahn nicht möglich gewesen.',
+			'Am 27. Januar 1945 befreite die Rote Armee das deutsche Konzentrations- und Vernichtungslager Auschwitz-Birkenau, Schauplatz des größten Verbrechens der Menschheitsgeschichte. Die Ermordung der europäischen Juden (Shoah), der Sinti und Roma (Porajmos), Homosexuellen, Zeugen Jehovas und Millionen weiterer Menschen, insbesondere aus Osteuropa, wäre ohne die logistische Organisation durch die willfährige deutsche Reichsbahn nicht möglich gewesen.',
 			html.br(),
 			html.br(),
 			'Wenngleich die meisten Deutschen heute keine Schuld an den ungeheuerlichen Verbrechen tragen, die im dunkelsten Kapitel unserer Geschichte im Namen dieses Landes begangen und von einem großen Teil seiner Bevölkerung mitgetragen wurden, ist es unsere Pflicht, die Erinnerung an das Geschehene zu bewahren und auf die historische Verantwortung unseres Staates sowie beteiligter Organisationen hinzuweisen.',
