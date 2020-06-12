@@ -53,12 +53,5 @@ module.exports = {
 			description: 'Es wäre in der Tat spannend, auch einen Vergleich zu Fernbuspreisen anzubieten. Das wird jedoch leider mittelfristig nicht geschehen. Kurze Begründung: Wir trauen uns nicht. Längere Begründung: Wir existieren derzeit nur unter Duldung der Deutschen Bahn, da diese Website der DB nicht schadet und im besten Fall noch neue Kunden beschert. Listeten wir hier jedoch auch Fernbuspreise auf, könnte man uns ggf. vorwerfen, Kunden von der DB zur Konkurrenz zu treiben.'
 		}
 	],
-	greeting: { // can be null
-		dates: null,
-		title: null,
-		message: [
-			html.br(),
-			'Bitte beachten Sie bei der Benutzung dieser Website, dass zur Verlangsamung der Verbreitung des neuartigen Coronavirus\' SARS-CoV-2 in Deutschland aktuell dringend empfohlen wird, auf jegliche Reisen ins In- und Ausland zu verzichten.'
-		]
-	}
+	greeting: null
 }
