@@ -53,5 +53,18 @@ module.exports = {
 			description: 'Es wäre in der Tat spannend, auch einen Vergleich zu Fernbuspreisen anzubieten. Das wird jedoch leider mittelfristig nicht geschehen. Kurze Begründung: Wir trauen uns nicht. Längere Begründung: Wir existieren derzeit nur unter Duldung der Deutschen Bahn, da diese Website der DB nicht schadet und im besten Fall noch neue Kunden beschert. Listeten wir hier jedoch auch Fernbuspreise auf, könnte man uns ggf. vorwerfen, Kunden von der DB zur Konkurrenz zu treiben.'
 		}
 	],
-	greeting: null
+	greeting: { // can be null
+		dates: ['2021-01-27'],
+		title: '76. Jahrestag der Befreiung des deutschen Vernichtungslagers Auschwitz-Birkenau',
+		message: [
+			html.br(),
+			'Am 27. Januar 1945 befreite die Rote Armee das deutsche Konzentrations- und Vernichtungslager Auschwitz-Birkenau, Schauplatz des größten Verbrechens der Menschheitsgeschichte. Die Ermordung der europäischen Juden (Shoah), der Sinti und Roma (Porajmos), Homosexuellen, Zeugen Jehovas und Millionen weiterer Menschen, insbesondere aus Osteuropa, wäre ohne die logistische Organisation durch die willfährige deutsche Reichsbahn nicht möglich gewesen.',
+			html.br(),
+			html.br(),
+			'Wenngleich die meisten Deutschen heute keine Schuld an den ungeheuerlichen Verbrechen tragen, die im dunkelsten Kapitel unserer Geschichte im Namen dieses Landes begangen und von einem großen Teil seiner Bevölkerung mitgetragen wurden, ist es unsere Pflicht, die Erinnerung an das Geschehene zu bewahren und auf die historische Verantwortung unseres Staates sowie beteiligter Organisationen hinzuweisen.',
+			html.br(),
+			html.br(),
+			'Als ehrenamtliche Betreiber dieser Seite, die zwar offiziell nicht mit der Deutschen Bahn assoziiert ist, aber doch in gewisser Hinsicht als (kleiner) Teil ihres erweiterten Ökosystems gesehen werden kann, hoffen wir, dass die DB als Nachfolgerin der deutschen Reichsbahn zu dieser historischen Verantwortung steht.'
+		]
+	}
 }
