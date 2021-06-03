@@ -17,34 +17,34 @@ const input = (params) => ([
 	html.span('.optRow', [
 		html.select({ name: 'class', id: 'class' }, [
 			optionHTML(1, '1.', params.class === 1),
-			optionHTML(2, '2.', params.class !== 1)
+			optionHTML(2, '2.', params.class !== 1),
 		]),
 		' Klasse, Bahncard: ',
 		html.select({ name: 'bc', id: 'bc' }, [
 			optionHTML(0, '--', params.bc === 0),
 			optionHTML(2, '25', (params.bc === 1 || params.bc === 2)),
-			optionHTML(4, '50', (params.bc === 3 || params.bc === 4))
+			optionHTML(4, '50', (params.bc === 3 || params.bc === 4)),
 		]),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		html.label('#departureAfter', ['ab: ', html.input({ type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		html.label('#arrivalBefore', ['bis: ', html.input({ type: 'text', placeholder: '--:--', value: (params.arrivalBefore) ? params.arrivalBefore.format('hh:mm') : '', name: 'arrivalBefore' }), ' Uhr']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		'max. ',
 		html.label('#duration', [html.input({ type: 'text', placeholder: 24, value: params.duration || '', name: 'duration' }), ' h Fahrzeit']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		'max. ',
 		html.label('#maxChanges', [html.input({ type: 'text', placeholder: '∞', value: Number.isInteger(params.maxChanges) && params.maxChanges >= 0 ? params.maxChanges : '', name: 'maxChanges' }), ' Umstiege']),
-		'.'
-	])
+		'.',
+	]),
 ])
 
 const text = (params) => {

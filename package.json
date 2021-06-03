@@ -1,6 +1,7 @@
 {
 	"name": "bahn.guru",
 	"version": "0.17.0",
+	"private": true,
 	"description": "DB Preiskalender",
 	"keywords": [
 		"DB",
@@ -28,7 +29,7 @@
 	"scripts": {
 		"build": "./scripts/build",
 		"check-deps": "depcheck . --ignore-dirs=bundle --ignores=browserify",
-		"fix": "eslint --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ --fix .",
+		"fix": "npm run lint -- --fix",
 		"lint": "eslint  --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ .",
 		"test": "npm run lint && npm run check-deps"
 	},
@@ -56,14 +57,13 @@
 	"devDependencies": {
 		"browserify": "^16.5.2",
 		"depcheck": "^1.4.1",
-		"eslint": "^6.8.0",
-		"eslint-config-standard": "^12.0.0",
+		"eslint": "^7.27.0",
+		"eslint-config-standard": "^16.0.3",
 		"eslint-plugin-import": "^2.23.4",
-		"eslint-plugin-node": "^9.2.0",
-		"eslint-plugin-promise": "^4.3.1",
-		"eslint-plugin-standard": "^4.1.0"
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^5.1.0"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=14"
 	}
 }

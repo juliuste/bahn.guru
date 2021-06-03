@@ -9,7 +9,7 @@ const journeys = (params, day) => {
 	const dayTimestamp = +(moment.tz(day, timezone).startOf('day'))
 	return client(params.origin.id,	params.destination.id, moment(day).toDate(), {
 		class: params.class,
-		travellers: [{ typ: 'E', bc: params.bc }]
+		travellers: [{ typ: 'E', bc: params.bc }],
 	})
 		.then(results =>
 			results.filter(j => {
@@ -24,11 +24,11 @@ const journeys = (params, day) => {
 				(isNull(params.maxChanges) || params.maxChanges >= changes) &&
 				(j.legs.some(l => l.line && l.line.product !== 'BUS'))
 				)
-			})
+			}),
 		)
 		.then(results => {
-			for (let journey of results) {
-				for (let leg of journey.legs) {
+			for (const journey of results) {
+				for (const leg of journey.legs) {
 					leg.product = leg.line ? leg.line.product : null
 				}
 			}

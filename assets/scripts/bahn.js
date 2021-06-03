@@ -8,9 +8,9 @@ const api = {
 		results: 5,
 		stations: true,
 		poi: false,
-		addresses: false
+		addresses: false,
 	},
-	adapter: res => res.map(e => e.name)
+	adapter: res => res.map(e => e.name),
 }
 
 addAutocomplete(api)

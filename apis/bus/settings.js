@@ -23,16 +23,16 @@ module.exports = {
 				html.a({ href: 'https://codefor.de/berlin/' }, 'OK Lab Berlin'),
 				'. Alle Preisdaten sind daher unverbindlich, bitte überprüfen Sie Ihre Suchergebnisse auf der Website von ',
 				html.a({ href: 'https://flixbus.de' }, 'Flixbus'),
-				'.'
-			]
+				'.',
+			],
 		},
 		{
 			title: 'Woher stammen die Daten?',
 			description: [
 				'Diese Website nutzt eine ',
 				html.a({ href: 'https://github.com/juliuste/flix' }, 'inoffizielle Schnittstelle'),
-				' von Flixbus/Meinfernbus. Kurzgefasst: Wie Scraping, nur mit weniger Aufwand und Traffic für alle Beteiligten.'
-			]
+				' von Flixbus/Meinfernbus. Kurzgefasst: Wie Scraping, nur mit weniger Aufwand und Traffic für alle Beteiligten.',
+			],
 		},
 		{
 			title: 'Wo finde ich den Quellcode?',
@@ -41,13 +41,13 @@ module.exports = {
 				html.a({ href: 'https://github.com/juliuste/bahn.guru/blob/master/license' }, 'ISC-lizenzierte'),
 				' Quellcode kann auf ',
 				html.a({ href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
-				' abgerufen werden.'
-			]
+				' abgerufen werden.',
+			],
 		},
 		{
 			title: 'Verdient ihr mit dieser Website Geld?',
-			description: 'Nein. Keine Werbung, keine Affiliate Links. Theoretisch macht diese Website wegen der (niedrigen) Serverkosten sogar ein Bisschen Verlust. Aber wir finden: Das ist es wert!'
-		}
+			description: 'Nein. Keine Werbung, keine Affiliate Links. Theoretisch macht diese Website wegen der (niedrigen) Serverkosten sogar ein Bisschen Verlust. Aber wir finden: Das ist es wert!',
+		},
 	],
-	greeting: null
+	greeting: null,
 }

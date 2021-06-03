@@ -21,11 +21,11 @@ const journeys = (params, day) => {
 				(!params.arrivalBefore || +arrival <= +params.arrivalBefore + dayTimestamp) &&
 				(isNull(params.maxChanges) || params.maxChanges >= changes)
 				)
-			})
+			}),
 		)
 		.then(results => {
-			for (let journey of results) {
-				for (let leg of journey.legs) {
+			for (const journey of results) {
+				for (const leg of journey.legs) {
 					if (leg.mode === 'train') leg.product = 'Zug'
 					else leg.product = 'Bus'
 				}

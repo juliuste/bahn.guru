@@ -17,22 +17,22 @@ const optionHTML = (value, text, checked) => {
 const input = (params) => ([
 	html.span('.optRow', [
 		html.label('#departureAfter', ['Ab: ', html.input({ type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		html.label('#arrivalBefore', ['bis: ', html.input({ type: 'text', placeholder: '--:--', value: (params.arrivalBefore) ? params.arrivalBefore.format('hh:mm') : '', name: 'arrivalBefore' }), ' Uhr']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		'max. ',
 		html.label('#duration', [html.input({ type: 'text', placeholder: 24, value: params.duration || '', name: 'duration' }), ' h Fahrzeit']),
-		', '
+		', ',
 	]),
 	html.span('.optRow', [
 		'max. ',
 		html.label('#maxChanges', [html.input({ type: 'text', placeholder: '∞', value: Number.isInteger(params.maxChanges) && params.maxChanges >= 0 ? params.maxChanges : '', name: 'maxChanges' }), ' Umstiege']),
-		'.'
-	])
+		'.',
+	]),
 ])
 
 const text = (params) => {

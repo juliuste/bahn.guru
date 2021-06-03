@@ -13,8 +13,8 @@ const station = (s) => {
 				return false
 			})
 		.catch(
-			// eslint-disable-next-line handle-callback-err
-			(error) => false
+			// eslint-disable-next-line node/handle-callback-err
+			(error) => false,
 		)
 }
 

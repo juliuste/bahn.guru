@@ -11,7 +11,7 @@ const settings = require('./settings')
 const shopLink = (origin, destination, date, journey, params) => {
 	const shortenedJourney = pick(journey, ['type', 'id', 'price'])
 	const newLegs = []
-	for (let leg of journey.legs) {
+	for (const leg of journey.legs) {
 		const newLeg = pick(leg, ['origin', 'destination', 'departure', 'arrival', 'line'])
 		newLeg.line = pick(leg.line, ['type', 'name'])
 		newLegs.push(newLeg)

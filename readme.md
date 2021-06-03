@@ -2,8 +2,8 @@
 
 [Bahn-Preiskalender](https://bahn.guru) website: Find the cheapest "Sparpreise" (low-cost tickets) for the next month.
 
-[![license](https://img.shields.io/github/license/juliuste/bahn.guru.svg?style=flat)](license)
-[![chat on gitter](https://badges.gitter.im/juliuste.svg)](https://gitter.im/juliuste)
+[![License](https://img.shields.io/github/license/juliuste/bahn.guru.svg?style=flat)](license)
+[![Contact me](https://img.shields.io/badge/contact-email-turquoise)](mailto:mail@juliustens.eu)
 
 [![bahn.guru](https://i.imgur.com/bJmvAJp.png)](https://bahn.guru)
 

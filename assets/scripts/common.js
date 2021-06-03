@@ -18,7 +18,7 @@ const addAutocomplete = (api) => {
 		limit: 5,
 		appendTo: document.querySelector('#origin'),
 		autoHideOnClick: true,
-		autoHideOnBlur: true
+		autoHideOnBlur: true,
 	})
 
 	autocomplete(document.querySelector('#destinationInput'), {
@@ -34,7 +34,7 @@ const addAutocomplete = (api) => {
 		limit: 5,
 		appendTo: document.querySelector('#destination'),
 		autoHideOnClick: true,
-		autoHideOnBlur: true
+		autoHideOnBlur: true,
 	})
 }
 
