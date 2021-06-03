@@ -1,6 +1,0 @@
-#!/bin/bash
-for directory in apis/*/ ; do
-	api=$(basename $directory)
-	echo "Bundling for $api"
-	browserify "assets/scripts/$api.js" > "assets/scripts/bundle/$api.js"
-done

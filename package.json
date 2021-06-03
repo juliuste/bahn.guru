@@ -27,8 +27,10 @@
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
 	"scripts": {
-		"build": "./scripts/build",
-		"check-deps": "depcheck . --ignore-dirs=bundle --ignores=browserify",
+		"build": "npm run build-bahn && npm run build-bus",
+		"build-bahn": "browserify 'assets/scripts/bahn.js' > 'assets/scripts/bundle/bahn.js'",
+		"build-bus": "browserify 'assets/scripts/bus.js' > 'assets/scripts/bundle/bus.js'",
+		"check-deps": "depcheck . --ignore-dirs=bundle",
 		"fix": "npm run lint -- --fix",
 		"lint": "eslint  --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ .",
 		"test": "npm run lint && npm run check-deps"
