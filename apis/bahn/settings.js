@@ -1,4 +1,4 @@
-import html from 'pithy'
+import { h } from 'hastscript'
 
 const settings = {
 	title: 'Bahn-Preiskalender',
@@ -18,9 +18,9 @@ const settings = {
 			title: 'Ist dies eine offizielle Website der Deutschen Bahn?',
 			description: [
 				'Nein, der Bahn-Guru ist ein momentan von der DB geduldetes Projekt ehrenamtlicher Open-Source-Softwareentwickler vom ',
-				html.a({ href: 'https://codefor.de/berlin/' }, 'OK Lab Berlin'),
+				h('a', { href: 'https://codefor.de/berlin/' }, 'OK Lab Berlin'),
 				'. Alle Preisdaten sind daher unverbindlich, bitte überprüfen Sie Ihre Suchergebnisse auf der Website der ',
-				html.a({ href: 'http://bahn.de' }, 'Deutschen Bahn'),
+				h('a', { href: 'http://bahn.de' }, 'Deutschen Bahn'),
 				'.',
 			],
 		},
@@ -28,7 +28,7 @@ const settings = {
 			title: 'Woher stammen die Daten?',
 			description: [
 				'Diese Website nutzt eine ',
-				html.a({ href: 'https://github.com/juliuste/db-prices' }, 'inoffizielle Schnittstelle'),
+				h('a', { href: 'https://github.com/juliuste/db-prices' }, 'inoffizielle Schnittstelle'),
 				' der Deutschen Bahn. Kurzgefasst: Wie Scraping, nur mit weniger Aufwand und Traffic für alle Beteiligten.',
 			],
 		},
@@ -36,9 +36,9 @@ const settings = {
 			title: 'Wo finde ich den Quellcode?',
 			description: [
 				'Der ',
-				html.a({ href: 'https://github.com/juliuste/bahn.guru/blob/main/license' }, 'ISC-lizenzierte'),
+				h('a', { href: 'https://github.com/juliuste/bahn.guru/blob/main/license' }, 'ISC-lizenzierte'),
 				' Quellcode kann auf ',
-				html.a({ href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
+				h('a', { href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
 				' abgerufen werden.',
 			],
 		},
@@ -55,13 +55,13 @@ const settings = {
 		dates: ['2021-01-27'],
 		title: '76. Jahrestag der Befreiung des deutschen Vernichtungslagers Auschwitz-Birkenau',
 		message: [
-			html.br(),
+			h('br'),
 			'Am 27. Januar 1945 befreite die Rote Armee das deutsche Konzentrations- und Vernichtungslager Auschwitz-Birkenau, Schauplatz des größten Verbrechens der Menschheitsgeschichte. Die Ermordung der europäischen Juden (Shoah), der Sinti und Roma (Porajmos), Homosexuellen, Zeugen Jehovas und Millionen weiterer Menschen, insbesondere aus Osteuropa, wäre ohne die logistische Organisation durch die willfährige deutsche Reichsbahn nicht möglich gewesen.',
-			html.br(),
-			html.br(),
+			h('br'),
+			h('br'),
 			'Wenngleich die meisten Deutschen heute keine Schuld an den ungeheuerlichen Verbrechen tragen, die im dunkelsten Kapitel unserer Geschichte im Namen dieses Landes begangen und von einem großen Teil seiner Bevölkerung mitgetragen wurden, ist es unsere Pflicht, die Erinnerung an das Geschehene zu bewahren und auf die historische Verantwortung unseres Staates sowie beteiligter Organisationen hinzuweisen.',
-			html.br(),
-			html.br(),
+			h('br'),
+			h('br'),
 			'Als ehrenamtliche Betreiber dieser Seite, die zwar offiziell nicht mit der Deutschen Bahn assoziiert ist, aber doch in gewisser Hinsicht als (kleiner) Teil ihres erweiterten Ökosystems gesehen werden kann, hoffen wir, dass die DB als Nachfolgerin der deutschen Reichsbahn zu dieser historischen Verantwortung steht.',
 		],
 	},

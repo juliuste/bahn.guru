@@ -1,4 +1,4 @@
-import html from 'pithy'
+import { h } from 'hastscript'
 
 const settings = {
 	title: 'Bus-Preiskalender',
@@ -18,9 +18,9 @@ const settings = {
 			title: 'Ist dies eine offizielle Website von Flixbus?',
 			description: [
 				'Nein, der Bahn-Guru für Busse ist ein Projekt ehrenamtlicher Open-Source-Softwareentwickler vom ',
-				html.a({ href: 'https://codefor.de/berlin/' }, 'OK Lab Berlin'),
+				h('a', { href: 'https://codefor.de/berlin/' }, 'OK Lab Berlin'),
 				'. Alle Preisdaten sind daher unverbindlich, bitte überprüfen Sie Ihre Suchergebnisse auf der Website von ',
-				html.a({ href: 'https://flixbus.de' }, 'Flixbus'),
+				h('a', { href: 'https://flixbus.de' }, 'Flixbus'),
 				'.',
 			],
 		},
@@ -28,7 +28,7 @@ const settings = {
 			title: 'Woher stammen die Daten?',
 			description: [
 				'Diese Website nutzt eine ',
-				html.a({ href: 'https://github.com/juliuste/flix' }, 'inoffizielle Schnittstelle'),
+				h('a', { href: 'https://github.com/juliuste/flix' }, 'inoffizielle Schnittstelle'),
 				' von Flixbus/Meinfernbus. Kurzgefasst: Wie Scraping, nur mit weniger Aufwand und Traffic für alle Beteiligten.',
 			],
 		},
@@ -36,9 +36,9 @@ const settings = {
 			title: 'Wo finde ich den Quellcode?',
 			description: [
 				'Der ',
-				html.a({ href: 'https://github.com/juliuste/bahn.guru/blob/main/license' }, 'ISC-lizenzierte'),
+				h('a', { href: 'https://github.com/juliuste/bahn.guru/blob/main/license' }, 'ISC-lizenzierte'),
 				' Quellcode kann auf ',
-				html.a({ href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
+				h('a', { href: 'https://github.com/juliuste/bahn.guru' }, 'GitHub'),
 				' abgerufen werden.',
 			],
 		},

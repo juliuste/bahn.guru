@@ -1,4 +1,4 @@
-import html from 'pithy'
+import { h } from 'hastscript'
 // eslint-disable-next-line no-unused-vars
 import moment from 'moment-timezone'
 // eslint-disable-next-line no-unused-vars
@@ -9,26 +9,26 @@ import isNull from 'lodash/isNull.js'
 const optionHTML = (value, text, checked) => {
 	const opt = { value: value }
 	if (checked) opt.selected = true
-	return html.option(opt, text)
+	return h('option', opt, text)
 }
 
 export const input = (params) => ([
-	html.span('.optRow', [
-		html.label('#departureAfter', ['Ab: ', html.input({ type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
+	h('span.optRow', [
+		h('label#departureAfter', ['Ab: ', h('input', { type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
 		', ',
 	]),
-	html.span('.optRow', [
-		html.label('#arrivalBefore', ['bis: ', html.input({ type: 'text', placeholder: '--:--', value: (params.arrivalBefore) ? params.arrivalBefore.format('hh:mm') : '', name: 'arrivalBefore' }), ' Uhr']),
+	h('span.optRow', [
+		h('label#arrivalBefore', ['bis: ', h('input', { type: 'text', placeholder: '--:--', value: (params.arrivalBefore) ? params.arrivalBefore.format('hh:mm') : '', name: 'arrivalBefore' }), ' Uhr']),
 		', ',
 	]),
-	html.span('.optRow', [
+	h('span.optRow', [
 		'max. ',
-		html.label('#duration', [html.input({ type: 'text', placeholder: 24, value: params.duration || '', name: 'duration' }), ' h Fahrzeit']),
+		h('label#duration', [h('input', { type: 'text', placeholder: 24, value: params.duration || '', name: 'duration' }), ' h Fahrzeit']),
 		', ',
 	]),
-	html.span('.optRow', [
+	h('span.optRow', [
 		'max. ',
-		html.label('#maxChanges', [html.input({ type: 'text', placeholder: '∞', value: Number.isInteger(params.maxChanges) && params.maxChanges >= 0 ? params.maxChanges : '', name: 'maxChanges' }), ' Umstiege']),
+		h('label#maxChanges', [h('input', { type: 'text', placeholder: '∞', value: Number.isInteger(params.maxChanges) && params.maxChanges >= 0 ? params.maxChanges : '', name: 'maxChanges' }), ' Umstiege']),
 		'.',
 	]),
 ])

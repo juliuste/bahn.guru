@@ -41,6 +41,8 @@
 		"express": "^4.17.1",
 		"fetch-ponyfill": "^7.1.0",
 		"flix": "^4.0.3",
+		"hast-util-to-html": "^8.0.0",
+		"hastscript": "^7.0.1",
 		"horsey": "^4.2.2",
 		"js-beautify": "^1.13.13",
 		"lodash": "^4.17.21",
@@ -51,8 +53,8 @@
 		"p-queue": "^7.1.0",
 		"p-retry": "^4.5.0",
 		"p-timeout": "^5.0.0",
-		"pithy": "0.0.4",
-		"shorthash": "0.0.2"
+		"shorthash": "0.0.2",
+		"unist-builder": "^3.0.0"
 	},
 	"devDependencies": {
 		"browserify": "^17.0.0",

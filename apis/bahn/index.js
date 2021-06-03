@@ -1,4 +1,5 @@
 import pick from 'lodash/pick.js'
+import { URL } from 'url'
 
 export { default as params } from './lib/params.js'
 export * as options from './lib/options.js'
@@ -24,5 +25,9 @@ export const shopLink = (origin, destination, date, journey, params) => {
 		if (params.bc === 4) bahncard = 3
 	}
 
-	return `https://link.bahn.guru/?journey=${JSON.stringify(journey)}&bc=${bahncard}&class=${params.class}`
+	const url = new URL('https://link.bahn.guru/')
+	url.searchParams.append('journey', JSON.stringify(journey))
+	url.searchParams.append('bc', bahncard)
+	url.searchParams.append('class', params.class)
+	return url.toString()
 }
