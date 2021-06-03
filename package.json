@@ -48,12 +48,10 @@
 		"lodash": "^4.17.21",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.33",
-		"morgan": "^1.10.0",
 		"ms": "^2.1.3",
 		"p-queue": "^7.1.0",
 		"p-retry": "^4.5.0",
 		"p-timeout": "^5.0.0",
-		"shorthash": "0.0.2",
 		"unist-builder": "^3.0.0"
 	},
 	"devDependencies": {
