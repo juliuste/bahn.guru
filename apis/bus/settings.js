@@ -1,8 +1,6 @@
-'use strict'
+import html from 'pithy'
 
-const html = require('pithy')
-
-module.exports = {
+const settings = {
 	title: 'Bus-Preiskalender',
 	description: 'Der Preiskalender für Busse hilft dir dabei, die günstigsten Sparpreise von Flixbus/Meinfernbus zu finden. 🚌',
 	timezone: 'Europe/Berlin',
@@ -51,3 +49,4 @@ module.exports = {
 	],
 	greeting: null,
 }
+export default settings

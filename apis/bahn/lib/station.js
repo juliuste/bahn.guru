@@ -1,6 +1,5 @@
-'use strict'
-
-const stations = require('db-hafas')('bahn.guru').locations
+import createHafasClient from 'db-hafas'
+const { locations: stations } = createHafasClient('bahn.guru')
 
 const station = (s) => {
 	// eslint-disable-next-line prefer-promise-reject-errors
@@ -17,4 +16,4 @@ const station = (s) => {
 		)
 }
 
-module.exports = station
+export default station

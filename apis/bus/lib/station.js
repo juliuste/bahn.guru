@@ -1,6 +1,4 @@
-'use strict'
-
-const stations = require('flix').regions
+import { regions as stations } from 'flix'
 
 const station = (s) => {
 	// eslint-disable-next-line prefer-promise-reject-errors
@@ -18,4 +16,4 @@ const station = (s) => {
 		)
 }
 
-module.exports = station
+export default station

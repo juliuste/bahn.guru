@@ -1,11 +1,9 @@
-'use strict'
-
-const html = require('pithy')
+import html from 'pithy'
 // eslint-disable-next-line no-unused-vars
-const moment = require('moment-timezone')
+import moment from 'moment-timezone'
 // eslint-disable-next-line no-unused-vars
-const mdf = require('moment-duration-format')
-const isNull = require('lodash/isNull')
+import mdf from 'moment-duration-format'
+import isNull from 'lodash/isNull.js'
 
 const optionHTML = (value, text, checked) => {
 	const opt = { value: value }
@@ -13,7 +11,7 @@ const optionHTML = (value, text, checked) => {
 	return html.option(opt, text)
 }
 
-const input = (params) => ([
+export const input = (params) => ([
 	html.span('.optRow', [
 		html.select({ name: 'class', id: 'class' }, [
 			optionHTML(1, '1.', params.class === 1),
@@ -47,7 +45,7 @@ const input = (params) => ([
 	]),
 ])
 
-const text = (params) => {
+export const text = (params) => {
 	const result = []
 	if (params.class && params.class === 1) result.push(params.class + '. Klasse', ', ')
 	if (params.bc && (params.bc === 1 || params.bc === 2)) result.push('mit BahnCard 25', ', ')
@@ -64,7 +62,7 @@ const text = (params) => {
 	return result
 }
 
-const url = (params) => {
+export const url = (params) => {
 	const result = []
 	if (params.class) result.push('class=' + params.class)
 	if (params.bc) result.push('bc=' + params.bcOriginal)
@@ -74,5 +72,3 @@ const url = (params) => {
 	if (!isNull(params.maxChanges)) result.push('maxChanges=' + params.maxChanges)
 	return result
 }
-
-module.exports = { input, text, url }

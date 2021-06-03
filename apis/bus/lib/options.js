@@ -1,11 +1,9 @@
-'use strict'
-
-const html = require('pithy')
+import html from 'pithy'
 // eslint-disable-next-line no-unused-vars
-const moment = require('moment-timezone')
+import moment from 'moment-timezone'
 // eslint-disable-next-line no-unused-vars
-const mdf = require('moment-duration-format')
-const isNull = require('lodash/isNull')
+import mdf from 'moment-duration-format'
+import isNull from 'lodash/isNull.js'
 
 // eslint-disable-next-line no-unused-vars
 const optionHTML = (value, text, checked) => {
@@ -14,7 +12,7 @@ const optionHTML = (value, text, checked) => {
 	return html.option(opt, text)
 }
 
-const input = (params) => ([
+export const input = (params) => ([
 	html.span('.optRow', [
 		html.label('#departureAfter', ['Ab: ', html.input({ type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
 		', ',
@@ -35,7 +33,7 @@ const input = (params) => ([
 	]),
 ])
 
-const text = (params) => {
+export const text = (params) => {
 	const result = []
 	if (params.departureAfter && params.departureAfter.format('m') > 0) result.push('ab ' + params.departureAfter.format('HH:mm') + ' Uhr', ', ')
 	if (params.arrivalBefore && params.arrivalBefore.format('m') > 0) result.push('bis ' + params.arrivalBefore.format('HH:mm') + ' Uhr', ', ')
@@ -49,7 +47,7 @@ const text = (params) => {
 	return result
 }
 
-const url = (params) => {
+export const url = (params) => {
 	const result = []
 	if (params.departureAfter) result.push('departureAfter=' + params.departureAfter.format('HH:mm'))
 	if (params.arrivalBefore) result.push('arrivalBefore=' + params.arrivalBefore.format('HH:mm'))
@@ -57,5 +55,3 @@ const url = (params) => {
 	if (!isNull(params.maxChanges)) result.push('maxChanges=' + params.maxChanges)
 	return result
 }
-
-module.exports = { input, text, url }

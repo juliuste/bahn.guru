@@ -1,9 +1,7 @@
-'use strict'
-
-const moment = require('moment-timezone')
+import moment from 'moment-timezone'
 // eslint-disable-next-line no-unused-vars
-const mdf = require('moment-duration-format')
-const isNaN = require('lodash/isNaN')
+import mdf from 'moment-duration-format'
+import isNaN from 'lodash/isNaN.js'
 
 const parseTime = (time) => {
 	if (!time) return null
@@ -52,4 +50,4 @@ const parseParams = (params) => {
 	return settings
 }
 
-module.exports = parseParams
+export default parseParams

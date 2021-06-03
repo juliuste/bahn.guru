@@ -1,8 +1,6 @@
-'use strict'
+import html from 'pithy'
 
-const html = require('pithy')
-
-module.exports = {
+const settings = {
 	title: 'Bahn-Preiskalender',
 	description: 'Der Bahn-Guru hilft dir dabei, die günstigsten Sparpreise der Deutschen Bahn zu finden. 🚅',
 	timezone: 'Europe/Berlin',
@@ -68,3 +66,4 @@ module.exports = {
 		],
 	},
 }
+export default settings

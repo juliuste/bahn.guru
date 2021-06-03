@@ -1,14 +1,10 @@
-'use strict'
+export { default as params } from './lib/params.js'
+export * as options from './lib/options.js'
+export { default as station } from './lib/station.js'
+export { default as journeys } from './lib/journeys.js'
+export { default as settings } from './settings.js'
 
-const params = require('./lib/params')
-const options = require('./lib/options')
-const station = require('./lib/station')
-const journeys = require('./lib/journeys')
-const settings = require('./settings')
-
-const shopLink = (origin, destination, date, journey, params) => {
+export const shopLink = (origin, destination, date, journey, params) => {
 	date = date.format('DD.MM.YYYY')
 	return `https://shop.flixbus.de/search?departureCity=${origin.id}&arrivalCity=${destination.id}&_locale=de&rideDate=${date}`
 }
-
-module.exports = { params, options, station, journeys, shopLink, settings }

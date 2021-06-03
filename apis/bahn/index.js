@@ -1,14 +1,12 @@
-'use strict'
+import pick from 'lodash/pick.js'
 
-const pick = require('lodash/pick')
+export { default as params } from './lib/params.js'
+export * as options from './lib/options.js'
+export { default as station } from './lib/station.js'
+export { default as journeys } from './lib/journeys.js'
+export { default as settings } from './settings.js'
 
-const params = require('./lib/params')
-const options = require('./lib/options')
-const station = require('./lib/station')
-const journeys = require('./lib/journeys')
-const settings = require('./settings')
-
-const shopLink = (origin, destination, date, journey, params) => {
+export const shopLink = (origin, destination, date, journey, params) => {
 	const shortenedJourney = pick(journey, ['type', 'id', 'price'])
 	const newLegs = []
 	for (const leg of journey.legs) {
@@ -28,5 +26,3 @@ const shopLink = (origin, destination, date, journey, params) => {
 
 	return `https://link.bahn.guru/?journey=${JSON.stringify(journey)}&bc=${bahncard}&class=${params.class}`
 }
-
-module.exports = { params, options, station, journeys, shopLink, settings }
