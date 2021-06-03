@@ -9,10 +9,7 @@ COPY assets ./assets
 COPY package.json ./
 RUN pnpm install
 
-COPY apis ./apis
-COPY lib ./lib
-COPY index.js ./index.js
-
+COPY src ./src
 RUN pnpm run build
 
 USER node

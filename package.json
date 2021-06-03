@@ -32,8 +32,8 @@
 		"build-bus": "mkdir -p assets/scripts/bundle && browserify 'assets/scripts/bus.js' > 'assets/scripts/bundle/bus.js'",
 		"check-deps": "depcheck . --ignore-dirs=bundle",
 		"fix": "npm run lint -- --fix",
-		"lint": "eslint  --ignore-pattern /node_modules/ --ignore-pattern /assets/scripts/bundle/ .",
-		"start": "node index.js",
+		"lint": "eslint src",
+		"start": "node src/index.js",
 		"test": "npm run lint && npm run check-deps"
 	},
 	"dependencies": {
