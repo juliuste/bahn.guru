@@ -39,7 +39,7 @@
 		"db-hafas": "^3.1.1",
 		"db-prices": "^3.0.3",
 		"express": "^4.17.1",
-		"fetch-ponyfill": "^6.1.1",
+		"fetch-ponyfill": "^7.1.0",
 		"flix": "^4.0.3",
 		"horsey": "^4.2.2",
 		"js-beautify": "^1.13.13",
@@ -55,7 +55,7 @@
 		"shorthash": "0.0.2"
 	},
 	"devDependencies": {
-		"browserify": "^16.5.2",
+		"browserify": "^17.0.0",
 		"depcheck": "^1.4.1",
 		"eslint": "^7.27.0",
 		"eslint-config-standard": "^16.0.3",
