@@ -33,7 +33,8 @@
 		"check-deps": "depcheck . --ignore-dirs=bundle",
 		"fix": "npm run lint -- --fix",
 		"lint": "eslint src",
-		"start": "node src/index.js",
+		"start": "NODE_ENV=production node src/index.js",
+		"dev": "nodemon src/index.js",
 		"test": "npm run lint && npm run check-deps"
 	},
 	"dependencies": {
@@ -46,6 +47,7 @@
 		"flix": "^4.0.3",
 		"hast-util-to-html": "^8.0.0",
 		"hastscript": "^7.0.1",
+		"helmet": "^4.6.0",
 		"horsey": "^4.2.2",
 		"js-beautify": "^1.13.13",
 		"lodash": "^4.17.21",
@@ -64,7 +66,8 @@
 		"eslint-config-standard": "^16.0.3",
 		"eslint-plugin-import": "^2.23.4",
 		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^5.1.0"
+		"eslint-plugin-promise": "^5.1.0",
+		"nodemon": "^2.0.7"
 	},
 	"engines": {
 		"node": ">=14"

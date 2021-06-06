@@ -4,11 +4,23 @@ import compression from 'compression'
 import apiCache from 'apicache'
 
 import createRoutes from './routes/index.js'
+import helmet from 'helmet'
 
 const createServer = (api) => {
 	// setup HTTP and HTTPS servers
 	const express = createExpress()
 	const server = http.createServer(express)
+
+	// enable security best-practicesin production environments
+	express.use(helmet({
+		hsts: (process.env.NODE_ENV === 'production')
+			? {
+				maxAge: 31536000, // 1 year
+				includeSubDomains: true,
+				preload: true,
+			}
+			: false,
+	}))
 
 	// enable caching
 	express.use(apiCache.middleware('15 minutes'))
