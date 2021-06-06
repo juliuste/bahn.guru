@@ -13,6 +13,7 @@ const createServer = (api) => {
 
 	// enable security best-practicesin production environments
 	express.use(helmet({
+		contentSecurityPolicy: false,
 		hsts: (process.env.NODE_ENV === 'production')
 			? {
 				maxAge: 31536000, // 1 year
