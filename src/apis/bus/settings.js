@@ -3,7 +3,7 @@ import { h } from 'hastscript'
 const settings = {
 	title: 'Bus-Preiskalender',
 	description: 'Der Preiskalender für Busse hilft dir dabei, die günstigsten Sparpreise von Flixbus/Meinfernbus zu finden. 🚌',
-	analyticsId: '6bbbca13-ea5c-4067-b96d-14f3387188de',
+	analyticsId: '167a5d7c-878f-405e-afd9-a6aa84507114',
 	timezone: 'Europe/Berlin',
 	scripts: ['./bundle/bus.js'],
 	styles: ['./bus.css'],

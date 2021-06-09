@@ -3,7 +3,7 @@ import { h } from 'hastscript'
 const settings = {
 	title: 'Bahn-Preiskalender',
 	description: 'Der Bahn-Guru hilft dir dabei, die günstigsten Sparpreise der Deutschen Bahn zu finden. 🚅',
-	analyticsId: '1f42209c-055a-4a79-8a24-c3cb83955b67',
+	analyticsId: '8b11a68a-f01c-4019-a4d2-1033ca10bc16',
 	timezone: 'Europe/Berlin',
 	scripts: ['./bundle/bahn.js'],
 	styles: ['./bahn.css'],
