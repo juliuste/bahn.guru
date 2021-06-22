@@ -1,0 +1,54 @@
+name: CI
+on:
+  [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npx pnpm i
+    - run: npx pnpm test
+      env:
+        CI: true
+  build-push-deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Checkout main
+      uses: actions/checkout@v2
+
+    - name: Docker Login
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      run: echo $DOCKER_ACCESS_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
+
+    - name: Build container image
+      # we take the github repository name ($GITHUB_REPOSITORY also contains the user, so we slice it at the '/') and append the head of the commit hash
+      run: docker build -t publictransport/$(echo $GITHUB_REPOSITORY | cut -d'/' -f2 -):$(echo $GITHUB_SHA | head -c7) .
+
+    - name: Push image to Docker Hub
+      run: docker push publictransport/$(echo $GITHUB_REPOSITORY | cut -d'/' -f2 -):$(echo $GITHUB_SHA | head -c7)
+
+    - name: Update kubernetes resource definitions
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && REPO=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2 -) && for resource in $GITHUB_WORKSPACE/.kubernetes/*.yaml ; do sed -i "s|<IMAGE>|publictransport/$REPO:$TAG|" $resource; done
+
+    - name: Setup kubeconfig
+      env:
+        KUBERNETES_CONFIG: ${{ secrets.KUBERNETES_CONFIG }}
+      run:
+        echo $KUBERNETES_CONFIG | base64 --decode > $GITHUB_WORKSPACE/.kubeconfig
+
+    - name: Deploy to Kubernetes
+      run: for resource in $GITHUB_WORKSPACE/.kubernetes/*.yaml ; do kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig apply -f $resource ; done
+
+    - name: Verify deployment
+      run: for resource in $GITHUB_WORKSPACE/.kubernetes/*.yaml ; do if [[ $(kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig get -f $resource -o jsonpath='{.kind}') = 'Deployment' ]]; then kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status -f $resource; fi ; done
