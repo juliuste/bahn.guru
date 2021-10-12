@@ -1,12 +1,11 @@
 # install dependencies
 FROM node:fermium-alpine
-WORKDIR /app-src
-
 RUN npm i -g pnpm
 
+WORKDIR /app-src
 COPY assets ./assets
 
-COPY package.json ./
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
 COPY src ./src
@@ -17,4 +16,4 @@ USER node
 ENV PORT=3000
 ENV API="bahn"
 
-CMD ["npm", "start"]
+CMD ["pnpm", "run", "start"]
