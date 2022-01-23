@@ -24,6 +24,12 @@ export const input = (params) => ([
 			optionHTML(4, '50', (params.bc === 3 || params.bc === 4)),
 		]),
 		', ',
+		' Alter: ',
+		h('select', { name: 'alter', id: 'alter' }, [
+			optionHTML(27, 'ab 27 Jahre', params.alter === 27),
+			optionHTML(26, '15 – 26 Jahre', params.alter === 26),
+		]),
+		', ',
 	]),
 	h('span.optRow', [
 		h('label#departureAfter', ['ab: ', h('input', { type: 'text', placeholder: '--:--', value: (params.departureAfter) ? params.departureAfter.format('hh:mm') : '', name: 'departureAfter' }), ' Uhr']),
@@ -50,6 +56,7 @@ export const text = (params) => {
 	if (params.class && params.class === 1) result.push(params.class + '. Klasse', ', ')
 	if (params.bc && (params.bc === 1 || params.bc === 2)) result.push('mit BahnCard 25', ', ')
 	if (params.bc && (params.bc === 3 || params.bc === 4)) result.push('mit BahnCard 50', ', ')
+	if (params.alter && params.alter === 26) result.push('15 – 26 Jahre', ', ')
 	if (params.departureAfter && +params.departureAfter > 0) result.push('ab ' + params.departureAfter.format('HH:mm') + ' Uhr', ', ')
 	if (params.arrivalBefore && +params.arrivalBefore > 0) result.push('bis ' + params.arrivalBefore.format('HH:mm') + ' Uhr', ', ')
 	if (params.duration && params.duration > 0) result.push('Fahrzeit bis ' + params.duration + ' Stunden', ', ')
@@ -66,6 +73,7 @@ export const url = (params) => {
 	const result = []
 	if (params.class) result.push('class=' + params.class)
 	if (params.bc) result.push('bc=' + params.bcOriginal)
+	if (params.alter) result.push('alter=' + params.alter)
 	if (params.departureAfter) result.push('departureAfter=' + params.departureAfter.format('HH:mm'))
 	if (params.arrivalBefore) result.push('arrivalBefore=' + params.arrivalBefore.format('HH:mm'))
 	if (params.duration) result.push('duration=' + params.duration)

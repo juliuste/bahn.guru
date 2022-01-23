@@ -7,7 +7,7 @@ const journeys = (params, day) => {
 	const dayTimestamp = +(moment.tz(day, settings.timezone).startOf('day'))
 	return client(params.origin.id, params.destination.id, moment(day).toDate(), {
 		class: params.class,
-		travellers: [{ typ: 'E', bc: params.bc }],
+		travellers: [{ typ: 'E', bc: params.bc, alter: params.alter }],
 	})
 		.then(results =>
 			results.filter(j => {
