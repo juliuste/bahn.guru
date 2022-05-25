@@ -7,7 +7,7 @@ import isNull from 'lodash/isNull.js'
 
 // eslint-disable-next-line no-unused-vars
 const optionHTML = (value, text, checked) => {
-	const opt = { value: value }
+	const opt = { value }
 	if (checked) opt.selected = true
 	return h('option', opt, text)
 }

@@ -2,7 +2,7 @@ import { h } from 'hastscript'
 import { u } from 'unist-builder'
 import { toHtml } from 'hast-util-to-html'
 import jsBeautify from 'js-beautify'
-// eslint-disable-next-line node/no-deprecated-api
+// eslint-disable-next-line n/no-deprecated-api
 import { resolve } from 'url'
 
 const useUmami = process.env.ANALYTICS === 'true'

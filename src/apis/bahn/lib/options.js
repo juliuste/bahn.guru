@@ -6,7 +6,7 @@ import mdf from 'moment-duration-format'
 import isNull from 'lodash/isNull.js'
 
 const optionHTML = (value, text, checked) => {
-	const opt = { value: value }
+	const opt = { value }
 	if (checked) opt.selected = true
 	return h('option', opt, text)
 }

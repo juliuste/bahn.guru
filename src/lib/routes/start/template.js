@@ -1,5 +1,5 @@
 import { h } from 'hastscript'
-// eslint-disable-next-line node/no-deprecated-api
+// eslint-disable-next-line n/no-deprecated-api
 import { resolve } from 'url'
 import * as helpers from '../helpers.js'
 

@@ -99,7 +99,7 @@ const calendar = (api, params) => {
 						() => timeout(api.journeys(params, day.date.raw), timeoutTime),
 						{ retries: 3 },
 					)
-						// eslint-disable-next-line node/handle-callback-err
+						// eslint-disable-next-line n/handle-callback-err
 						.catch((err) => []),
 				),
 			)

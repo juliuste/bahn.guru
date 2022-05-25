@@ -7,9 +7,9 @@ const createParseParams = api => async (rawParams, opt) => {
 
 	try {
 		const [origin, destination] = await Promise.all([
-			// eslint-disable-next-line node/handle-callback-err
+			// eslint-disable-next-line n/handle-callback-err
 			api.station(rawParams.origin).catch(error => null),
-			// eslint-disable-next-line node/handle-callback-err
+			// eslint-disable-next-line n/handle-callback-err
 			api.station(rawParams.destination).catch(error => null),
 		])
 		if (!stationsOptional && (!origin || !destination)) throw new Error('invalid stations')
