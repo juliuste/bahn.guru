@@ -11,6 +11,7 @@
 
 - [travel-price-map](https://github.com/juliuste/travel-price-map/) – Map of low-cost tickets ("Sparpreise") for several european cities
 - [db-prices](https://github.com/juliuste/db-prices/) – JavaScript client for the DB Sparpreise API
+- [link.bahn.guru](https://github.com/juliuste/link.bahn.guru) - Direct deep links to the [Deutsche Bahn shop](https://www.bahn.de).
 
 ## Contributing
 
