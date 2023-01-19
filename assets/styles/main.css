@@ -15,6 +15,7 @@ input{
 
 #error{
 	color: #f60;
+	max-width: 850px;
 }
 
 #form{

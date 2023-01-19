@@ -25,6 +25,7 @@ const createTemplate = api => ({ params, error }) => {
 		h('form', { id: 'page', action: './calendar', method: 'GET' }, [
 			h('div#header', [h('h1', 'Preiskalender')]),
 			errorBox(error),
+			errorBox({ message: 'Leider wurde die von uns verwendete DB-Sparpreis-Schnittstelle abgeschaltet, sodass derzeit keine Verbindungen gesucht werden können. Wir arbeiten an einer Lösung.' }),
 			h('div#form', [
 				h('div', { id: 'origin', class: 'station' }, [h('span', 'Ab'), h('input', { id: 'originInput', name: 'origin', type: 'text', value: (params.origin) ? params.origin.name : '', placeholder: api.settings.originPlaceholder, size: 1 })]),
 				h('div', { id: 'destination', class: 'station' }, [h('span', 'An'), h('input', { id: 'destinationInput', name: 'destination', type: 'text', value: (params.destination) ? params.destination.name : '', placeholder: api.settings.destinationPlaceholder, size: 1 })]),
