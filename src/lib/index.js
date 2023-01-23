@@ -4,9 +4,10 @@ import compression from 'compression'
 import apiCache from 'apicache'
 
 import createRoutes from './routes/index.js'
+import * as api from './api/index.js'
 import helmet from 'helmet'
 
-const createServer = (api) => {
+const createServer = () => {
 	// setup HTTP and HTTPS servers
 	const express = createExpress()
 	const server = http.createServer(express)

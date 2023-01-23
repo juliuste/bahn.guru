@@ -27,9 +27,7 @@
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
 	"scripts": {
-		"build": "npm run build-bahn && npm run build-bus",
-		"build-bahn": "mkdir -p assets/scripts/bundle && browserify 'assets/scripts/bahn.js' > 'assets/scripts/bundle/bahn.js'",
-		"build-bus": "mkdir -p assets/scripts/bundle && browserify 'assets/scripts/bus.js' > 'assets/scripts/bundle/bus.js'",
+		"build": "mkdir -p assets/scripts/bundle && browserify 'assets/scripts/bahn.js' > 'assets/scripts/bundle/bahn.js'",
 		"check-deps": "depcheck . --ignore-dirs=bundle",
 		"fix": "npm run lint -- --fix",
 		"lint": "eslint src",
