@@ -39,7 +39,6 @@
 		"apicache": "^1.6.3",
 		"compression": "^1.7.4",
 		"db-hafas": "^3.1.1",
-		"db-prices": "^3.0.3",
 		"express": "^4.18.1",
 		"fetch-ponyfill": "^7.1.0",
 		"hafas-client": "^6.0.1",

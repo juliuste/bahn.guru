@@ -5,7 +5,6 @@ specifiers:
   browserify: ^17.0.0
   compression: ^1.7.4
   db-hafas: ^3.1.1
-  db-prices: ^3.0.3
   depcheck: ^1.4.3
   eslint: ^8.16.0
   eslint-config-standard: ^17.0.0
@@ -14,7 +13,6 @@ specifiers:
   eslint-plugin-promise: ^6.0.0
   express: ^4.18.1
   fetch-ponyfill: ^7.1.0
-  flix: ^4.0.3
   hafas-client: ^6.0.1
   hast-util-to-html: ^8.0.3
   hastscript: ^7.0.2
@@ -35,10 +33,8 @@ dependencies:
   apicache: 1.6.3
   compression: 1.7.4
   db-hafas: 3.1.1
-  db-prices: 3.0.3
   express: 4.18.1
   fetch-ponyfill: 7.1.0
-  flix: 4.0.3
   hafas-client: 6.0.1
   hast-util-to-html: 8.0.3
   hastscript: 7.0.2
@@ -1160,19 +1156,6 @@ packages:
       - encoding
     dev: false
 
-  /db-prices/3.0.3:
-    resolution: {integrity: sha512-hJJ4kpIqzfH4YApmGNmrbCbcZUfr4UfS0yqUwf+aNplRSLKgke03xZiVc+cEj2E/GE2wEL2c+fthi8TCXnKj7Q==}
-    engines: {node: '>=10'}
-    dependencies:
-      fetch-ponyfill: 6.1.1
-      lodash.minby: 4.6.0
-      moment-timezone: 0.5.34
-      query-string: 6.14.1
-      slugg: 1.2.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -1891,20 +1874,6 @@ packages:
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
     dev: true
-
-  /flix/4.0.3:
-    resolution: {integrity: sha512-cf1tOgCrwTJh3YI9Yndsta8i6u2GIM46cmf+0+2ic6YOPQ2T9OgsmMQ3t8zCm2VrEosN4twcNquNNDxbFsAsmA==}
-    engines: {node: '>=8'}
-    dependencies:
-      fetch-ponyfill: 6.1.1
-      lodash: 4.17.21
-      moment-timezone: 0.5.34
-      query-string: 6.14.1
-      slugg: 1.2.1
-      tiny-csv: 3.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -2728,10 +2697,6 @@ packages:
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
-
-  /lodash.minby/4.6.0:
-    resolution: {integrity: sha1-ixBXZa6XOVSulEqAKZmbgIC9+MQ=}
-    dev: false
 
   /lodash/4.13.1:
     resolution: {integrity: sha1-g+SxCRP0hJbU0W/sSlYK8u50S2g=}
@@ -4013,10 +3978,6 @@ packages:
     dependencies:
       process: 0.11.10
     dev: true
-
-  /tiny-csv/3.0.0:
-    resolution: {integrity: sha1-emW/wnN/IAYZjDuw3M+TM5E+8/s=}
-    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}
