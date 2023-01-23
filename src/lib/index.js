@@ -4,7 +4,7 @@ import compression from 'compression'
 import apiCache from 'apicache'
 
 import createRoutes from './routes/index.js'
-import * as api from './api/index.js'
+import * as api from '../api/index.js'
 import helmet from 'helmet'
 
 const createServer = () => {

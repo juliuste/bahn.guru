@@ -23,9 +23,9 @@ const formatDayResult = (result) => {
 const addAttributes = (journeysPerDay) => {
 	for (const day of journeysPerDay) {
 		for (const journey of day) {
-			const departure = new Date(journey.legs[0].departure)
-			const arrival = new Date(journey.legs[journey.legs.length - 1].arrival)
-			const duration = +arrival - (+departure)
+			const plannedDeparture = new Date(journey.legs[0].plannedDeparture)
+			const plannedArrival = new Date(journey.legs[journey.legs.length - 1].plannedArrival)
+			const duration = +plannedArrival - (+plannedDeparture)
 			journey.duration = duration
 		}
 	}

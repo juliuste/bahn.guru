@@ -24,7 +24,8 @@ const generateProducts = (legs) => {
 	if (!legs) return null
 	const result = []
 	for (const leg of legs) {
-		if (result.indexOf(leg.product) < 0) { result.push(leg.product) }
+		const product = leg.line?.productName
+		if (result.indexOf(product) < 0) { result.push(product) }
 	}
 	return reverse(sort(result, (x) => productIndex.indexOf(x)))
 }
@@ -40,11 +41,12 @@ const collectVias = (journey) => {
 }
 
 const parseJourney = (api, params) => (journey) => {
+	journey.duration = +new Date(journey.legs[journey.legs.length - 1].plannedArrival) - (+new Date(journey.legs[0].plannedDeparture))
 	let formattedDuration = moment.duration(journey.duration).format('h:mm')
 	if (formattedDuration.split(':').length <= 1) formattedDuration = '0:' + formattedDuration
 	return {
-		departure: moment(journey.legs[0].departure).tz(api.settings.timezone).format('HH:mm'),
-		arrival: moment(journey.legs[journey.legs.length - 1].arrival).tz(api.settings.timezone).format('HH:mm'),
+		plannedDeparture: moment(journey.legs[0].plannedDeparture).tz(api.settings.timezone).format('HH:mm'),
+		plannedArrival: moment(journey.legs[journey.legs.length - 1].plannedArrival).tz(api.settings.timezone).format('HH:mm'),
 		origin: params.origin.name,
 		destination: params.destination.name,
 		products: generateProducts(journey.legs),
@@ -56,7 +58,7 @@ const parseJourney = (api, params) => (journey) => {
 		duration: formattedDuration,
 		cheapest: journey.cheapest,
 		via: collectVias(journey),
-		link: api.shopLink(params.origin, params.destination, moment(journey.legs[0].departure).tz(api.settings.timezone), journey, params) || '#',
+		link: api.shopLink(params.origin, params.destination, moment(journey.legs[0].plannedDeparture).tz(api.settings.timezone), journey, params) || '#',
 	}
 }
 
@@ -109,11 +111,11 @@ const journeyTable = (api, data) => {
 	for (const journey of journeys) {
 		rows.push([h('tr', cheapestClass(journey), [
 			h('td', [
-				journey.departure,
+				journey.plannedDeparture,
 				h('span.columnLong', ' Uhr'),
 			]),
 			h('td', [
-				journey.arrival,
+				journey.plannedArrival,
 				h('span.columnLong', ' Uhr'),
 			]),
 			h('td', [

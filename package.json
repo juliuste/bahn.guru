@@ -42,7 +42,7 @@
 		"db-prices": "^3.0.3",
 		"express": "^4.18.1",
 		"fetch-ponyfill": "^7.1.0",
-		"flix": "^4.0.3",
+		"hafas-client": "^6.0.1",
 		"hast-util-to-html": "^8.0.3",
 		"hastscript": "^7.0.2",
 		"helmet": "^4.6.0",
