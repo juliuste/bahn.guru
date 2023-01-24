@@ -23,6 +23,7 @@ const parseParams = (params) => {
 	const settings = {
 		class: 2,
 		bc: 0,
+		age: 'A',
 		bcOriginal: 0,
 		duration: null,
 		departureAfter: null,
@@ -36,6 +37,8 @@ const parseParams = (params) => {
 		settings.bc = (settings.class === 2) ? +params.bc : (+params.bc === 0) ? 0 : (+params.bc - 1)
 		settings.bcOriginal = +params.bc
 	}
+	// age
+	if (params.age === 'Y') settings.age = 'Y'
 	// duration
 	if (+params.duration && +params.duration > 0 && +params.duration < 24) settings.duration = +params.duration
 	// departureAfter & arrivalBefore

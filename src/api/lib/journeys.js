@@ -73,7 +73,7 @@ const fetchJourneys = async (from, to, opt = {}) => {
 			cType: 'PK',
 			tvlrProf: [
 				{
-					type: 'E',
+					type: opt.age || 'E',
 					...(opt.bahncard ? { redtnCard: opt.bahncard } : {}),
 				},
 			],
@@ -106,6 +106,7 @@ const journeys = (params, day) => {
 		departure: moment(day).toDate(),
 		class: params.class,
 		bahncard: params.bc,
+		age: (params.age === 'Y') ? 'Y' : 'E',
 	})
 		.then(results =>
 			results.filter(j => {

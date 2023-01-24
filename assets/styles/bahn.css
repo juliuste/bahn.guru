@@ -12,6 +12,11 @@
 	padding-right: 0;
 }
 
+#age{
+	width: 3.1em;
+	padding-right: 0;
+}
+
 #duration input{
 	width: 1.5em;
 }
