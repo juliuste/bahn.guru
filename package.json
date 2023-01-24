@@ -26,6 +26,7 @@
 	"repository": "juliuste/bahn.guru",
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
+	"contributors": ["Benjamin Altpeter <hi@bn.al>"],
 	"scripts": {
 		"build": "mkdir -p assets/scripts/bundle && browserify 'assets/scripts/bahn.js' > 'assets/scripts/bundle/bahn.js'",
 		"check-deps": "depcheck . --ignore-dirs=bundle",
