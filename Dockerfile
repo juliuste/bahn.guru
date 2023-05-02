@@ -1,6 +1,6 @@
 # install dependencies
 FROM node:fermium-alpine
-RUN npm i -g pnpm
+RUN npm i -g pnpm@7
 
 WORKDIR /app-src
 COPY assets ./assets

@@ -13,8 +13,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npx pnpm i
-    - run: npx pnpm test
+    - run: npx pnpm@7 i
+    - run: npx pnpm@7 test
       env:
         CI: true
 
