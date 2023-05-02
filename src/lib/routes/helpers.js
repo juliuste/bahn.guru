@@ -38,7 +38,7 @@ and the website will still work 100% fine. as a privately maintained open-source
 gaining some insights in how (much) this service is used is really good to stay motivated.
 for more information on the analytics framework, which is completely open source, please
 check https://umami.is/docs/faq`),
-				h('script', { async: true, defer: true, 'data-website-id': api.settings.analyticsId, src: 'https://developer.bahn.guru/umami.js' }),
+				h('script', { async: true, defer: true, 'data-website-id': api.settings.analyticsId, src: 'https://developer.bahn.guru/script.js' }),
 			]
 			: []),
 	]
