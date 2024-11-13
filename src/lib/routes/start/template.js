@@ -19,17 +19,17 @@ const errorBox = (error) => {
 	return []
 }
 
-const successBox = (message) => {
-	if (message) return h('div', { id: 'success', class: 'subtitle' }, [h('span', message)])
-	return []
-}
+// const successBox = (message) => {
+// 	if (message) return h('div', { id: 'success', class: 'subtitle' }, [h('span', message)])
+// 	return []
+// }
 
 const createTemplate = api => ({ params, error }) => {
 	if (!params) params = {}
 	const body = [
 		h('form', { id: 'page', action: './calendar', method: 'GET' }, [
 			h('div#header', [h('h1', 'Preiskalender')]),
-			successBox('Die Sparpreissuche funktioniert wieder! Leider sind die Links in den Bahn-Shop aktuell noch kaputt, wir arbeiten aber an einer Lösung.'),
+			errorBox({ message: 'Leider ist der Service aufgrund von API-Umstellungen aktuell nicht verfügbar, wir arbeiten an einer Lösung. Bitte versuchen Sie es in einigen Tagen erneut.' }),
 			errorBox(error),
 			h('div#form', [
 				h('div', { id: 'origin', class: 'station' }, [h('span', 'Ab'), h('input', { id: 'originInput', name: 'origin', type: 'text', value: (params.origin) ? params.origin.name : '', placeholder: api.settings.originPlaceholder, size: 1 })]),
