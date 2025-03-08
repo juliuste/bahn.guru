@@ -50,6 +50,24 @@ body{
     text-decoration: underline;
 }
 
+#reverse-direction {
+	color: #000;
+	text-decoration: none;
+	border: 1px solid #044;
+	padding: .2rem;
+	margin: 0 .5rem;
+	border-radius: 4px;
+}
+
+#reverse-direction span {
+	transition: transform .2s ease-in-out;
+	display: inline-block;
+}
+
+#reverse-direction:hover span, #reverse-direction:focus span, #reverse-direction:active span {
+	transform: rotate(180deg);
+}
+
 #footer {
     position: absolute;
     font-size: 100%;
