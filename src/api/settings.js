@@ -24,7 +24,7 @@ const settings = {
 			]),
 			h('p.description', [
 				'Unfortunately, the inofficial API by Deutsche Bahn which this project was based on was discontinued in late 2024. We need a few weeks to adapt the service to another API, ',
-				h('b', 'and hope that bahn.guru and direkt.bahn.guru will be back online from 2025-03-10 (sorry about the delays…)!'),
+				h('b', 'and hope that bahn.guru and direkt.bahn.guru will be back online from 2025-03-17 (sorry about the delays…)!'),
 				' Thank you for your interest in this project, and we hope to welcome you back with our old features very soon!',
 			]),
 		],
