@@ -19,12 +19,12 @@ const settings = {
 		elements: [
 			h('p.description', [
 				'Leider wurde die inoffizielle Schnittstelle der DB, auf der dieses Projekt basiert, Ende 2024 ersetzt. Wir benötigen einige Wochen, um die Seite an die neuen Schnittstellen anzupassen, und ',
-				h('b', 'hoffen, dass bahn.guru und direkt.bahn.guru spätestens am 17.03.2025 wieder nutzbar sind (Sorry für die Verzögerungen)!'),
+				h('b', 'hoffen, dass bahn.guru und direkt.bahn.guru spätestens am 01.04.2025 wieder nutzbar sind (Sorry für die Verzögerungen, hoffentlich die letzte Verspätung)!'),
 				' Vielen Dank für das Interesse und hoffentlich bis bald, wieder mit der alten Funktionalität!',
 			]),
 			h('p.description', [
 				'Unfortunately, the inofficial API by Deutsche Bahn which this project was based on was discontinued in late 2024. We need a few weeks to adapt the service to another API, ',
-				h('b', 'and hope that bahn.guru and direkt.bahn.guru will be back online from 2025-03-17 (sorry about the delays…)!'),
+				h('b', 'and hope that bahn.guru and direkt.bahn.guru will be back online from 2025-04-01 (sorry about the delays, hopefully this is the last one…)!'),
 				' Thank you for your interest in this project, and we hope to welcome you back with our old features very soon!',
 			]),
 		],
