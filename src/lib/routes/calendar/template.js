@@ -5,7 +5,7 @@ import mdf from 'moment-duration-format'
 import * as helpers from '../helpers.js'
 
 const head = (api, data) => {
-	const title = generateSubTitleRoute(data).join('') + ' | Kalender'
+	const title = generateSubTitleRoute(api, data).join('') + ' | Kalender'
 	const elements = [
 		...helpers.staticHeader(api),
 		h('title', `${title} | ${api.settings.title}`),
@@ -15,10 +15,19 @@ const head = (api, data) => {
 	return h('head', elements)
 }
 
-const generateSubTitleRoute = (data) => {
+const generateSubTitleRoute = (api, data) => {
+	const reverseTravelLink = h('a', {
+		href: (
+			'?origin=' + data.input.destination.name +
+			'&destination=' + data.input.origin.name +
+			'&weeks=' + data.input.weeks +
+			'&' + (api.options.url(data.input).join('&'))
+		),
+		id: 'reverse-direction',
+	}, h('span', ' → '))
 	return [
 		data.input.origin.name,
-		' → ',
+		reverseTravelLink,
 		data.input.destination.name,
 	]
 }
@@ -121,7 +130,7 @@ const createTemplate = api => (data, error) => {
 		h('body', [
 			h('div#page', [
 				h('div#header', [h('a', { href: './start', title: 'Preiskalender' }, [h('h1', 'Preiskalender')])]),
-				h('div', { id: 'route', class: 'subtitle' }, [h('span', generateSubTitleRoute(data))]),
+				h('div', { id: 'route', class: 'subtitle' }, [h('span', generateSubTitleRoute(api, data))]),
 				h('div', { id: 'options', class: 'subtitle' }, generateSubTitleOptions(api, data)),
 				calendar(api, data),
 				h('div#more', moreLink(api, data)),
