@@ -18,17 +18,14 @@ const settings = {
 		title: 'Hinweis / Notice',
 		elements: [
 			h('p.description', [
-				'Leider wurde die inoffizielle Schnittstelle der DB, auf der dieses Projekt basiert, Ende 2024 ersetzt. Wir benötigen einige Wochen, um die Seite an die neuen Schnittstellen anzupassen, und ',
-				h('b', 'hoffen, dass bahn.guru und direkt.bahn.guru spätestens Mitte Juni 2025 wieder nutzbar sind (Sorry für die zahlreichen Verzögerungen, aufgrund fehlender Zeit für das Projekt sowie die Komplexität beim Umbau ist eine genaue Einschätzung schwierig.)!'),
-				' Vielen Dank für das Interesse und hoffentlich bis bald, wieder mit der alten Funktionalität!',
+				'Leider wurde die inoffizielle Schnittstelle der DB, auf der dieses Projekt basiert, Ende 2024 ersetzt. Wir arbeiten (ehrenamtlich) an der Anpassung der Website, nach mehreren Verzögerungen möchten wir hierfür jedoch aktuell kein genaues Datum nennen. Stattdessen kannst Du dich ',
+				h('a', { style: 'color: #db0000 !important; font-weight: bold; text-decoration: underline;', href: 'https://app.keila.io/forms/nfrm_KRXbb59N' }, 'hier für Updates anmelden'),
+				', um sofort per Mail informiert zu werden, wenn die Seite wieder funktioniert. Bis dahin danken wir für die Geduld und ds Verständnis.',
 			]),
 			h('p.description', [
-				'Unfortunately, the inofficial API by Deutsche Bahn which this project was based on was discontinued in late 2024. We need a few weeks to adapt the service to another API, ',
-				h('b', 'and hope that bahn.guru and direkt.bahn.guru will be back online from mid of June 2025 (Sorry about the delays, due to a lack of time for the project and the complexity of changes required, it is hard to make a precise estimation…)!'),
-				' Thank you for your interest in this project, and we hope to welcome you back with our old features very soon!',
-			]),
-			h('p.description', [
-				'PS: Thank you all so much for the support and offers to lend a helping hand! It is a bit hard to coordinate contributions for now. Our hope is to get a very simple first version up and running again (without BahnCards, 1st class, filters etc.), from which point on everyone is warmly invited to add contributions.',
+				'Unfortunately, the inofficial API by Deutsche Bahn which this project was based on was discontinued in late 2024. We are working (as volunteers) to adapt the service to the new APIs. After failing to meet our own deadlines several times now, we don\'t think it would be clever to announce another date for which we expect the site to be functional again. Instead, you can ',
+				h('a', { style: 'color: #db0000 !important; font-weight: bold; text-decoration: underline;', href: 'https://app.keila.io/forms/nfrm_KRXbb59N' }, 'sign up for updates here'),
+				' to receive an email as soon as the service is working again. We thank you for your understanding and your patience.',
 			]),
 		],
 	},
