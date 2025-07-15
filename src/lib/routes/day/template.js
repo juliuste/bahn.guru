@@ -1,9 +1,6 @@
 import { h } from 'hastscript'
 import moment from 'moment-timezone'
-// eslint-disable-next-line no-unused-vars
-import mdf from 'moment-duration-format'
 import sort from 'lodash/sortBy.js'
-import tail from 'lodash/tail.js'
 import reverse from 'lodash/reverse.js'
 import * as helpers from '../helpers.js'
 
@@ -21,11 +18,11 @@ const head = (api, data) => {
 }
 
 const generateProducts = (legs) => {
-	if (!legs) return null
+	if (!legs) return []
 	const result = []
 	for (const leg of legs) {
 		const product = leg.line?.productName
-		if (result.indexOf(product) < 0) { result.push(product) }
+		if (product && result.indexOf(product) < 0) { result.push(product) }
 	}
 	return reverse(sort(result, (x) => productIndex.indexOf(x)))
 }
@@ -33,8 +30,14 @@ const generateProducts = (legs) => {
 const collectVias = (journey) => {
 	if (journey.legs.length <= 1) return ['–']
 	const vias = []
+	let lastName = null
 	for (const leg of journey.legs) {
-		if (leg !== journey.legs[journey.legs.length - 1]) vias.push(leg.destination.name, h('br'))
+		if (leg !== journey.legs[journey.legs.length - 1]) {
+			if (leg.destination.name !== lastName) {
+				vias.push(leg.destination.name, h('br'))
+				lastName = leg.destination.name
+			}
+		}
 	}
 	vias.pop()
 	return vias
@@ -44,13 +47,25 @@ const parseJourney = (api, params) => (journey) => {
 	journey.duration = +new Date(journey.legs[journey.legs.length - 1].plannedArrival) - (+new Date(journey.legs[0].plannedDeparture))
 	let formattedDuration = moment.duration(journey.duration).format('h:mm')
 	if (formattedDuration.split(':').length <= 1) formattedDuration = '0:' + formattedDuration
+
+	let transfers = 0
+	let lastName = null
+	for (const leg of journey.legs) {
+		if (leg !== journey.legs[journey.legs.length - 1]) {
+			if (leg.destination.name !== lastName) {
+				transfers++
+				lastName = leg.destination.name
+			}
+		}
+	}
+
 	return {
 		plannedDeparture: moment(journey.legs[0].plannedDeparture).tz(api.settings.timezone).format('HH:mm'),
 		plannedArrival: moment(journey.legs[journey.legs.length - 1].plannedArrival).tz(api.settings.timezone).format('HH:mm'),
 		origin: params.origin.name,
 		destination: params.destination.name,
 		products: generateProducts(journey.legs),
-		transfers: journey.legs.length - 1,
+		transfers,
 		price: journey.formattedPrice,
 		rawPrice: journey.price.amount,
 		rawDuration: moment.duration(journey.duration).format('m'),
@@ -64,8 +79,12 @@ const parseJourney = (api, params) => (journey) => {
 
 const products = (journey) => {
 	if (journey.products && journey.products.length > 0) {
-		if (journey.products.length === 1) return [journey.products[0]]
-		return [journey.products[0], h('span.columnLong', [', ', ...tail(journey.products).join(', ')])]
+		const validProducts = journey.products.filter(Boolean)
+		const allProducts = validProducts.join(', ')
+		return [
+			h('span.columnLong', allProducts),
+			h('span.columnShort', validProducts[0]),
+		]
 	}
 	return ['–']
 }

@@ -29,7 +29,6 @@ const createTemplate = api => ({ params, error }) => {
 	const body = [
 		h('form', { id: 'page', action: './calendar', method: 'GET' }, [
 			h('div#header', [h('h1', 'Preiskalender')]),
-			errorBox({ message: 'Leider ist der Service aufgrund von API-Umstellungen aktuell nicht verfügbar, wir arbeiten an einer Lösung. Bitte versuchen Sie es in einigen Tagen erneut.' }),
 			errorBox(error),
 			h('div#form', [
 				h('div', { id: 'origin', class: 'station' }, [h('span', 'Ab'), h('input', { id: 'originInput', name: 'origin', type: 'text', value: (params.origin) ? params.origin.name : '', placeholder: api.settings.originPlaceholder, size: 1 })]),

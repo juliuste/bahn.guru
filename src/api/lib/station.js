@@ -1,5 +1,7 @@
-import createHafasClient from 'db-hafas'
-const { locations: stations } = createHafasClient('bahn.guru')
+import { createClient } from 'db-vendo-client'
+import { profile } from 'db-vendo-client/p/db/index.js'
+
+const { locations: stations } = createClient(profile, 'bahn.guru')
 
 const station = (s) => {
 	// eslint-disable-next-line prefer-promise-reject-errors
@@ -15,5 +17,14 @@ const station = (s) => {
 			(error) => false,
 		)
 }
+
+const stationsAll = (s) => {
+	if (!s) return Promise.resolve([])
+	return stations(s)
+		.then(data => Array.isArray(data) ? data : [])
+		.catch(() => [])
+}
+
+export { stationsAll }
 
 export default station

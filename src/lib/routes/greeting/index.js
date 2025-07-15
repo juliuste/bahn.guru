@@ -17,16 +17,12 @@ const generate = api => {
 		head(api),
 		h('body', [
 			h('div#page', [
-				// h('div#header', [h('a', { href: './start', title: 'Preiskalender' }, [h('h1', 'Preiskalender')])]),
-				h('div.question', [
-					...(api.settings.greeting.title ? [h('h2', api.settings.greeting.title)] : []),
-					...api.settings.greeting.elements,
+				h('div#header', [h('a', { href: './start', title: 'Preiskalender' }, [h('h1', 'Preiskalender')])]),
+				h('div.continue', [
+					h('p.description', [
+						h('a', { href: '/start' }, '→ weiter zum Kalender'),
+					]),
 				]),
-				// h('div.continue', [
-				// 	h('p.description', [
-				// 		h('a', { href: '/start' }, '→ weiter zum Kalender'),
-				// 	]),
-				// ]),
 			]),
 			h('div#footer', [
 				// h('a', { id: 'faq', href: './faq' }, 'FAQ'),

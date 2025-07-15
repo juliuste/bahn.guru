@@ -14,21 +14,6 @@ const settings = {
 	originPlaceholder: 'Startbahnhof',
 	destinationPlaceholder: 'Zielbahnhof',
 	shopLinkTitle: 'zum Bahn-Shop',
-	greeting: {
-		title: 'Hinweis / Notice',
-		elements: [
-			h('p.description', [
-				'Leider wurde die inoffizielle Schnittstelle der DB, auf der dieses Projekt basiert, Ende 2024 ersetzt. Wir arbeiten (ehrenamtlich) an der Anpassung der Website, nach mehreren Verzögerungen möchten wir hierfür jedoch aktuell kein genaues Datum nennen. Stattdessen kannst Du dich ',
-				h('a', { style: 'color: #db0000 !important; font-weight: bold; text-decoration: underline;', href: 'https://app.keila.io/forms/nfrm_KRXbb59N' }, 'hier für Updates anmelden'),
-				', um sofort per Mail informiert zu werden, wenn die Seite wieder funktioniert. Bis dahin danken wir für die Geduld und ds Verständnis.',
-			]),
-			h('p.description', [
-				'Unfortunately, the inofficial API by Deutsche Bahn which this project was based on was discontinued in late 2024. We are working (as volunteers) to adapt the service to the new APIs. After failing to meet our own deadlines several times now, we don\'t think it would be clever to announce another date for which we expect the site to be functional again. Instead, you can ',
-				h('a', { style: 'color: #db0000 !important; font-weight: bold; text-decoration: underline;', href: 'https://app.keila.io/forms/nfrm_KRXbb59N' }, 'sign up for updates here'),
-				' to receive an email as soon as the service is working again. We thank you for your understanding and your patience.',
-			]),
-		],
-	},
 	faq: [
 		{
 			title: 'Ist dies eine offizielle Website der Deutschen Bahn?',

@@ -6,6 +6,7 @@ import apiCache from 'apicache'
 import createRoutes from './routes/index.js'
 import * as api from '../api/index.js'
 import helmet from 'helmet'
+import { stationsAll } from '../api/lib/station.js'
 
 const createServer = () => {
 	// setup HTTP and HTTPS servers
@@ -32,6 +33,18 @@ const createServer = () => {
 
 	// enable static assets directory
 	express.use('/assets', createExpress.static('assets'))
+
+	// API endpoint for station autocomplete
+	express.get('/api/locations', async (req, res) => {
+		const query = req.query.query || ''
+		if (!query) return res.json([])
+		try {
+			const results = await stationsAll(query)
+			res.json(results)
+		} catch (e) {
+			res.status(500).json([])
+		}
+	})
 
 	// setup and enable routes
 	const { greetingRoute, startRoute, dayRoute, calendarRoute, impressumRoute, faqRoute } = createRoutes(api)

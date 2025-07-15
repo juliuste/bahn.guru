@@ -69,8 +69,8 @@ const generateCalendar = (weeks) => {
 
 	const dates = []
 	for (let i = 0; i < weeks * 7; i++) {
-		if (dates.length === 0 || +date.format('D') === 1) dates.push({ date: { raw: moment(date), formatted: date.format('D MMM') }, past: (i < emptyDates) })
-		else dates.push({ date: { raw: moment(date), formatted: date.format('D') }, past: (i < emptyDates) })
+		if (dates.length === 0 || +date.format('D') === 1) dates.push({ date: { raw: moment(date).toDate(), formatted: date.format('D MMM') }, past: (i < emptyDates) })
+		else dates.push({ date: { raw: moment(date).toDate(), formatted: date.format('D') }, past: (i < emptyDates) })
 
 		date.add(1, 'days')
 		if (i >= emptyDates) date = date.startOf('day')
