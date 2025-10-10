@@ -49,7 +49,7 @@
 		"hastscript": "^7.2.0",
 		"helmet": "^4.6.0",
 		"horsey": "^4.2.2",
-		"js-beautify": "^1.14.9",
+		"js-beautify": "^1.15.4",
 		"lodash": "^4.17.21",
 		"moment-duration-format": "^2.3.2",
 		"moment-timezone": "^0.5.43",
